@@ -99,6 +99,7 @@ CREATE TABLE IF NOT EXISTS `MGB_prestation` (
   `descr` text NOT NULL,
   `cat_id` int(11) NOT NULL,
   `img` text NOT NULL,
+  `state` BOOLEAN NOT NULL DEFAULT 1,
   `prix` decimal(5,2) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `cat_id` (`cat_id`)
