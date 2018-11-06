@@ -17,14 +17,14 @@
     <td>viewLogin</td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>logout</td>
+    <td>/logout/</td>
+    <td>logOut</td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>signUp</td>
+    <td>/signUp/</td>
+    <td>viewSignUp</td>
   </tr>
   <tr>
     <td></td>

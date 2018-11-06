@@ -18,6 +18,8 @@ $config = parse_ini_file('conf/config.ini');
 $loader = new ClassLoader();
 $loader -> register();
 
+\myGiftApp\view\myGiftAppView::addStyleSheet("html/css/style.css");
+
 $db = new Illuminate\Database\Capsule\Manager();
 
 $db->addConnection( $config ); /* configuration avec nos paramètres */
@@ -28,8 +30,14 @@ $router = new Router();
 $router->addRoute('home', '/home/', '\myGiftApp\control\GiftBoxController',
     'viewHome', GiftBoxAuth::ACCESS_LEVEL_NONE);
 
-$router->addRoute('login','/login/','\myGiftApp\control\GiftBoxController',
+$router->addRoute('login','/login/','\myGiftApp\control\GiftBoxAdminController',
     'viewLogin',GiftBoxAuth::ACCESS_LEVEL_NONE);
+
+$router->addRoute('logout','/logout/','\myGiftApp\control\GiftBoxAdminController',
+    'logOut',GiftBoxAuth::ACCESS_LEVEL_NONE);
+
+$router->addRoute('signUp','/signUp/','\myGiftApp\control\GiftBoxAdminController',
+    'viewSignUp',GiftBoxAuth::ACCESS_LEVEL_NONE);
 
 $router->setDefaultRoute('/home/');
 

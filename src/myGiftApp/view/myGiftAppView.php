@@ -7,6 +7,7 @@
  */
 namespace myGiftApp\view;
 
+use mf\utils\HttpRequest;
 use mf\view\AbstractView;
 
 class myGiftAppView extends AbstractView{
@@ -42,6 +43,7 @@ class myGiftAppView extends AbstractView{
      */
 
     private function renderHome(){
+        $httpReq = new HttpRequest();
 
         /*
          * Retourne le fragment HTML qui affiche tous les prestations.
@@ -49,14 +51,16 @@ class myGiftAppView extends AbstractView{
          * L'attribut $this->data contient un tableau d'objets prestation.
          *
          */
-
+        $html = "";
         foreach($this->data as $prest) {
 
-            $html = "<h1>$prest->nom</h1>
+            $html .= "<h1>$prest->nom</h1>
                        <div>
+                       <img src=\"$httpReq->root/html/img/$prest->img\">
                         <p> $prest->descr</p>
                         <p> $prest->prix</p>
                        </div>
+                       <button>Ajouter</button>
                      ";
 
         }
@@ -143,14 +147,6 @@ class myGiftAppView extends AbstractView{
 
         switch($selector)
         {
-            case "RenderOnePrestation":
-                $main = $this->renderViewTweet();
-                break;
-
-            case "RenderUser":
-                $main = $this->renderUserTweets();
-                break;
-
             case "home":
                 $main = $this->renderHome();
                 break;
@@ -159,6 +155,10 @@ class myGiftAppView extends AbstractView{
                 $main = $this->renderLogin();
                 break;
 
+            case "signUp":
+                $main = $this->renderSignUp();
+                break;
+                
             default:
                 $main = $this->renderHome();
                 break;
@@ -185,7 +185,10 @@ EOT;
     }
 
     private function renderLogin(){
-            return "
+        $router = new Router();
+
+
+        return "
             <div>
                 <form action=\"\" method=\"post\">
                     <label for=\"uname\"><b>Username</b></label>
@@ -193,8 +196,38 @@ EOT;
                 
                     <label for=\"psw\"><b>Password</b></label>
                     <input type=\"password\" placeholder=\"Enter Password\" name=\"password\" required>
+                    
+                    <a href=''></a>
+                    <!--<button type=\"submit\"></button>-->
+                </form>
+            </div>
+        ";
+
+    }
+
+    private function renderSignUp(){
+        return "
+            <div>
+                <form action=\"\" method=\"post\">
+                    <label for=\"nom\"><b>Nom</b></label>
+                    <input type=\"text\" placeholder=\"Nom\" name=\"nom\" required>
+                    
+                    <label for=\"prenom\"><b>Prenom</b></label>
+                    <input type=\"text\" placeholder=\"Prenom\" name=\"prenom\" required>
                 
-                    <button type=\"submit\">Login</button>
+                    <label for=\"username\"><b>Username</b></label>
+                    <input type=\"text\" placeholder=\"Enter Username\" name=\"username\" required>
+                    
+                    <label for=\"email\"><b>Email</b></label>
+                    <input type=\"email\" placeholder=\"Enter e-mail\" name=\"email\" required>
+                
+                    <label for=\"psw\"><b>Mot de passe</b></label>
+                    <input type=\"password\" placeholder=\"Enter Password\" name=\"password\" required>
+                    
+                    <label for=\"psw2\"><b>Confirmer mot de passe</b></label>
+                    <input type=\"password\" placeholder=\"Retype Password\" name=\"password2\" required>
+                
+                    <button type=\"submit\">Creer</button>
                 </form>
             </div>
         ";

@@ -17,7 +17,7 @@ class GiftBoxAdminController extends AbstractController{
         parent::__construct();
     }
 
-    public function login(){
+    public function viewLogin(){
 
         $view = new myGiftAppView($this);
         $view->render('login');
@@ -27,20 +27,20 @@ class GiftBoxAdminController extends AbstractController{
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        $tweetAuth = new GiftBoxAuth();
-        if ($tweetAuth->loginUser($username,$password)){
+        $giftBoxAuth = new GiftBoxAuth();
+        if ($giftBoxAuth->loginUser($username,$password)){
         }else{
-            self::login();
+            self::viewLogin();
         }
     }
 
     public function logOut(){
-        $tweetAuth = new GiftBoxAuth();
-        $tweetAuth->logout();
-        self::login();
+        $giftBoxAuth = new GiftBoxAuth();
+        $giftBoxAuth->logout();
+        self::viewLogin();
     }
 
-    public function signUp(){
+    public function viewSignUp(){
         $view = new myGiftAppView($this);
         $view->render('signUp');
     }
@@ -52,12 +52,12 @@ class GiftBoxAdminController extends AbstractController{
         $username = $_POST[''];
         $password = $_POST[''];
         $password2 = $_POST[''];
-        $tweetAuth = new GiftBoxAuth();
+        $giftBoxAuth = new GiftBoxAuth();
 
         if ($password === $password2)
-            $tweetAuth->createUser($username,$password,$name,$lastName,$email);
+            $giftBoxAuth->createUser($username,$password,$name,$lastName,$email);
         else
-            self::signUp();
+            self::viewSignUp();
     }
 
 
