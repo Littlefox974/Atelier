@@ -6,6 +6,12 @@
  * Time: 5:03 PM
  */
 
+require_once 'vendor/autoload.php';
+require_once 'src/myGiftApp/model/Body.php';
+require_once 'src/myGiftApp/model/Cart.php';
+require_once 'src/myGiftApp/model/Categorie.php';
+require_once 'src/myGiftApp/model/Order.php';
+require_once 'src/myGiftApp/model/Prestation.php';
 require_once 'src/myGiftApp/model/User.php';
 
 $config = [
@@ -24,8 +30,8 @@ $db->addConnection($config); /* configuration avec nos paramètres */
 $db->setAsGlobal(); /* visible de tout fichier */
 $db->bootEloquent(); /* établir la connexion */
 
-$requete = \myGiftApp\model\User::select();  /* SQL : select * from 'ville' */
-$lignes = $requete->get();   /* exécution de la requête et plusieurs lignes résultat */
+$requete = \myGiftApp\model\Prestation::select();
+$lignes = $requete->get();
 
-foreach ($lignes as $v)      /* $v est une instance de la classe Ville */
+foreach ($lignes as $v)
        echo "Identifiant = $v->id, Nom = $v->nom\n" ;
