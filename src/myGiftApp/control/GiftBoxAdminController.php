@@ -9,6 +9,7 @@ namespace myGiftApp\control;
 
 use mf\control\AbstractController;
 use myGiftApp\auth\GiftBoxAuth;
+use myGiftApp\view\myGiftAppView;
 
 class GiftBoxAdminController extends AbstractController{
 
@@ -23,12 +24,11 @@ class GiftBoxAdminController extends AbstractController{
 
     }
     public function checkLogin(){
-        $username = $_POST['formName'];
-        $password = $_POST['formPass'];
+        $username = $_POST['username'];
+        $password = $_POST['password'];
 
         $tweetAuth = new GiftBoxAuth();
         if ($tweetAuth->loginUser($username,$password)){
-
         }else{
             self::login();
         }
