@@ -78,12 +78,27 @@ class ComposerStaticInitf4dced4ada6b5bca9828cdea8af1cad0
         0 => __DIR__ . '/..' . '/nesbot/carbon/src',
     );
 
+    public static $prefixesPsr0 = array (
+        'm' => 
+        array (
+            'myGiftApp' => 
+            array (
+                0 => __DIR__ . '/../..' . '/src',
+            ),
+            'mf' => 
+            array (
+                0 => __DIR__ . '/../..' . '/src',
+            ),
+        ),
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitf4dced4ada6b5bca9828cdea8af1cad0::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitf4dced4ada6b5bca9828cdea8af1cad0::$prefixDirsPsr4;
             $loader->fallbackDirsPsr4 = ComposerStaticInitf4dced4ada6b5bca9828cdea8af1cad0::$fallbackDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitf4dced4ada6b5bca9828cdea8af1cad0::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }

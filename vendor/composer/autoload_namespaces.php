@@ -6,4 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'myGiftApp' => array($baseDir . '/src'),
+    'mf' => array($baseDir . '/src'),
 );

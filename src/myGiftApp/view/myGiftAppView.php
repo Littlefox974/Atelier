@@ -43,8 +43,6 @@ class myGiftAppView extends AbstractView{
 
     private function renderHome(){
 
-
-
         /*
          * Retourne le fragment HTML qui affiche tous les prestations.
          *
@@ -52,30 +50,18 @@ class myGiftAppView extends AbstractView{
          *
          */
 
-
-        foreach($this->data as $prest)
-        {
+        foreach($this->data as $prest) {
 
             $html = "<h1>$prest->nom</h1>
                        <div>
                         <p> $prest->descr</p>
                         <p> $prest->prix</p>
                        </div>
-                     
-                      
-                      
-                      
-
-";
-
-
+                     ";
 
         }
 
         return $html;
-
-
-
     }
 
     /* Méthode renderUeserTweets
@@ -165,7 +151,7 @@ class myGiftAppView extends AbstractView{
                 $main = $this->renderUserTweets();
                 break;
 
-            case "RenderHome":
+            case "home":
                 $main = $this->renderHome();
                 break;
 

@@ -1,5 +1,11 @@
 {
     "require": {
         "illuminate/database": "^5.7"
+    },
+    "autoload": {
+        "psr-0": {
+            "myGiftApp": "src/",
+            "mf": "src/"
+        }
     }
 }
