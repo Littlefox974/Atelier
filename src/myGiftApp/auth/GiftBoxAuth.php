@@ -19,9 +19,9 @@ class GiftBoxAuth extends Authentification {
         parent::__construct();
     }
 
-    /* La mÃ©thode createUser
+    /* La methode createUser
      *
-     *  Permet la crÃ©ation d'un nouvel utilisateur de l'application
+     *  Permet la creation d'un nouvel utilisateur de l'application
      *
      *
      * @param : $username : le nom d'utilisateur choisi
@@ -31,11 +31,11 @@ class GiftBoxAuth extends Authentification {
      *
      * Algorithme :
      *
-     *  Si un utilisateur avec le mÃªme nom d'utilisateur existe dÃ©jÃ  en BD
+     *  Si un utilisateur avec le meme nom d'utilisateur existe deja  en BD
      *     - soulever une exception
      *  Sinon
-     *     - crÃ©er un nouvel modÃ¨le User avec les valeurs en paramÃ¨tre
-     *       ATTENTION : Le mot de passe ne doit pas Ãªtre enregistrÃ© en clair.
+     *     - creer un nouvel modele User avec les valeurs en parametre
+     *       ATTENTION : Le mot de passe ne doit pas etre enregistre en clair.
      *
      */
     public function createUser($username, $pass, $name, $lastname, $email,
@@ -53,21 +53,21 @@ class GiftBoxAuth extends Authentification {
         $user->save();
     }
 
-    /* La mÃ©thode loginUser
+    /* La methode loginUser
      *
      * permet de connecter un utilisateur qui a fourni son nom d'utilisateur
      * et son mot de passe (depuis un formulaire de connexion)
      *
      * @param : $username : le nom d'utilisateur
-     * @param : $password : le mot de passe tapÃ© sur le formulaire
+     * @param : $password : le mot de passe tape sur le formulaire
      *
      * Algorithme :
      *
-     *  - RÃ©cupÃ©rer l'utilisateur avec l'identifiant $username depuis la BD
-     *  - Si aucun de trouvÃ©
+     *  - Recuperer l'utilisateur avec l'identifiant $username depuis la BD
+     *  - Si aucun de trouve
      *      - soulever une exception
      *  - sinon
-     *      - rÃ©aliser l'authentification et la connexion
+     *      - realiser l'authentification et la connexion
      *
      */
     public function loginUser($username, $password){

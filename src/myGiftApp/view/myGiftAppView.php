@@ -51,13 +51,20 @@ class myGiftAppView extends AbstractView{
          * L'attribut $this->data contient un tableau d'objets prestation.
          *
          */
-        $html = "<ul>";
-        $router = new \mf\router\Router();
+
+
         foreach($this->data as $prest)
         {
 
-            $html .= "<h1>$prest->nom</h1>
-                      <p> $prest->descr</p>
+            $html = "<h1>$prest->nom</h1>
+                       <div>
+                        <p> $prest->descr</p>
+                        <p> $prest->prix</p>
+                       </div>
+                     
+                      
+                      
+                      
 
 ";
 
@@ -87,16 +94,7 @@ class myGiftAppView extends AbstractView{
          *
          */
 
-        $res = "<div>";
-        foreach ($this->data as $tweet){
-            $res .=
-                "Texte: $tweet->text <br>"
-                ."Autheur: ".$tweet->author()->first()->fullname ."<br>"
-                . "Date de Création : $tweet->created_at <br>";
-        }
 
-        $res .= "</div>";
-        return $res;
 
     }
 
@@ -109,18 +107,13 @@ class myGiftAppView extends AbstractView{
     private function renderView(){
 
         /*
-         * Retourne le fragment HTML qui réalise l'affichage d'un tweet
+         * Retourne le fragment HTML qui réalise l'affichage d'une prestation
          * en particulié
          *
-         * L'attribut $this->data contient un objet Tweet
+         * L'attribut $this->data contient un objet Prestation
          *
          */
-        $html= "<div><PRE>";
-        $html .= "Text :".$this->data->text;
-        $html.="Auteur:".$this->data->author()->first()->fullname;
-        $html.="Date de création".$this->data->created_at;
-        $html .= "</PRE></div>";
-        return $html;
+
 
     }
 
@@ -131,12 +124,12 @@ class myGiftAppView extends AbstractView{
      * Realise la vue de régider un Tweet
      *
      */
-    protected function renderPostTweet(){
+    protected function renderPostPrestation(){
 
-        /* Méthode renderPostTweet
+        /* Méthode renderPostPrestation
          *
          * Retourne la framgment HTML qui dessine un formulaire pour la rédaction
-         * d'un tweet, l'action du formulaire est la route "send"
+         * d'une prestation, l'action du formulaire est la route "send"
          *
          */
 
