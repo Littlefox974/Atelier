@@ -20,21 +20,34 @@ $nbgut: $nbcolonnes + 1;
 $lgut: 1.6%;
 $lcol: (100% - ($nbgut * $lgut)) / $nbcolonnes;
 
-@for $i from 1 through $nbcolonnes {
-  $n: $i;
-  @media only screen and (max-width: 600px){
+@media only screen and (max-width: 600px){
+  @for $i from 1 through $nbcolonnes{
+    $n : $i;
     .s#{$i} {
       width: $n * $lcol + ($n - 1) * $lgut;
       margin-left: $lgut;
     }
   }
-  @media only screen and (max-width: 1600px){
+}
+
+@media only screen and (max-width: 1200px){
+  @for $i from 1 through $nbcolonnes{
+    $n : $i;
     .m#{$i} {
-      width: ($n * $lcol + ($n - 1) * $lgut);
+      width: $n * $lcol + ($n - 1) * $lgut;
       margin-left: $lgut;
     }
   }
+}
 
+@media only screen and (max-width: 1920px){
+  @for $i from 1 through $nbcolonnes{
+    $n : $i;
+    .l#{$i} {
+      width: $n * $lcol + ($n - 1) * $lgut;
+      margin-left: $lgut;
+    }
+  }
 }
 
 @mixin grill($nbColGrill, $longGutGrill, $offsetCell, $largCell){

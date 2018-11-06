@@ -1,0 +1,201 @@
+.col {
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 0.8% 0;
+}
+
+.row {
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 0 0.8%;
+}
+
+@media only screen and (max-width: 600px) {
+  .s1 {
+    width: 6.6%;
+    margin-left: 1.6%;
+  }
+
+  .s2 {
+    width: 14.8%;
+    margin-left: 1.6%;
+  }
+
+  .s3 {
+    width: 23%;
+    margin-left: 1.6%;
+  }
+
+  .s4 {
+    width: 31.2%;
+    margin-left: 1.6%;
+  }
+
+  .s5 {
+    width: 39.4%;
+    margin-left: 1.6%;
+  }
+
+  .s6 {
+    width: 47.6%;
+    margin-left: 1.6%;
+  }
+
+  .s7 {
+    width: 55.8%;
+    margin-left: 1.6%;
+  }
+
+  .s8 {
+    width: 64%;
+    margin-left: 1.6%;
+  }
+
+  .s9 {
+    width: 72.2%;
+    margin-left: 1.6%;
+  }
+
+  .s10 {
+    width: 80.4%;
+    margin-left: 1.6%;
+  }
+
+  .s11 {
+    width: 88.6%;
+    margin-left: 1.6%;
+  }
+
+  .s12 {
+    width: 96.8%;
+    margin-left: 1.6%;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .m1 {
+    width: 6.6%;
+    margin-left: 1.6%;
+  }
+
+  .m2 {
+    width: 14.8%;
+    margin-left: 1.6%;
+  }
+
+  .m3 {
+    width: 23%;
+    margin-left: 1.6%;
+  }
+
+  .m4 {
+    width: 31.2%;
+    margin-left: 1.6%;
+  }
+
+  .m5 {
+    width: 39.4%;
+    margin-left: 1.6%;
+  }
+
+  .m6 {
+    width: 47.6%;
+    margin-left: 1.6%;
+  }
+
+  .m7 {
+    width: 55.8%;
+    margin-left: 1.6%;
+  }
+
+  .m8 {
+    width: 64%;
+    margin-left: 1.6%;
+  }
+
+  .m9 {
+    width: 72.2%;
+    margin-left: 1.6%;
+  }
+
+  .m10 {
+    width: 80.4%;
+    margin-left: 1.6%;
+  }
+
+  .m11 {
+    width: 88.6%;
+    margin-left: 1.6%;
+  }
+
+  .m12 {
+    width: 96.8%;
+    margin-left: 1.6%;
+  }
+}
+@media only screen and (max-width: 1920px) {
+  .l1 {
+    width: 6.6%;
+    margin-left: 1.6%;
+  }
+
+  .l2 {
+    width: 14.8%;
+    margin-left: 1.6%;
+  }
+
+  .l3 {
+    width: 23%;
+    margin-left: 1.6%;
+  }
+
+  .l4 {
+    width: 31.2%;
+    margin-left: 1.6%;
+  }
+
+  .l5 {
+    width: 39.4%;
+    margin-left: 1.6%;
+  }
+
+  .l6 {
+    width: 47.6%;
+    margin-left: 1.6%;
+  }
+
+  .l7 {
+    width: 55.8%;
+    margin-left: 1.6%;
+  }
+
+  .l8 {
+    width: 64%;
+    margin-left: 1.6%;
+  }
+
+  .l9 {
+    width: 72.2%;
+    margin-left: 1.6%;
+  }
+
+  .l10 {
+    width: 80.4%;
+    margin-left: 1.6%;
+  }
+
+  .l11 {
+    width: 88.6%;
+    margin-left: 1.6%;
+  }
+
+  .l12 {
+    width: 96.8%;
+    margin-left: 1.6%;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
