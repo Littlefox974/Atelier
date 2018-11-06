@@ -16,7 +16,7 @@ class User extends Model {
     protected $primaryKey = 'id';
 
     public function orders(){
-        return self::hasMany('MGB_order','idUser');
+        return self::hasMany('myGiftApp\model\Order','idUser');
     }
 
 }
