@@ -7,8 +7,9 @@
  */
 namespace myGiftApp\view;
 
-class myGiftAppView
-{
+use mf\view\AbstractView;
+
+class myGiftAppView extends AbstractView{
 
     /* Constructeur
         *
@@ -175,6 +176,10 @@ class myGiftAppView
                 $main = $this->renderHome();
                 break;
 
+            case "login":
+                $main = $this->renderLogin();
+                break;
+
             default:
                 $main = $this->renderHome();
                 break;
@@ -197,6 +202,23 @@ EOT;
         return $html;
 
 
+
+    }
+
+    private function renderLogin(){
+            return "
+            <div>
+                <form action=\"\" method=\"post\">
+                    <label for=\"uname\"><b>Username</b></label>
+                    <input type=\"text\" placeholder=\"Enter Username\" name=\"userName\" required>
+                
+                    <label for=\"psw\"><b>Password</b></label>
+                    <input type=\"password\" placeholder=\"Enter Password\" name=\"password\" required>
+                
+                    <button type=\"submit\">Login</button>
+                </form>
+            </div>
+        ";
 
     }
 }

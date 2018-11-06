@@ -23,6 +23,9 @@ $router = new \mf\router\Router();
 $router->addRoute('home', '/home/', '\myGiftApp\control\GiftBoxController',
     'viewHome', GiftBoxAuth::ACCESS_LEVEL_NONE);
 
+$router->addRoute('login','/login/','\myGiftApp\control\GiftBoxController',
+    'viewLogin',GiftBoxAuth::ACCESS_LEVEL_NONE);
+
 $router->setDefaultRoute('/home/');
 
 $router->run();

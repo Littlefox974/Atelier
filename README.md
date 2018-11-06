@@ -1,0 +1,39 @@
+<h1>Routes</h1>
+
+<table>
+  <tr>
+    <th>NAME</th>
+    <th>ROUTE</th>
+    <th>METHOD</th>
+  </tr>
+  <tr>
+    <td>home</td>
+    <td>/home/</td>
+    <td>viewHome</td>
+  </tr>
+  <tr>
+    <td>login</td>
+    <td>/login/</td>
+    <td>viewLogin</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
