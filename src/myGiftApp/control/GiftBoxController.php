@@ -33,6 +33,33 @@ class GiftBoxController extends AbstractController{
         $view->render('home');
     }
 
+    public function viewCart(){
+        $view = new myGiftAppView($needToAdd);
+        $view->render('cart');
+    }
+
+    public function addToCart(){
+        $id = isset($_GET['id']) ? $_GET['id'] : "";
+
+        $item = Prestation::query()->select(['*'])->where('id','=',$id)->get();
+
+        if (empty($cartItem)){
+            $cartItem[] = array();
+            $cartItem[] = $item;
+        }else{
+            $cartItem[] = $item;
+        }
+
+        self::viewHome();
+    }
+
+    public function viewItem(){
+        $id = isset($_GET['id']) ? $_GET['id'] : "";
+        $prestation = Prestation::query()->select(['*'])->where('id','=',$id)->get();
+        $view = new myGiftAppView($prestation);
+        $view->render('item');
+    }
+
     public function createUrl($idUser, $idCart){
         $bytes = random_bytes(32);
         $bytesString = bin2hex($bytes);
@@ -47,30 +74,13 @@ class GiftBoxController extends AbstractController{
     }
 
 
-
-
-    /* MÃ©thode viewTweet :
-     *
-     * RÃ©alise la fonctionnalitÃ© afficher un Tweet
-     *
-     */
-    public function viewTweet(){
-
-        $id = $_GET['id'];
-        $tweet = Tweet::query()->select(['*'])->where('id',"=", $id)->get();
-        $view = new TweeterView($tweet);
-        $view->render('tweet');
-
-    }
-
-
-    public function viewUserTweets(){
-
-        $id = $_GET['id'];
-        $tweets = Tweet::all()->where('author',"=",$id);
-        $view = new TweeterView($tweets);
-        $view->render('userTweets');
-
-    }
+//    public function viewUserTweets(){
+//
+//        $id = $_GET['id'];
+//        $tweets = Tweet::all()->where('author',"=",$id);
+//        $view = new TweeterView($tweets);
+//        $view->render('userTweets');
+//
+//    }
 
 }

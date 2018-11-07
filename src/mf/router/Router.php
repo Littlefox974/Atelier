@@ -28,7 +28,7 @@ class Router extends AbstractRouter{
         $auth = new Authentification();
 
         if (array_key_exists($reqUrl,self::$routes)
-            && $auth->checkAccessRight(self::$level[self::$routes[$reqUrl][0]]))
+            && $auth->checkAccessRight($_SESSION['access_level']))
         {
             $controllerName = self::$routes[$reqUrl][0];
             $methodName = self::$routes[$reqUrl][1];
@@ -63,7 +63,7 @@ class Router extends AbstractRouter{
                 $arr = implode("=",$value);
             }
 
-            if (count($arr) > 1)
+            if (count($param_list) > 1)
                 $urlComplete .= "?" . implode("&amp;",$arr);
             else
                 $urlComplete .= "?" . $arr;

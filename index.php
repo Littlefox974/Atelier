@@ -29,7 +29,7 @@ $db->bootEloquent();           /* établir la connexion */
 
 $router = new Router();
 $router->addRoute('home', '/home/', '\myGiftApp\control\GiftBoxController',
-    'viewHome', GiftBoxAuth::ACCESS_LEVEL_NONE);
+    'viewHome', GiftBoxAuth::ACCESS_LEVEL_USER);
 
 $router->addRoute('login','/login/','\myGiftApp\control\GiftBoxAdminController',
     'viewLogin',GiftBoxAuth::ACCESS_LEVEL_NONE);
@@ -45,6 +45,12 @@ $router->addRoute('signUp','/signUp/','\myGiftApp\control\GiftBoxAdminController
 
 $router->addRoute('signUpVerify','/signUpV/','\myGiftApp\control\GiftBoxAdminController',
     'checkSignUp',GiftBoxAuth::ACCESS_LEVEL_NONE);
+
+$router->addRoute('addToCart','/home/','\myGiftApp\control\GiftBoxController',
+    'addToCart',GiftBoxAuth::ACCESS_LEVEL_USER);
+
+$router->addRoute('cart','/cart/','\myGiftApp\control\GiftBoxController',
+    'viewCart',GiftBoxAuth::ACCESS_LEVEL_USER);
 
 $router->setDefaultRoute('/home/');
 

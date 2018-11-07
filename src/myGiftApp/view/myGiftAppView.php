@@ -28,9 +28,13 @@ class myGiftAppView extends AbstractView
      *
      *  Retourne le fragment HTML de l'entête (unique pour toutes les vues)
      */
-    private function renderHeader()
-    {
-        return '<h1>My Gift App</h1>';
+    private function renderHeader(){
+        $router = new Router();
+        $httpReq = new HttpRequest();
+        $routeCart = $router->urlFor('cart');
+        return "<h1>My Gift App</h1>
+                <a href='$routeCart'>  <img src=\"$httpReq->root"."html/img/cart.svg\"></a>
+                ";
     }
 
     /* Méthode renderFooter
@@ -47,28 +51,32 @@ class myGiftAppView extends AbstractView
      * Vue de la fonctionalité afficher tous les users.
      *
      */
-// <p> $prest->descr</p>
-    private function renderHome()
-    {
-        $httpReq = new HttpRequest();
 
+    private function renderHome(){
         /*
          * Retourne le fragment HTML qui affiche tous les prestations.
          *
          * L'attribut $this->data contient un tableau d'objets prestation.
          *
          */
-        $html = "";
-        foreach ($this->data as $prest) {
 
-            $html .= "
-                        <div class='prestation'>
-                            <img src=\"html/img/$prest->img\">
-                            <h3>$prest->nom</h3>
-                            <p> $prest->prix</p>
-                            <button>Ajouter</button>
-                        </div>
-                     
+        $httpReq = new HttpRequest();
+        $router = new Router();
+
+        $html = "";
+        foreach($this->data as $prest) {
+            $addToCart = $router->urlFor('addToCart',[['id',$prest->id]]);
+
+            $html .= "<h1>$prest->nom</h1>
+                       <div>
+                       <img src=\"$httpReq->root"."html/img/$prest->img\">
+                        <p> $prest->descr</p>
+                        <p> $prest->prix</p>
+                       </div>
+                       <form action='$addToCart' method='get'>
+                            <button type='submit'>Ajouter</button>
+                       </form>
+                       
                      ";
 
         }
@@ -167,6 +175,14 @@ class myGiftAppView extends AbstractView
                 $main = $this->renderSignUp();
                 break;
 
+            case "item":
+                $main = $this->renderItem();
+                break;
+
+            case "cart":
+                $main = $this->renderCart();
+                break;
+
             default:
                 $main = $this->renderHome();
                 break;
@@ -242,5 +258,43 @@ EOT;
             </div>
         ";
 
+    }
+
+    private function renderItem(){
+        $httpReq = new HttpRequest();
+        return "
+            <div>
+                <h1>$this->data->nom</h1>
+                <div>
+                       <img src=\"$httpReq->root"."html/img/$this->data->img\">
+                        <p> $this->data->descr</p>
+                        <p> $this->data->prix</p>
+                </div>
+            </div>
+        
+        ";
+    }
+
+    private function renderCart(){
+
+        $html = "";
+        $total = 0;
+        $httpReq = new HttpRequest();
+
+        foreach($this->data as $prest) {
+
+            $html .= "<h1>$prest->nom</h1>
+                       <div>
+                       <img src=\"$httpReq->root"."html/img/$prest->img\">
+                        <p> $prest->descr</p>
+                        <p> $prest->prix</p>
+                       </div>
+                       
+                     ";
+            $total += $prest->prix;
+        }
+        $html .= "<button>Payer $total</button>";
+
+        return $html;
     }
 }
