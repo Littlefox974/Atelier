@@ -10,6 +10,7 @@ session_start();
 use Composer\Autoload\ClassLoader;
 use mf\router\Router;
 use myGiftApp\auth\GiftBoxAuth;
+use myGiftApp\view\myGiftAppView;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -18,7 +19,7 @@ $config = parse_ini_file('conf/config.ini');
 $loader = new ClassLoader();
 $loader -> register();
 
-\myGiftApp\view\myGiftAppView::addStyleSheet("html/css/style.css");
+myGiftAppView::addStyleSheet("html/css/style.css");
 
 $db = new Illuminate\Database\Capsule\Manager();
 
@@ -41,6 +42,9 @@ $router->addRoute('logout','/logout/','\myGiftApp\control\GiftBoxAdminController
 
 $router->addRoute('signUp','/signUp/','\myGiftApp\control\GiftBoxAdminController',
     'viewSignUp',GiftBoxAuth::ACCESS_LEVEL_NONE);
+
+$router->addRoute('signUpVerify','/signUpV/','\myGiftApp\control\GiftBoxAdminController',
+    'checkSignUp',GiftBoxAuth::ACCESS_LEVEL_NONE);
 
 $router->setDefaultRoute('/home/');
 

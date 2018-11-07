@@ -57,7 +57,7 @@ class myGiftAppView extends AbstractView{
 
             $html .= "<h1>$prest->nom</h1>
                        <div>
-                       <img src=\"html/img/$prest->img\">
+                       <img src=\"/html/img/$prest->img\">
                         <p> $prest->descr</p>
                         <p> $prest->prix</p>
                        </div>
@@ -191,15 +191,14 @@ EOT;
 
         return "
             <div>
-                <form action=\"\" method=\"post\">
+                <form action=\"$routeVerify\" method=\"post\">
                     <label for=\"uname\"><b>Username</b></label>
-                    <input type=\"text\" placeholder=\"Enter Username\" name=\"userName\" required>
+                    <input type=\"text\" placeholder=\"Username\" name=\"userName\" required>
                 
-                    <label for=\"psw\"><b>Password</b></label>
-                    <input type=\"password\" placeholder=\"Enter Password\" name=\"password\" required>
+                    <label for=\"psw\"><b>Mot de passe</b></label>
+                    <input type=\"password\" placeholder=\"Mot de passe\" name=\"password\" required>
                     
-                    <a href='$routeVerify'>Submit</a>
-                    <!--<button type=\"submit\"></button>-->
+                    <button type=\"submit\">Submit</button>
                 </form>
             </div>
         ";
@@ -207,14 +206,16 @@ EOT;
     }
 
     private function renderSignUp(){
+        $router = new Router();
+        $routeVerify = $router->urlFor('signUpVerify');
         return "
             <div>
-                <form action=\"\" method=\"post\">
+                <form action=\"$routeVerify\" method=\"post\">
                     <label for=\"nom\"><b>Nom</b></label>
-                    <input type=\"text\" placeholder=\"Nom\" name=\"nom\" required>
+                    <input type=\"text\" placeholder=\"Nom\" name=\"name\" required>
                     
                     <label for=\"prenom\"><b>Prenom</b></label>
-                    <input type=\"text\" placeholder=\"Prenom\" name=\"prenom\" required>
+                    <input type=\"text\" placeholder=\"Prenom\" name=\"lastName\" required>
                 
                     <label for=\"username\"><b>Username</b></label>
                     <input type=\"text\" placeholder=\"Enter Username\" name=\"username\" required>

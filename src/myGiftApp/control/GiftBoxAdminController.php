@@ -8,7 +8,10 @@
 namespace myGiftApp\control;
 
 use mf\control\AbstractController;
+use mf\router\Router;
 use myGiftApp\auth\GiftBoxAuth;
+use myGiftApp\model\Prestation;
+use myGiftApp\model\User;
 use myGiftApp\view\myGiftAppView;
 
 class GiftBoxAdminController extends AbstractController{
@@ -48,16 +51,21 @@ class GiftBoxAdminController extends AbstractController{
     }
     public function checkSignUp(){
 
-        $name = $_POST[''];
-        $lastName = $_POST[''];
-        $email = $_POST[''];
-        $username = $_POST[''];
-        $password = $_POST[''];
-        $password2 = $_POST[''];
+        $name = $_POST['name'];
+        $lastName = $_POST['lastName'];
+        $email = $_POST['username'];
+        $username = $_POST['email'];
+        $password = $_POST['password'];
+        $password2 = $_POST['password2'];
         $giftBoxAuth = new GiftBoxAuth();
 
-        if ($password === $password2)
+        $user = User::query()->select(['*'])->where('username','=',$username)->get()->first();
+        if (($password === $password2) && !is_null($user)){
             $giftBoxAuth->createUser($username,$password,$name,$lastName,$email);
+            $prestations = Prestation::all();
+            $view = new myGiftAppView($prestations);
+            $view->render('home');
+        }
         else
             self::viewSignUp();
     }

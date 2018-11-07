@@ -38,7 +38,7 @@ class GiftBoxAuth extends Authentification {
      *       ATTENTION : Le mot de passe ne doit pas etre enregistre en clair.
      *
      */
-    public function createUser($username, $pass, $name, $lastname, $email,
+    public function createUser($username, $pass, $name, $lastName, $email,
                                $level=self::ACCESS_LEVEL_USER) {
 
         $user = new User;
@@ -46,7 +46,7 @@ class GiftBoxAuth extends Authentification {
         $hashedPass = parent::hashPAssword($pass);
         $user->password = $hashedPass;
         $user->name = $name;
-        $user->lastname = $lastname;
+        $user->lastname = $lastName;
         $user->email = $email;
         $user->typeUser = $level;
 

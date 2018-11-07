@@ -21,7 +21,8 @@ class Router extends AbstractRouter{
     }
 
 
-    public function run(){
+    public function run()
+    {
         $reqUrl = $this->http_req->path_info;
 
         $auth = new Authentification();
@@ -31,6 +32,7 @@ class Router extends AbstractRouter{
         {
             $controllerName = self::$routes[$reqUrl][0];
             $methodName = self::$routes[$reqUrl][1];
+
         }else {
             $defaultRoute =  self::$routes[self::$aliases['default']];
             $controllerName = $defaultRoute[0];
@@ -48,27 +50,27 @@ class Router extends AbstractRouter{
         $curRoute->$method();
     }
 
-    public function urlFor($route_name, $param_list = [])
-    {
+    public function urlFor($route_name, $param_list = []){
         $reqUrl = $this->http_req->script_name;
         $route =  self::$aliases[$route_name];
 
         $urlComplete = $reqUrl . $route;
 
-        $arr = [];
+        if (count($param_list) > 0){
+            $arr = [];
 
-        foreach ($param_list as $value){
-            $arr = implode("=",$value);
-        }
-        if (count($arr) == 0){
-            return $urlComplete;
-        }
-        if (count($arr) > 1)
-            $controller = $urlComplete . "?" . implode("&amp;",$arr);
-        else
-            $controller = $urlComplete . "?" . $arr;
+            foreach ($param_list as $value){
+                $arr = implode("=",$value);
+            }
 
-        return $controller;
+            if (count($arr) > 1)
+                $urlComplete .= "?" . implode("&amp;",$arr);
+            else
+                $urlComplete .= "?" . $arr;
+        }
+
+        return $urlComplete;
+
     }
 
     public function setDefaultRoute($url){
