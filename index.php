@@ -33,6 +33,9 @@ $router->addRoute('home', '/home/', '\myGiftApp\control\GiftBoxController',
 $router->addRoute('login','/login/','\myGiftApp\control\GiftBoxAdminController',
     'viewLogin',GiftBoxAuth::ACCESS_LEVEL_NONE);
 
+$router->addRoute('loginVerify','/loginV/','\myGiftApp\control\GiftBoxAdminController',
+    'checkLogin',GiftBoxAuth::ACCESS_LEVEL_NONE);
+
 $router->addRoute('logout','/logout/','\myGiftApp\control\GiftBoxAdminController',
     'logOut',GiftBoxAuth::ACCESS_LEVEL_NONE);
 

@@ -7,6 +7,7 @@
  */
 namespace myGiftApp\view;
 
+use mf\router\Router;
 use mf\utils\HttpRequest;
 use mf\view\AbstractView;
 
@@ -56,7 +57,7 @@ class myGiftAppView extends AbstractView{
 
             $html .= "<h1>$prest->nom</h1>
                        <div>
-                       <img src=\"$httpReq->root/html/img/$prest->img\">
+                       <img src=\"html/img/$prest->img\">
                         <p> $prest->descr</p>
                         <p> $prest->prix</p>
                        </div>
@@ -186,7 +187,7 @@ EOT;
 
     private function renderLogin(){
         $router = new Router();
-
+        $routeVerify = $router->urlFor('loginVerify');
 
         return "
             <div>
@@ -197,7 +198,7 @@ EOT;
                     <label for=\"psw\"><b>Password</b></label>
                     <input type=\"password\" placeholder=\"Enter Password\" name=\"password\" required>
                     
-                    <a href=''></a>
+                    <a href='$routeVerify'>Submit</a>
                     <!--<button type=\"submit\"></button>-->
                 </form>
             </div>

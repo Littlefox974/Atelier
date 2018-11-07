@@ -9,6 +9,7 @@
 namespace myGiftApp\control;
 
 use mf\control\AbstractController;
+use myGiftApp\model\Order;
 use myGiftApp\model\Prestation;
 use myGiftApp\view\myGiftAppView;
 
@@ -30,6 +31,19 @@ class GiftBoxController extends AbstractController{
         $prestations = Prestation::all();
         $view = new myGiftAppView($prestations);
         $view->render('home');
+    }
+
+    public function createUrl($idUser, $idCart){
+        $bytes = random_bytes(32);
+        $bytesString = bin2hex($bytes);
+
+        $order = new Order();
+        $order->id = $bytesString;
+        $order->User = $idUser;
+        $order->idCart = $idCart;
+        $order->save();
+
+        return $bytesString;
     }
 
 

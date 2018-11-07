@@ -24,12 +24,14 @@ class GiftBoxAdminController extends AbstractController{
 
     }
     public function checkLogin(){
-        $username = $_POST['username'];
+        $username = $_POST['userName'];
         $password = $_POST['password'];
 
         $giftBoxAuth = new GiftBoxAuth();
         if ($giftBoxAuth->loginUser($username,$password)){
+            echo "logged in";
         }else{
+            echo "nope";
             self::viewLogin();
         }
     }

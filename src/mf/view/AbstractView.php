@@ -104,7 +104,7 @@ abstract class AbstractView {
         $app_root = (new \mf\utils\HttpRequest())->root;
         $styles = '';
         foreach ( self::$style_sheets as $file )
-            $styles .= '<link rel="stylesheet" href="'.$app_root.'/'.$file.'"> ';
+            $styles .= '<link rel="stylesheet" href="'.$file.'"> ';
 
         /* on appele la methode renderBody de la sous classe */
         $body = $this->renderBody($selector);
