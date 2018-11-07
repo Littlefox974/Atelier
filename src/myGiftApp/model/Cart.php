@@ -14,6 +14,8 @@ class Cart extends Model
 {
     protected $table = 'MGB_cart';
     protected $primaryKey = 'id';
+    public $timestamps = false;
+
 
     public function orders(){
         return self::hasMany('myGiftApp\model\Order','idCart');

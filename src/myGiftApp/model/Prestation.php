@@ -14,6 +14,8 @@ class Prestation extends Model
 {
     protected $table = 'MGB_prestation';
     protected $primaryKey = 'id';
+    public $timestamps = false;
+
 
     public function bodies(){
         return self::hasMany('myGiftApp\model\Body','idPrestation');

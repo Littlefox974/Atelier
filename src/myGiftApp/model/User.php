@@ -14,6 +14,8 @@ class User extends Model {
 
     protected $table = 'MGB_user';
     protected $primaryKey = 'id';
+    public $timestamps = false;
+
 
     public function orders(){
         return self::hasMany('myGiftApp\model\Order','idUser');

@@ -14,6 +14,8 @@ class Categorie extends Model
 {
     protected $table = 'MGB_categorie';
     protected $primaryKey = 'id';
+    public $timestamps = false;
+
 
     public function prestations(){
         return self::hasMany('myGiftApp\model\Prestation','cat_id');

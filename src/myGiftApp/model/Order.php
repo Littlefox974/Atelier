@@ -14,6 +14,8 @@ class Order extends Model
 {
     protected $table = 'MGB_order';
     protected $primaryKey = 'id';
+    public $timestamps = false;
+
 
     public function user(){
         return self::belongsTo('myGiftApp\model\User','idUser');

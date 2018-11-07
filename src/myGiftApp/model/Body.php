@@ -14,6 +14,8 @@ class Body extends Model
 {
     protected $table = 'MGB_body';
     protected $primaryKey = 'id';
+    public $timestamps = false;
+
 
     public function cart(){
         return self::belongsTo('myGiftApp\model\Cart','idCart');
