@@ -85,8 +85,7 @@ img { //TODO remove this after grid
   $nbgut: $nbColGrill + 1;
   $lcol: (100% - ($nbgut * $longGutGrill)) / $nbColGrill;
 
-  width: $longCell * $lcol + ($largCell - 1) * $longGutGrill;
+  width: $largCell * $lcol + ($largCell - 1) * $longGutGrill;
   margin-left: $offsetCell * $lcol + ($offsetCell + 1) * $longGutGrill;
 
 }
-

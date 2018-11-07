@@ -3,459 +3,403 @@
   flex: 0 1 auto;
   flex-direction: column;
   flex-wrap: wrap;
-  padding: 0.8% 0;
-}
+  padding: .8% 0; }
 
 .row {
   display: flex;
   flex: 0 1 auto;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 0 0.8%;
-}
+  padding: 0 .8%; }
 
 img {
   display: block;
   max-width: 230px;
   max-height: 95px;
   width: auto;
-  height: auto;
-}
+  height: auto; }
 
 @media only screen and (max-width: 600px) {
   .s1 {
     width: 6.6%;
-    margin-left: 1.6%;
-  }
-  .s1 img {
-    display: block;
-    max-width: 6.6%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .s1 img {
+      display: block;
+      max-width: 6.6%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .s2 {
     width: 14.8%;
-    margin-left: 1.6%;
-  }
-  .s2 img {
-    display: block;
-    max-width: 14.8%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .s2 img {
+      display: block;
+      max-width: 14.8%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .s3 {
     width: 23%;
-    margin-left: 1.6%;
-  }
-  .s3 img {
-    display: block;
-    max-width: 23%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .s3 img {
+      display: block;
+      max-width: 23%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .s4 {
     width: 31.2%;
-    margin-left: 1.6%;
-  }
-  .s4 img {
-    display: block;
-    max-width: 31.2%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .s4 img {
+      display: block;
+      max-width: 31.2%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .s5 {
     width: 39.4%;
-    margin-left: 1.6%;
-  }
-  .s5 img {
-    display: block;
-    max-width: 39.4%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .s5 img {
+      display: block;
+      max-width: 39.4%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .s6 {
     width: 47.6%;
-    margin-left: 1.6%;
-  }
-  .s6 img {
-    display: block;
-    max-width: 47.6%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .s6 img {
+      display: block;
+      max-width: 47.6%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .s7 {
     width: 55.8%;
-    margin-left: 1.6%;
-  }
-  .s7 img {
-    display: block;
-    max-width: 55.8%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .s7 img {
+      display: block;
+      max-width: 55.8%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .s8 {
     width: 64%;
-    margin-left: 1.6%;
-  }
-  .s8 img {
-    display: block;
-    max-width: 64%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .s8 img {
+      display: block;
+      max-width: 64%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .s9 {
     width: 72.2%;
-    margin-left: 1.6%;
-  }
-  .s9 img {
-    display: block;
-    max-width: 72.2%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .s9 img {
+      display: block;
+      max-width: 72.2%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .s10 {
     width: 80.4%;
-    margin-left: 1.6%;
-  }
-  .s10 img {
-    display: block;
-    max-width: 80.4%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .s10 img {
+      display: block;
+      max-width: 80.4%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .s11 {
     width: 88.6%;
-    margin-left: 1.6%;
-  }
-  .s11 img {
-    display: block;
-    max-width: 88.6%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .s11 img {
+      display: block;
+      max-width: 88.6%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .s12 {
     width: 96.8%;
-    margin-left: 1.6%;
-  }
-  .s12 img {
-    display: block;
-    max-width: 96.8%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
-}
+    margin-left: 1.6%; }
+    .s12 img {
+      display: block;
+      max-width: 96.8%;
+      max-height: 95px;
+      width: auto;
+      height: auto; } }
 @media only screen and (max-width: 1200px) {
   .m1 {
     width: 6.6%;
-    margin-left: 1.6%;
-  }
-  .m1 img {
-    display: block;
-    max-width: 6.6%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .m1 img {
+      display: block;
+      max-width: 6.6%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .m2 {
     width: 14.8%;
-    margin-left: 1.6%;
-  }
-  .m2 img {
-    display: block;
-    max-width: 14.8%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .m2 img {
+      display: block;
+      max-width: 14.8%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .m3 {
     width: 23%;
-    margin-left: 1.6%;
-  }
-  .m3 img {
-    display: block;
-    max-width: 23%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .m3 img {
+      display: block;
+      max-width: 23%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .m4 {
     width: 31.2%;
-    margin-left: 1.6%;
-  }
-  .m4 img {
-    display: block;
-    max-width: 31.2%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .m4 img {
+      display: block;
+      max-width: 31.2%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .m5 {
     width: 39.4%;
-    margin-left: 1.6%;
-  }
-  .m5 img {
-    display: block;
-    max-width: 39.4%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .m5 img {
+      display: block;
+      max-width: 39.4%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .m6 {
     width: 47.6%;
-    margin-left: 1.6%;
-  }
-  .m6 img {
-    display: block;
-    max-width: 47.6%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .m6 img {
+      display: block;
+      max-width: 47.6%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .m7 {
     width: 55.8%;
-    margin-left: 1.6%;
-  }
-  .m7 img {
-    display: block;
-    max-width: 55.8%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .m7 img {
+      display: block;
+      max-width: 55.8%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .m8 {
     width: 64%;
-    margin-left: 1.6%;
-  }
-  .m8 img {
-    display: block;
-    max-width: 64%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .m8 img {
+      display: block;
+      max-width: 64%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .m9 {
     width: 72.2%;
-    margin-left: 1.6%;
-  }
-  .m9 img {
-    display: block;
-    max-width: 72.2%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .m9 img {
+      display: block;
+      max-width: 72.2%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .m10 {
     width: 80.4%;
-    margin-left: 1.6%;
-  }
-  .m10 img {
-    display: block;
-    max-width: 80.4%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .m10 img {
+      display: block;
+      max-width: 80.4%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .m11 {
     width: 88.6%;
-    margin-left: 1.6%;
-  }
-  .m11 img {
-    display: block;
-    max-width: 88.6%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .m11 img {
+      display: block;
+      max-width: 88.6%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .m12 {
     width: 96.8%;
-    margin-left: 1.6%;
-  }
-  .m12 img {
-    display: block;
-    max-width: 96.8%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
-}
+    margin-left: 1.6%; }
+    .m12 img {
+      display: block;
+      max-width: 96.8%;
+      max-height: 95px;
+      width: auto;
+      height: auto; } }
 @media only screen and (max-width: 1920px) {
   .l1 {
     width: 6.6%;
-    margin-left: 1.6%;
-  }
-  .l1 img {
-    display: block;
-    max-width: 6.6%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .l1 img {
+      display: block;
+      max-width: 6.6%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .l2 {
     width: 14.8%;
-    margin-left: 1.6%;
-  }
-  .l2 img {
-    display: block;
-    max-width: 14.8%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .l2 img {
+      display: block;
+      max-width: 14.8%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .l3 {
     width: 23%;
-    margin-left: 1.6%;
-  }
-  .l3 img {
-    display: block;
-    max-width: 23%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .l3 img {
+      display: block;
+      max-width: 23%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .l4 {
     width: 31.2%;
-    margin-left: 1.6%;
-  }
-  .l4 img {
-    display: block;
-    max-width: 31.2%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .l4 img {
+      display: block;
+      max-width: 31.2%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .l5 {
     width: 39.4%;
-    margin-left: 1.6%;
-  }
-  .l5 img {
-    display: block;
-    max-width: 39.4%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .l5 img {
+      display: block;
+      max-width: 39.4%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .l6 {
     width: 47.6%;
-    margin-left: 1.6%;
-  }
-  .l6 img {
-    display: block;
-    max-width: 47.6%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .l6 img {
+      display: block;
+      max-width: 47.6%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .l7 {
     width: 55.8%;
-    margin-left: 1.6%;
-  }
-  .l7 img {
-    display: block;
-    max-width: 55.8%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .l7 img {
+      display: block;
+      max-width: 55.8%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .l8 {
     width: 64%;
-    margin-left: 1.6%;
-  }
-  .l8 img {
-    display: block;
-    max-width: 64%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .l8 img {
+      display: block;
+      max-width: 64%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .l9 {
     width: 72.2%;
-    margin-left: 1.6%;
-  }
-  .l9 img {
-    display: block;
-    max-width: 72.2%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .l9 img {
+      display: block;
+      max-width: 72.2%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .l10 {
     width: 80.4%;
-    margin-left: 1.6%;
-  }
-  .l10 img {
-    display: block;
-    max-width: 80.4%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .l10 img {
+      display: block;
+      max-width: 80.4%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .l11 {
     width: 88.6%;
-    margin-left: 1.6%;
-  }
-  .l11 img {
-    display: block;
-    max-width: 88.6%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
+    margin-left: 1.6%; }
+    .l11 img {
+      display: block;
+      max-width: 88.6%;
+      max-height: 95px;
+      width: auto;
+      height: auto; }
 
   .l12 {
     width: 96.8%;
-    margin-left: 1.6%;
-  }
-  .l12 img {
-    display: block;
-    max-width: 96.8%;
-    max-height: 95px;
-    width: auto;
-    height: auto;
-  }
-}
+    margin-left: 1.6%; }
+    .l12 img {
+      display: block;
+      max-width: 96.8%;
+      max-height: 95px;
+      width: auto;
+      height: auto; } }
+div {
+  
+  margin-left: 1.6%; }
+  div .prestation {
+    height: 200px;
+    background-color: #F9FAFC; }
+    div .prestation:hover {
+      background-color: #77D353; }
+    div .prestation img {
+      width: 100%; }
+    div .prestation h3 {
+      margin: auto;
+      font-weight: bold; }
+    div .prestation p {
+      color: #808080; }
+    div .prestation button {
+      background-color: #77D353;
+      border-radius: 8px;
+      width: 100%;
+      height: 50px; }
+      div .prestation button:hover {
+        background-color: #63AD46; }
 
 /*# sourceMappingURL=style.css.map */

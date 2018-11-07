@@ -42,7 +42,7 @@ class myGiftAppView extends AbstractView{
      * Vue de la fonctionalité afficher tous les users.
      *
      */
-
+// <p> $prest->descr</p>
     private function renderHome(){
         $httpReq = new HttpRequest();
 
@@ -55,13 +55,14 @@ class myGiftAppView extends AbstractView{
         $html = "";
         foreach($this->data as $prest) {
 
-            $html .= "<h1>$prest->nom</h1>
-                       <div>
-                       <img src=\"/html/img/$prest->img\">
-                        <p> $prest->descr</p>
-                        <p> $prest->prix</p>
-                       </div>
+            $html .= "<div>
+                       <div class='prestation'>
+                       <img src=\"html/img/$prest->img\">
+                       <h3>$prest->nom</h3>
+                       <p> $prest->prix</p>
                        <button>Ajouter</button>
+                       </div>
+                       </div></div>
                      ";
 
         }

@@ -1,0 +1,40 @@
+@import "style";
+
+  $color_prix: #808080;
+  $vert: #77D353;
+  $fond_prestation: #F9FAFC;
+  $hover_boutton: #63AD46;
+
+  div {
+
+
+
+    .prestation {
+      @include grill(2,1.6%,0,2);
+      height: 200px;
+      background-color: $fond_prestation;
+      &:hover {
+        background-color: $vert;
+      }
+      img {
+        width: 100%;
+      }
+      h3 {
+        margin: auto;
+        font-weight: bold;
+      }
+      p {
+        color: $color_prix;
+
+      }
+      button {
+        background-color: $vert;
+        border-radius: 8px;
+        width: 100%;
+        height: 50px;
+        &:hover {
+          background-color: $hover_boutton;
+        }
+      }
+    }
+  }
