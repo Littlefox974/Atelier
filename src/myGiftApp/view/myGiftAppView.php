@@ -5,19 +5,22 @@
  * Date: 06/11/2018
  * Time: 09:05
  */
+
 namespace myGiftApp\view;
 
 use mf\router\Router;
 use mf\utils\HttpRequest;
 use mf\view\AbstractView;
 
-class myGiftAppView extends AbstractView{
+class myGiftAppView extends AbstractView
+{
 
     /* Constructeur
         *
         * Appelle le constructeur de la classe parent
         */
-    public function __construct( $data ){
+    public function __construct($data)
+    {
         parent::__construct($data);
     }
 
@@ -25,7 +28,8 @@ class myGiftAppView extends AbstractView{
      *
      *  Retourne le fragment HTML de l'entête (unique pour toutes les vues)
      */
-    private function renderHeader(){
+    private function renderHeader()
+    {
         return '<h1>My Gift App</h1>';
     }
 
@@ -33,7 +37,8 @@ class myGiftAppView extends AbstractView{
      *
      * Retourne le fragment HTML du bas de la page (unique pour toutes les vues)
      */
-    private function renderFooter(){
+    private function renderFooter()
+    {
         return '';
     }
 
@@ -43,7 +48,8 @@ class myGiftAppView extends AbstractView{
      *
      */
 // <p> $prest->descr</p>
-    private function renderHome(){
+    private function renderHome()
+    {
         $httpReq = new HttpRequest();
 
         /*
@@ -53,16 +59,16 @@ class myGiftAppView extends AbstractView{
          *
          */
         $html = "";
-        foreach($this->data as $prest) {
+        foreach ($this->data as $prest) {
 
-            $html .= "<div>
-                       <div class='prestation'>
-                       <img src=\"html/img/$prest->img\">
-                       <h3>$prest->nom</h3>
-                       <p> $prest->prix</p>
-                       <button>Ajouter</button>
-                       </div>
-                       </div></div>
+            $html .= "
+                        <div class='prestation'>
+                            <img src=\"html/img/$prest->img\">
+                            <h3>$prest->nom</h3>
+                            <p> $prest->prix</p>
+                            <button>Ajouter</button>
+                        </div>
+                     
                      ";
 
         }
@@ -76,7 +82,8 @@ class myGiftAppView extends AbstractView{
      *
      */
 
-    private function renderUser(){
+    private function renderUser()
+    {
 
         /*
          * Retourne le fragment HTML pour afficher
@@ -87,7 +94,6 @@ class myGiftAppView extends AbstractView{
          */
 
 
-
     }
 
     /* Méthode renderViewTweet
@@ -96,7 +102,8 @@ class myGiftAppView extends AbstractView{
      *
      */
 
-    private function renderView(){
+    private function renderView()
+    {
 
         /*
          * Retourne le fragment HTML qui réalise l'affichage d'une prestation
@@ -110,13 +117,13 @@ class myGiftAppView extends AbstractView{
     }
 
 
-
     /* Méthode renderPostTweet
      *
      * Realise la vue de régider un Tweet
      *
      */
-    protected function renderPostPrestation(){
+    protected function renderPostPrestation()
+    {
 
         /* Méthode renderPostPrestation
          *
@@ -135,7 +142,8 @@ class myGiftAppView extends AbstractView{
      *
      */
 
-    protected function renderBody($selector=null){
+    protected function renderBody($selector = null)
+    {
 
         /*
          * voire la classe AbstractView
@@ -143,12 +151,10 @@ class myGiftAppView extends AbstractView{
          */
 
 
-
         $header = $this->renderHeader();
         $footer = $this->renderFooter();
 
-        switch($selector)
-        {
+        switch ($selector) {
             case "home":
                 $main = $this->renderHome();
                 break;
@@ -160,7 +166,7 @@ class myGiftAppView extends AbstractView{
             case "signUp":
                 $main = $this->renderSignUp();
                 break;
-                
+
             default:
                 $main = $this->renderHome();
                 break;
@@ -183,10 +189,10 @@ EOT;
         return $html;
 
 
-
     }
 
-    private function renderLogin(){
+    private function renderLogin()
+    {
         $router = new Router();
         $routeVerify = $router->urlFor('loginVerify');
 
@@ -206,7 +212,8 @@ EOT;
 
     }
 
-    private function renderSignUp(){
+    private function renderSignUp()
+    {
         $router = new Router();
         $routeVerify = $router->urlFor('signUpVerify');
         return "

@@ -1,32 +1,63 @@
 @import "style";
 
-  $color_prix: #808080;
-  $vert: #77D353;
-  $fond_prestation: #F9FAFC;
-  $hover_boutton: #63AD46;
+$color_prix: #808080;
+$vert: #77D353;
+$fond_prestation: #F9FAFC;
+$hover_boutton: #63AD46;
+
+section {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 1% 1%;
+  background-color: beige;
 
   div {
-
-
-
-    .prestation {
-      @include grill(2,1.6%,0,2);
+    &.prestation {
       height: 200px;
       background-color: $fond_prestation;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      clear: both;
+      box-sizing: border-box;
+      margin-bottom: 1%;
+      @include grill(12, 1.6%, 0, 12);
+
+      
+      @media screen and (min-width: 601px) and (max-width: 1200px) {
+        @include grill(12, 1.6%, 0, 4);
+      }
+      @media screen and (min-width: 1201px) {
+        @include grill(12, 1.6%, 0, 2);
+      }
+
+
+
+
+
+
+
       &:hover {
         background-color: $vert;
       }
+
       img {
-        width: 100%;
+        display: block;
+        width: auto;
+        border-radius: 8px 8px 0 0;
       }
+
       h3 {
         margin: auto;
         font-weight: bold;
       }
+
       p {
         color: $color_prix;
-
       }
+
       button {
         background-color: $vert;
         border-radius: 8px;
@@ -34,7 +65,12 @@
         height: 50px;
         &:hover {
           background-color: $hover_boutton;
+          cursor: pointer;
         }
       }
     }
   }
+}
+
+
+

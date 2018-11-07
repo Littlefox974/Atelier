@@ -379,27 +379,50 @@ img {
       max-height: 95px;
       width: auto;
       height: auto; } }
-div {
-  
-  margin-left: 1.6%; }
-  div .prestation {
+section {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 1% 1%;
+  background-color: beige; }
+  section div.prestation {
     height: 200px;
-    background-color: #F9FAFC; }
-    div .prestation:hover {
+    background-color: #F9FAFC;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    clear: both;
+    box-sizing: border-box;
+    margin-bottom: 1%;
+    width: 96.8%;
+    margin-left: 1.6%; }
+    @media screen and (min-width: 601px) and (max-width: 1200px) {
+      section div.prestation {
+        width: 31.2%;
+        margin-left: 1.6%; } }
+    @media screen and (min-width: 1201px) {
+      section div.prestation {
+        width: 14.8%;
+        margin-left: 1.6%; } }
+    section div.prestation:hover {
       background-color: #77D353; }
-    div .prestation img {
-      width: 100%; }
-    div .prestation h3 {
+    section div.prestation img {
+      display: block;
+      width: auto;
+      border-radius: 8px 8px 0 0; }
+    section div.prestation h3 {
       margin: auto;
       font-weight: bold; }
-    div .prestation p {
+    section div.prestation p {
       color: #808080; }
-    div .prestation button {
+    section div.prestation button {
       background-color: #77D353;
       border-radius: 8px;
       width: 100%;
       height: 50px; }
-      div .prestation button:hover {
-        background-color: #63AD46; }
+      section div.prestation button:hover {
+        background-color: #63AD46;
+        cursor: pointer; }
 
 /*# sourceMappingURL=style.css.map */
