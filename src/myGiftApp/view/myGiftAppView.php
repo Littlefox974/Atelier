@@ -28,12 +28,32 @@ class myGiftAppView extends AbstractView
      *
      *  Retourne le fragment HTML de l'entête (unique pour toutes les vues)
      */
-    private function renderHeader(){
+    private function renderHeader()
+    {
         $router = new Router();
         $httpReq = new HttpRequest();
         $routeCart = $router->urlFor('cart');
-        return "<h1>My Gift App</h1>
-                <a href='$routeCart'>  <img src=\"$httpReq->root"."html/img/cart.svg\"></a>
+        return "<div class='headercatalogue'>
+                    <h3>Prestations</h3>
+                    <a href='$routeCart'>
+                        <img src=\"$httpReq->root" . "html/img/cart.svg\">
+                    </a>
+                    <input>
+                    <button>
+                        <img src=\"$httpReq->root" . "html/img/blob.png\">
+                    </button>
+                </div>
+                ";
+    }
+
+    private function renderHeaderLogin()
+    {
+        $router = new Router();
+        $httpReq = new HttpRequest();
+        $routeCart = $router->urlFor('cart');
+        return "<div class='headerlogin'>
+                    
+                </div>
                 ";
     }
 
@@ -52,7 +72,8 @@ class myGiftAppView extends AbstractView
      *
      */
 
-    private function renderHome(){
+    private function renderHome()
+    {
         /*
          * Retourne le fragment HTML qui affiche tous les prestations.
          *
@@ -64,21 +85,18 @@ class myGiftAppView extends AbstractView
         $router = new Router();
 
         $html = "";
-        foreach($this->data as $prest) {
-            $addToCart = $router->urlFor('addToCart',[['id',$prest->id]]);
+        foreach ($this->data as $prest) {
+            $addToCart = $router->urlFor('addToCart', [['id', $prest->id]]);
 
-            $html .= "<h1>$prest->nom</h1>
-                       <div>
-                       <img src=\"$httpReq->root"."html/img/$prest->img\">
-                        <p> $prest->descr</p>
+            $html .= "<div class='prestation'>
+                        <img src=\"$httpReq->root" . "html/img/$prest->img\">
+                        <h3>$prest->nom</h3>
                         <p> $prest->prix</p>
-                       </div>
-                       <form action='$addToCart' method='get'>
-                            <button type='submit'>Ajouter</button>
-                       </form>
-                       
-                     ";
-
+                        <form action='$addToCart' method='get'>
+                            <button type='submit'>Ajouter</button>                       
+                        </form>
+                      </div>";
+//            <p> $prest->descr</p>
         }
 
         return $html;
@@ -169,10 +187,12 @@ class myGiftAppView extends AbstractView
 
             case "login":
                 $main = $this->renderLogin();
+                $header = $this->renderHeaderLogin();
                 break;
 
             case "signUp":
                 $main = $this->renderSignUp();
+                $header = $this->renderHeaderLogin();
                 break;
 
             case "item":
@@ -211,17 +231,20 @@ EOT;
     {
         $router = new Router();
         $routeVerify = $router->urlFor('loginVerify');
-
+        $httpReq = new HttpRequest();
         return "
-            <div>
+            <div class='login'>
+                <img src=\"$httpReq->root" . "html/img/user.png\">
                 <form action=\"$routeVerify\" method=\"post\">
-                    <label for=\"uname\"><b>Username</b></label>
-                    <input type=\"text\" placeholder=\"Username\" name=\"userName\" required>
-                
-                    <label for=\"psw\"><b>Mot de passe</b></label>
-                    <input type=\"password\" placeholder=\"Mot de passe\" name=\"password\" required>
-                    
-                    <button type=\"submit\">Submit</button>
+                    <div>
+                        <input type=\"text\" placeholder=\"Username\" name=\"userName\" required>
+                    </div>  
+                    <div>
+                        <input type=\"password\" placeholder=\"Mot de passe\" name=\"password\" required>
+                    </div>
+                    <button type=\"submit\">Log In</button>
+                    <a href='#'>Forgot password?</a>
+                    <a href='#'>Sign Up</a>
                 </form>
             </div>
         ";
@@ -260,13 +283,14 @@ EOT;
 
     }
 
-    private function renderItem(){
+    private function renderItem()
+    {
         $httpReq = new HttpRequest();
         return "
             <div>
                 <h1>$this->data->nom</h1>
                 <div>
-                       <img src=\"$httpReq->root"."html/img/$this->data->img\">
+                       <img src=\"$httpReq->root" . "html/img/$this->data->img\" alt=\"$this->data->img\">
                         <p> $this->data->descr</p>
                         <p> $this->data->prix</p>
                 </div>
@@ -275,17 +299,18 @@ EOT;
         ";
     }
 
-    private function renderCart(){
+    private function renderCart()
+    {
 
         $html = "";
         $total = 0;
         $httpReq = new HttpRequest();
 
-        foreach($this->data as $prest) {
+        foreach ($this->data as $prest) {
 
             $html .= "<h1>$prest->nom</h1>
                        <div>
-                       <img src=\"$httpReq->root"."html/img/$prest->img\">
+                       <img src=\"$httpReq->root" . "html/img/$prest->img\">
                         <p> $prest->descr</p>
                         <p> $prest->prix</p>
                        </div>

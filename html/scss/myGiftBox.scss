@@ -1,76 +1,246 @@
 @import "style";
 
-$color_prix: #808080;
-$vert: #77D353;
-$fond_prestation: #F9FAFC;
+$fond_boutton: #77D353;
 $hover_boutton: #63AD46;
+$fond_prestation: #F9FAFC;
+$hover_prestation: #E5E9F2;
+$fond_input: #E5E9F2;
+$font-fam: "Trebuchet MS", Helvetica, sans-serif;
+$fong_login: rgba(17, 162, 255, 0.24);
+$boutton_login: rgba(0, 255, 116, 0.7);
 
-section {
-  margin: auto;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  padding: 1% 1%;
-  background-color: beige;
+body {
+  //background-size: contain;
+  //background: url('../img/boitelogin.jpg') no-repeat center;
+  padding: 0;
+  margin: 0;
+  font-family: $font-fam;
+  header {
 
-  div {
-    &.prestation {
-      height: 200px;
-      background-color: $fond_prestation;
-      border-radius: 8px;
+    div {
       display: flex;
-      flex-direction: column;
-      clear: both;
-      box-sizing: border-box;
-      margin-bottom: 1%;
-      @include grill(12, 1.6%, 0, 12);
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: 1% 1%;
+      &.headercatalogue {
+        h3 {
+          margin: auto;
+          @media only screen and (max-width: 600px) {
+            @include grill(12, 1.6%, 0, 9);
+          }
+          @media only screen and (min-width: 601px) and (max-width: 1200px) {
+            @include grill(12, 1.6%, 0, 9);
+          }
+          @media only screen and (min-width: 1201px) {
+            @include grill(12, 1.6%, 0, 9);
+          }
 
-      
-      @media screen and (min-width: 601px) and (max-width: 1200px) {
-        @include grill(12, 1.6%, 0, 4);
-      }
-      @media screen and (min-width: 1201px) {
-        @include grill(12, 1.6%, 0, 2);
-      }
+        }
 
+        a {
+          @media only screen and (max-width: 600px) {
+            @include grill(12, 1.6%, 0, 1);
+          }
+          @media only screen and (min-width: 601px) and (max-width: 1200px) {
+            @include grill(12, 1.6%, 0, 1);
+          }
+          @media only screen and (min-width: 1201px) {
+            @include grill(12, 1.6%, 0, 1);
+          }
 
+        }
 
+        input {
+          height: 30px;
+          border-radius: 3px;
+          background-color: $fond_input;
+          border: transparent none 0;
+          padding: 1%;
 
+          @media only screen and (max-width: 600px) {
+            @include grill(12, 1.6%, 0, 11);
+          }
+          @media only screen and (min-width: 601px) and (max-width: 1200px) {
+            @include grill(12, 1.6%, 0, 11);
+          }
+          @media only screen and (min-width: 1201px) {
+            @include grill(12, 1.6%, 0, 11);
+          }
 
+        }
 
-
-      &:hover {
-        background-color: $vert;
-      }
-
-      img {
-        display: block;
-        width: auto;
-        border-radius: 8px 8px 0 0;
-      }
-
-      h3 {
-        margin: auto;
-        font-weight: bold;
-      }
-
-      p {
-        color: $color_prix;
-      }
-
-      button {
-        background-color: $vert;
-        border-radius: 8px;
-        width: 100%;
-        height: 50px;
-        &:hover {
-          background-color: $hover_boutton;
+        button {
+          height: 30px;
+          border-radius: 3px;
+          background-color: $fond_input;
+          border: transparent none 0;
           cursor: pointer;
+
+          img {
+            max-width: 100%;
+            max-height: 100%;
+            margin: auto 0;
+          }
+
+          @media only screen and (max-width: 600px) {
+            @include grill(12, 1.6%, 0, 1);
+          }
+          @media only screen and (min-width: 601px) and (max-width: 1200px) {
+            @include grill(12, 1.6%, 0, 1);
+          }
+          @media only screen and (min-width: 1201px) {
+            @include grill(12, 1.6%, 0, 1);
+          }
+
+        }
+      }
+
+      &.headerlogin {
+        background-color: $fong_login;
+        height: 20px;
+      }
+    }
+  }
+
+  section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 1% 1%;
+    background: url('../img/boitelogin.jpg') no-repeat center;
+    background-size: 100%;
+    height: 100%;
+
+    div {
+      &.prestation {
+        height: 200px;
+        background-color: $fond_prestation;
+        text-align: center;
+
+        @media only screen and (max-width: 600px) {
+          @include grill(12, 1.6%, 0, 6);
+        }
+
+        @media only screen and (min-width: 601px) and (max-width: 1200px) {
+          @include grill(12, 1.6%, 0, 4);
+        }
+
+        @media only screen and (min-width: 1201px) {
+          @include grill(12, 1.6%, 0, 3);
+        }
+
+        &:hover {
+          background-color: $hover_prestation;
+        }
+
+        img {
+          max-width: 50%;
+          height: auto;
+          margin: 0 auto;
+          display: block;
+        }
+
+        h3 {
+          margin: auto 2%;
+          font-weight: bold;
+
+        }
+
+        p {
+          margin: auto 2%;
+          &:after {
+            content: " €";
+          }
+        }
+
+        form {
+          button {
+            background-color: $fond_boutton;
+            width: 100%;
+            height: 50px;
+            border: transparent none 0;
+            &:hover {
+              background-color: $hover_boutton;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      &.login {
+        background-color: $fong_login;
+        border-radius: 5px;
+        height: 300px;
+        position: relative;
+        top: 100px;
+
+        @media only screen and (max-width: 600px) {
+          @include grill(3, 1.6%, 1, 1);
+        }
+
+        @media only screen and (min-width: 601px) and (max-width: 1200px) {
+          @include grill(3, 1.6%, 1, 1);
+        }
+
+        @media only screen and (min-width: 1201px) {
+          @include grill(4, 1.6%, 0, 1);
+        }
+
+        img{
+          width: 150px;
+          min-height: 150px;
+          border-radius: 100%;
+          position: relative;
+          bottom: 50px;
+          margin: 0 auto;
+        }
+
+        form {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          padding: 1% 2%;
+
+          div {
+            @include grill(1, 0, 0, 1);
+
+            input {
+              @include grill(5, 0, 1, 3);
+              border-radius: 5px;
+              height: 30px;
+              border: transparent none 0;
+              padding: .5%;
+            }
+          }
+
+          button {
+            @include grill(3, 0, 1, 1);
+            background-color: $boutton_login;
+            border: transparent none 0;
+            border-radius: 5px;
+            cursor: pointer;
+            height: 35px;
+            align-content: center;
+          }
+
+          a {
+            @include grill(2, 0, 0, 1);
+            font-size: 12px;
+            color: #FFFFFF;
+            text-decoration: none;
+            &:nth-of-type(2) {
+              text-align: right;
+            }
+          }
         }
       }
     }
   }
-}
 
+  footer {
+    display: none;
+
+  }
+}
 
 
