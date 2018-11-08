@@ -34,7 +34,7 @@ class GiftBoxController extends AbstractController{
     }
 
     public function viewCart(){
-        $view = new myGiftAppView($needToAdd);
+        $view = new myGiftAppView();
         $view->render('cart');
     }
 
