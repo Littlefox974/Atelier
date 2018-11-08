@@ -48,7 +48,6 @@ class GiftBoxController extends AbstractController{
 
     public function viewProfile(){
         $profile = User::query()->select(['*'])->where('username','=',$_SESSION['user_login'])->get();
-//        $cart = Cart::query()->select([''])
 
         $view = new myGiftAppView($profile);
         $view->render('profile');
@@ -68,6 +67,7 @@ class GiftBoxController extends AbstractController{
 
         self::viewHome();
     }
+
 
     public function viewItem(){
         $id = isset($_GET['id']) ? $_GET['id'] : "";

@@ -52,6 +52,15 @@ $router->addRoute('addToCart','/home/','\myGiftApp\control\GiftBoxController',
 $router->addRoute('cart','/cart/','\myGiftApp\control\GiftBoxController',
     'viewCart',GiftBoxAuth::ACCESS_LEVEL_USER);
 
+$router->addRoute('increaseQty','/increaseQty/','\myGiftApp\control\GiftBoxController',
+    'increaseQty',GiftBoxAuth::ACCESS_LEVEL_USER);
+
+$router->addRoute('decreaseQty','/decreaseQty/','\myGiftApp\control\GiftBoxController',
+    'decreaseQty',GiftBoxAuth::ACCESS_LEVEL_USER);
+
+$router->addRoute('profile','/profile/','\myGiftApp\control\GiftBoxController',
+    'viewProfile',GiftBoxAuth::ACCESS_LEVEL_USER);
+
 $router->setDefaultRoute('/login/');
 
 $router->run();

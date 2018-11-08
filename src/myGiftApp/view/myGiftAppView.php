@@ -34,8 +34,10 @@ class myGiftAppView extends AbstractView
         $router = new Router();
         $httpReq = new HttpRequest();
         $routeCart = $router->urlFor('cart');
+        $routeProfile = $router->urlFor('profile');
         return "<div class='headercatalogue'>
                     <h3>Prestations</h3>
+                    <a href='$routeProfile'> <img src=\"$httpReq->root"."html/img/profile.svg\"> </a>
                     <a href='$routeCart'>
                         <img src=\"$httpReq->root" . "html/img/cart.svg\">
                     </a>
@@ -72,7 +74,6 @@ class myGiftAppView extends AbstractView
      * Vue de la fonctionalité afficher tous les users.
      *
      */
-
     private function renderHome()
     {
         /*
@@ -101,71 +102,6 @@ class myGiftAppView extends AbstractView
         return $html;
     }
 
-    /* Méthode renderUeserTweets
-     *
-     * Vue de la fonctionalité afficher tout les Tweets d'un utilisateur donné.
-     *
-     */
-
-    private function renderUser()
-    {
-
-        /*
-         * Retourne le fragment HTML pour afficher
-         * tous les Tweets d'un utilisateur donné.
-         *
-         * L'attribut $this->data contient un objet User.
-         *
-         */
-
-
-    }
-
-    /* Méthode renderViewTweet
-     *
-     * Rréalise la vue de la fonctionnalité affichage d'un tweet
-     *
-     */
-
-    private function renderView()
-    {
-
-        /*
-         * Retourne le fragment HTML qui réalise l'affichage d'une prestation
-         * en particulié
-         *
-         * L'attribut $this->data contient un objet Prestation
-         *
-         */
-
-
-    }
-
-
-    /* Méthode renderPostTweet
-     *
-     * Realise la vue de régider un Tweet
-     *
-     */
-    protected function renderPostPrestation()
-    {
-
-        /* Méthode renderPostPrestation
-         *
-         * Retourne la framgment HTML qui dessine un formulaire pour la rédaction
-         * d'une prestation, l'action du formulaire est la route "send"
-         *
-         */
-
-    }
-
-
-    /* Méthode renderBody
-     *
-     * Retourne la framgment HTML de la balise <body> elle est appelée
-     * par la méthode héritée render.
-     *
-     */
 
     protected function renderBody($selector = null)
     {
@@ -226,10 +162,10 @@ EOT;
 
     }
 
-    private function renderLogin()
-    {
+    private function renderLogin(){
         $router = new Router();
         $routeVerify = $router->urlFor('loginVerify');
+        $routeSignUp = $router->urlFor('signUp');
         $httpReq = new HttpRequest();
         return "
             <div class='login'>
@@ -243,7 +179,7 @@ EOT;
                     </div>
                     <button type=\"submit\"> LogIn</button>
                     <a href='#'>Forgot password?</a>
-                    <a href='#'>Sign Up</a>
+                    <a href='$routeSignUp'>Sign Up</a>
                 </form>
             </div>
             <div class='loginMsg'>A BOX FULL OF SURPRISES!</div>
@@ -305,6 +241,9 @@ EOT;
         $html = "";
         $total = 0;
         $httpReq = new HttpRequest();
+        $router = new Router();
+        $routeAdd = $router->urlFor('increaseQty');
+        $routeRemove = $router->urlFor('decreaseQty');
 
         foreach ($this->data as $cart) {
             $prest = Prestation::query()->select(['*'])->where('id','=',$cart->item)->get();
@@ -312,8 +251,11 @@ EOT;
             $html .= "<h1>$p->nom</h1>
                        <div>
                        <img src=\"$httpReq->root" . "html/img/$p->img\">
-                        <p> $p->descr</p>
-                        <p> $p->prix</p>
+                        <p>$p->descr</p>
+                        <p>$p->prix</p>
+                        <p>$cart->quantity</p>
+                        <a href='$routeAdd'> <img src=\"$httpReq->root"."html/img/add.svg\"> </a>
+                        <a href='$routeRemove'> <img src=\"$httpReq->root"."html/img/remove.svg\"> </a>
                        </div>
                        
                      ";
