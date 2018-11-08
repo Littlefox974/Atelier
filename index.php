@@ -52,7 +52,7 @@ $router->addRoute('addToCart','/home/','\myGiftApp\control\GiftBoxController',
 $router->addRoute('cart','/cart/','\myGiftApp\control\GiftBoxController',
     'viewCart',GiftBoxAuth::ACCESS_LEVEL_USER);
 
-$router->setDefaultRoute('/home/');
+$router->setDefaultRoute('/login/');
 
 $router->run();
 
