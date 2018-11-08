@@ -272,7 +272,7 @@ EOT;
             <div>
                 <h1>$this->data->nom</h1>
                 <div>
-                       <img src=\"$httpReq->root" . "html/img/$this->data->img\">
+                       <img src=\"$httpReq->root" . "html/img/$this->data->img\" alt=\"$this->data->img\">
                         <p> $this->data->descr</p>
                         <p> $this->data->prix</p>
                 </div>
