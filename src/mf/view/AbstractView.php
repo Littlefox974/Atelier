@@ -5,7 +5,7 @@ namespace mf\view;
 abstract class AbstractView {
 
     static protected $style_sheets = []; /* un tableau de fichiers style */
-    static protected $app_title    = "MF app Title"; /* un titre de document */
+    static protected $app_title    = "My Gift Box"; /* un titre de document */
     protected $data        = null; /* le modÃ¨le de donnÃ©es nÃ©cessaire */
 
     /* Constructeur

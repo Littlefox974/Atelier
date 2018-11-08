@@ -241,11 +241,12 @@ EOT;
                     <div>
                         <input type=\"password\" placeholder=\"Mot de passe\" name=\"password\" required>
                     </div>
-                    <button type=\"submit\">Log In</button>
+                    <button type=\"submit\"> LogIn</button>
                     <a href='#'>Forgot password?</a>
                     <a href='#'>Sign Up</a>
                 </form>
             </div>
+            <div class='loginMsg'>A BOX FULL OF SURPRISES!</div>
         ";
 
     }
