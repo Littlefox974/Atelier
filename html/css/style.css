@@ -704,5 +704,105 @@ body {
           clear: both;
           box-sizing: border-box;
           margin-bottom: 2%; } }
+    body section div.signUp {
+      background-color: rgba(17, 162, 255, 0.24);
+      border-radius: 5px;
+      height: auto;
+      margin-top: 10%; }
+      @media only screen and (max-width: 600px) {
+        body section div.signUp {
+          width: 57.44%;
+          margin-left: 21.28%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%; } }
+      @media only screen and (min-width: 601px) and (max-width: 1200px) {
+        body section div.signUp {
+          width: 31.2%;
+          margin-left: 34.4%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%; } }
+      @media only screen and (min-width: 1201px) {
+        body section div.signUp {
+          width: 23%;
+          margin-left: 1.6%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%; } }
+      body section div.signUp img {
+        border-radius: 100%;
+        position: relative;
+        bottom: 20px;
+        margin: 0 auto; }
+        @media only screen and (max-width: 600px) {
+          body section div.signUp img {
+            width: 40%;
+            min-height: auto; } }
+        @media only screen and (min-width: 1201px) {
+          body section div.signUp img {
+            width: 50%;
+            min-height: 150px; } }
+      body section div.signUp form {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 2%; }
+        body section div.signUp form div {
+          width: 100%;
+          margin-left: 0%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%; }
+          body section div.signUp form div input {
+            width: 80%;
+            margin-left: 10%;
+            display: flex;
+            flex-direction: column;
+            clear: both;
+            box-sizing: border-box;
+            margin-bottom: 2%;
+            border-radius: 5px;
+            height: 30px;
+            border: transparent none 0;
+            padding: .5% 1.5%; }
+        body section div.signUp form button {
+          width: 33.33333%;
+          margin-left: 33.33333%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%;
+          background-color: rgba(0, 255, 116, 0.7);
+          border: transparent none 0;
+          border-radius: 5px;
+          cursor: pointer;
+          height: 35px;
+          padding: 10px;
+          text-align: center; }
+          body section div.signUp form button:hover {
+            background-color: #63AD46; }
+        body section div.signUp form a {
+          width: 50%;
+          margin-left: 0%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%;
+          font-size: 12px;
+          color: #FFFFFF;
+          text-decoration: none; }
+          body section div.signUp form a:nth-of-type(2) {
+            text-align: right; }
 
 /*# sourceMappingURL=style.css.map */

@@ -266,6 +266,84 @@ body {
           @include grill(3, 1.6%, 2, 1);
         }
       }
+
+      &.signUp {
+        background-color: $fong_login;
+        border-radius: 5px;
+        height: auto;
+        margin-top: 10%;
+
+        @media only screen and (max-width: 600px) {
+          @include grill(10, 1.6%, 2, 6);
+        }
+
+        @media only screen and (min-width: 601px) and (max-width: 1200px) {
+          @include grill(3, 1.6%, 1, 1);
+        }
+
+        @media only screen and (min-width: 1201px) {
+          @include grill(4, 1.6%, 0, 1);
+        }
+
+        img {
+          border-radius: 100%;
+          position: relative;
+          bottom: 20px;
+          margin: 0 auto;
+          @media only screen and (max-width: 600px) {
+            width: 40%;
+            min-height: auto;
+
+          }
+          @media only screen and (min-width: 1201px) {
+            width: 50%;
+            min-height: 150px;
+
+          }
+        }
+
+        form {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          padding: 2%;
+          div {
+            @include grill(1, 0, 0, 1);
+
+            input {
+              @include grill(10, 0, 1, 8);
+              border-radius: 5px;
+              height: 30px;
+              border: transparent none 0;
+              padding: .5% 1.5%;
+            }
+          }
+
+          button {
+            @include grill(3, 0, 1, 1);
+            background-color: $boutton_login;
+            border: transparent none 0;
+            border-radius: 5px;
+            cursor: pointer;
+            height: 35px;
+            padding: 10px;
+            text-align: center;
+            &:hover {
+              background-color: $hover_boutton;
+            }
+          }
+
+          a {
+            @include grill(2, 0, 0, 1);
+            font-size: 12px;
+            color: #FFFFFF;
+            text-decoration: none;
+            &:nth-of-type(2) {
+              text-align: right;
+            }
+          }
+        }
+      }
     }
   }
 }

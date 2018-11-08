@@ -191,26 +191,64 @@ EOT;
     {
         $router = new Router();
         $routeVerify = $router->urlFor('signUpVerify');
+        $httpReq = new HttpRequest();
         return "
-            <div>
+            <div class='signUp'>
+                 <img src=\"$httpReq->root" . "html/img/user.png\">
                 <form action=\"$routeVerify\" method=\"post\">
-                    <label for=\"nom\"><b>Nom</b></label>
-                    <input type=\"text\" placeholder=\"Nom\" name=\"name\" required>
+                    <div>
+                        <label for=\"nom\"><b>Nom</b></label>
+                    </div>
+                    <div>
+                        <input type=\"text\" placeholder=\"Nom\" name=\"name\" required>
+                    </div>
+                    <div>
+                        <label for=\"prenom\"><b>Prenom</b></label>
+                    </div>
+                    <div>
+                         <input type=\"text\" placeholder=\"Prenom\" name=\"lastName\" required>
+                    </div>
+                    <div>
+                         <label for=\"username\"><b>Username</b></label>
+                    </div>
+                    <div>
+                         <input type=\"text\" placeholder=\"Enter Username\" name=\"username\" required>
+                    </div>
+                    <div>
+                         <label for=\"email\"><b>Email</b></label>
+                    </div>
+                    <div>
+                        <input type=\"email\" placeholder=\"Enter e-mail\" name=\"email\" required>
+                    </div>
+                    <div>
+                        <label for=\"psw\"><b>Mot de passe</b></label>
+                    </div>
+                    <div>
+                         <input type=\"password\" placeholder=\"Enter Password\" name=\"password\" required>
+                    </div>
+                    <div>
+                        <label for=\"psw2\"><b>Confirmer mot de passe</b></label>
+                    </div>
+                    <div>
+                        <input type=\"password\" placeholder=\"Retype Password\" name=\"password2\" required>
+                    </div>
                     
-                    <label for=\"prenom\"><b>Prenom</b></label>
-                    <input type=\"text\" placeholder=\"Prenom\" name=\"lastName\" required>
+                    
+                    
+                    
+                   
                 
-                    <label for=\"username\"><b>Username</b></label>
-                    <input type=\"text\" placeholder=\"Enter Username\" name=\"username\" required>
+                   
+                   
                     
-                    <label for=\"email\"><b>Email</b></label>
-                    <input type=\"email\" placeholder=\"Enter e-mail\" name=\"email\" required>
+                   
+                    
                 
-                    <label for=\"psw\"><b>Mot de passe</b></label>
-                    <input type=\"password\" placeholder=\"Enter Password\" name=\"password\" required>
                     
-                    <label for=\"psw2\"><b>Confirmer mot de passe</b></label>
-                    <input type=\"password\" placeholder=\"Retype Password\" name=\"password2\" required>
+                   
+                    
+                    
+                    
                 
                     <button type=\"submit\">Creer</button>
                 </form>
