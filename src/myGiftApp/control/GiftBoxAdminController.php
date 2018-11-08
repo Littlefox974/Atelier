@@ -23,8 +23,13 @@ class GiftBoxAdminController extends AbstractController{
 
     public function viewLogin(){
 
-        $view = new myGiftAppView($this);
-        $view->render('login');
+        if (isset($_SESSION['user_login'])){
+            $router = new Router();
+            $router->executeRoute('/home/');
+        }else {
+            $view = new myGiftAppView($this);
+            $view->render('login');
+        }
 
     }
     public function checkLogin(){
@@ -33,9 +38,9 @@ class GiftBoxAdminController extends AbstractController{
 
         $giftBoxAuth = new GiftBoxAuth();
         if ($giftBoxAuth->loginUser($username,$password)){
-            echo "logged in";
+            $router = new Router();
+            $router->executeRoute('/home/');
         }else{
-            echo "nope";
             self::viewLogin();
         }
     }
@@ -54,8 +59,8 @@ class GiftBoxAdminController extends AbstractController{
 
         $name = $_POST['name'];
         $lastName = $_POST['lastName'];
-        $email = $_POST['username'];
-        $username = $_POST['email'];
+        $email = $_POST['email'];
+        $username = $_POST['username'];
         $password = $_POST['password'];
         $password2 = $_POST['password2'];
         $giftBoxAuth = new GiftBoxAuth();
@@ -63,16 +68,13 @@ class GiftBoxAdminController extends AbstractController{
 
         $DBusername= User::query()->select(['username'])->where('username','=',$username)->get();
 
-        if (($password === $password2) && $username !== $DBusername){
+        if (($password === $password2) && $username !== $DBusername[0]->username){
             $giftBoxAuth->createUser($username,$password,$name,$lastName,$email);
-//            $prestations = Prestation::all();
             $router->executeRoute('/home/');
-//            $view = new myGiftAppView($prestations);
-//            $view->render('home');
+
         }
         else{
             $router->executeRoute('/signUp/');
-//            self::viewSignUp();
         }
     }
 

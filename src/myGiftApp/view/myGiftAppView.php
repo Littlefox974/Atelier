@@ -33,14 +33,27 @@ class myGiftAppView extends AbstractView
         $router = new Router();
         $httpReq = new HttpRequest();
         $routeCart = $router->urlFor('cart');
-        return "<h3>Prestations</h3>
-                <a href='$routeCart'>
-                    <img src=\"$httpReq->root" . "html/img/cart.svg\">
-                </a>
-                <input>
-                <button>
-                    <img src=\"$httpReq->root" . "html/img/blob.png\">
-                </button>
+        return "<div class='headercatalogue'>
+                    <h3>Prestations</h3>
+                    <a href='$routeCart'>
+                        <img src=\"$httpReq->root" . "html/img/cart.svg\">
+                    </a>
+                    <input>
+                    <button>
+                        <img src=\"$httpReq->root" . "html/img/blob.png\">
+                    </button>
+                </div>
+                ";
+    }
+
+    private function renderHeaderLogin()
+    {
+        $router = new Router();
+        $httpReq = new HttpRequest();
+        $routeCart = $router->urlFor('cart');
+        return "<div class='headerlogin'>
+                    
+                </div>
                 ";
     }
 
@@ -174,10 +187,12 @@ class myGiftAppView extends AbstractView
 
             case "login":
                 $main = $this->renderLogin();
+                $header = $this->renderHeaderLogin();
                 break;
 
             case "signUp":
                 $main = $this->renderSignUp();
+                $header = $this->renderHeaderLogin();
                 break;
 
             case "item":
@@ -219,17 +234,20 @@ EOT;
     {
         $router = new Router();
         $routeVerify = $router->urlFor('loginVerify');
-
+        $httpReq = new HttpRequest();
         return "
-            <div>
+            <div class='login'>
+                <img src=\"$httpReq->root" . "html/img/user.png\">
                 <form action=\"$routeVerify\" method=\"post\">
-                    <label for=\"uname\"><b>Username</b></label>
-                    <input type=\"text\" placeholder=\"Username\" name=\"userName\" required>
-                
-                    <label for=\"psw\"><b>Mot de passe</b></label>
-                    <input type=\"password\" placeholder=\"Mot de passe\" name=\"password\" required>
-                    
-                    <button type=\"submit\">Submit</button>
+                    <div>
+                        <input type=\"text\" placeholder=\"Username\" name=\"userName\" required>
+                    </div>  
+                    <div>
+                        <input type=\"password\" placeholder=\"Mot de passe\" name=\"password\" required>
+                    </div>
+                    <button type=\"submit\">Log In</button>
+                    <a href='#'>Forgot password?</a>
+                    <a href='#'>Sign Up</a>
                 </form>
             </div>
         ";

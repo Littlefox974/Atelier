@@ -19,7 +19,7 @@ $config = parse_ini_file('conf/config.ini');
 $loader = new ClassLoader();
 $loader -> register();
 
-myGiftAppView::addStyleSheet("/html/css/style.css");
+myGiftAppView::addStyleSheet("html/css/style.css");
 
 $db = new Illuminate\Database\Capsule\Manager();
 
@@ -52,7 +52,7 @@ $router->addRoute('addToCart','/home/','\myGiftApp\control\GiftBoxController',
 $router->addRoute('cart','/cart/','\myGiftApp\control\GiftBoxController',
     'viewCart',GiftBoxAuth::ACCESS_LEVEL_USER);
 
-$router->setDefaultRoute('/home/');
+$router->setDefaultRoute('/login/');
 
 $router->run();
 

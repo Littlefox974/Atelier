@@ -73,7 +73,7 @@ class GiftBoxAuth extends Authentification {
     public function loginUser($username, $password){
         try {
             $dbPassword = User::query()->select(["password"])->where("username" ,"=",$username)->get();
-            parent::login($username, $dbPassword, $password, self::ACCESS_LEVEL_USER);
+            parent::login($username, $dbPassword[0]->password, $password, self::ACCESS_LEVEL_USER);
             return true;
         } catch (\Exception $e) {
             echo "79: " . $e->getMessage();

@@ -380,113 +380,46 @@ img {
       max-height: 95px;
       width: auto;
       height: auto; } }
-header {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  padding: 1% 1%;
+body {
+  padding: 0;
+  margin: 0;
   font-family: "Trebuchet MS", Helvetica, sans-serif; }
-  header h3 {
-    margin: auto; }
-    @media only screen and (max-width: 600px) {
-      header h3 {
-        width: 80.4%;
-        margin-left: 1.6%;
-        display: flex;
-        flex-direction: column;
-        clear: both;
-        box-sizing: border-box;
-        margin-bottom: 2%; } }
-    @media only screen and (min-width: 601px) and (max-width: 1200px) {
-      header h3 {
-        width: 80.4%;
-        margin-left: 1.6%;
-        display: flex;
-        flex-direction: column;
-        clear: both;
-        box-sizing: border-box;
-        margin-bottom: 2%; } }
-    @media only screen and (min-width: 1201px) {
-      header h3 {
-        width: 80.4%;
-        margin-left: 1.6%;
-        display: flex;
-        flex-direction: column;
-        clear: both;
-        box-sizing: border-box;
-        margin-bottom: 2%; } }
-  @media only screen and (max-width: 600px) {
-    header a {
-      width: 6.6%;
-      margin-left: 1.6%;
-      display: flex;
-      flex-direction: column;
-      clear: both;
-      box-sizing: border-box;
-      margin-bottom: 2%; } }
-  @media only screen and (min-width: 601px) and (max-width: 1200px) {
-    header a {
-      width: 6.6%;
-      margin-left: 1.6%;
-      display: flex;
-      flex-direction: column;
-      clear: both;
-      box-sizing: border-box;
-      margin-bottom: 2%; } }
-  @media only screen and (min-width: 1201px) {
-    header a {
-      width: 6.6%;
-      margin-left: 1.6%;
-      display: flex;
-      flex-direction: column;
-      clear: both;
-      box-sizing: border-box;
-      margin-bottom: 2%; } }
-  header input {
-    height: 30px;
-    border-radius: 3px;
-    background-color: #E5E9F2;
-    border: transparent none 0;
-    padding: 1%; }
-    @media only screen and (max-width: 600px) {
-      header input {
-        width: 88.6%;
-        margin-left: 1.6%;
-        display: flex;
-        flex-direction: column;
-        clear: both;
-        box-sizing: border-box;
-        margin-bottom: 2%; } }
-    @media only screen and (min-width: 601px) and (max-width: 1200px) {
-      header input {
-        width: 88.6%;
-        margin-left: 1.6%;
-        display: flex;
-        flex-direction: column;
-        clear: both;
-        box-sizing: border-box;
-        margin-bottom: 2%; } }
-    @media only screen and (min-width: 1201px) {
-      header input {
-        width: 88.6%;
-        margin-left: 1.6%;
-        display: flex;
-        flex-direction: column;
-        clear: both;
-        box-sizing: border-box;
-        margin-bottom: 2%; } }
-  header button {
-    height: 30px;
-    border-radius: 3px;
-    background-color: #E5E9F2;
-    border: transparent none 0;
-    cursor: pointer; }
-    header button img {
-      max-width: 100%;
-      max-height: 100%;
+  body header div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 1% 1%; }
+    body header div.headercatalogue h3 {
       margin: auto; }
+      @media only screen and (max-width: 600px) {
+        body header div.headercatalogue h3 {
+          width: 72.2%;
+          margin-left: 1.6%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%; } }
+      @media only screen and (min-width: 601px) and (max-width: 1200px) {
+        body header div.headercatalogue h3 {
+          width: 72.2%;
+          margin-left: 1.6%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%; } }
+      @media only screen and (min-width: 1201px) {
+        body header div.headercatalogue h3 {
+          width: 72.2%;
+          margin-left: 1.6%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%; } }
     @media only screen and (max-width: 600px) {
-      header button {
+      body header div.headercatalogue a {
         width: 6.6%;
         margin-left: 1.6%;
         display: flex;
@@ -495,7 +428,7 @@ header {
         box-sizing: border-box;
         margin-bottom: 2%; } }
     @media only screen and (min-width: 601px) and (max-width: 1200px) {
-      header button {
+      body header div.headercatalogue a {
         width: 6.6%;
         margin-left: 1.6%;
         display: flex;
@@ -504,7 +437,7 @@ header {
         box-sizing: border-box;
         margin-bottom: 2%; } }
     @media only screen and (min-width: 1201px) {
-      header button {
+      body header div.headercatalogue a {
         width: 6.6%;
         margin-left: 1.6%;
         display: flex;
@@ -512,65 +445,233 @@ header {
         clear: both;
         box-sizing: border-box;
         margin-bottom: 2%; } }
-
-section {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  padding: 1% 1%;
-  font-family: "Trebuchet MS", Helvetica, sans-serif; }
-  section div.prestation {
-    height: 200px;
-    background-color: #F9FAFC;
-    text-align: center; }
-    @media only screen and (max-width: 600px) {
-      section div.prestation {
-        width: 47.6%;
-        margin-left: 1.6%;
+    body header div.headercatalogue input {
+      height: 30px;
+      border-radius: 3px;
+      background-color: #E5E9F2;
+      border: transparent none 0;
+      padding: 1%; }
+      @media only screen and (max-width: 600px) {
+        body header div.headercatalogue input {
+          width: 88.6%;
+          margin-left: 1.6%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%; } }
+      @media only screen and (min-width: 601px) and (max-width: 1200px) {
+        body header div.headercatalogue input {
+          width: 88.6%;
+          margin-left: 1.6%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%; } }
+      @media only screen and (min-width: 1201px) {
+        body header div.headercatalogue input {
+          width: 88.6%;
+          margin-left: 1.6%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%; } }
+    body header div.headercatalogue button {
+      height: 30px;
+      border-radius: 3px;
+      background-color: #E5E9F2;
+      border: transparent none 0;
+      cursor: pointer; }
+      body header div.headercatalogue button img {
+        max-width: 100%;
+        max-height: 100%;
+        margin: auto 0; }
+      @media only screen and (max-width: 600px) {
+        body header div.headercatalogue button {
+          width: 6.6%;
+          margin-left: 1.6%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%; } }
+      @media only screen and (min-width: 601px) and (max-width: 1200px) {
+        body header div.headercatalogue button {
+          width: 6.6%;
+          margin-left: 1.6%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%; } }
+      @media only screen and (min-width: 1201px) {
+        body header div.headercatalogue button {
+          width: 6.6%;
+          margin-left: 1.6%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%; } }
+    body header div.headerlogin {
+      background-color: rgba(17, 162, 255, 0.24);
+      height: 20px; }
+  body section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 1% 1%;
+    background: url("../img/boitelogin.jpg") no-repeat center;
+    background-size: 100%;
+    height: 100%; }
+    body section div.prestation {
+      height: 200px;
+      background-color: #F9FAFC;
+      text-align: center; }
+      @media only screen and (max-width: 600px) {
+        body section div.prestation {
+          width: 47.6%;
+          margin-left: 1.6%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%; } }
+      @media only screen and (min-width: 601px) and (max-width: 1200px) {
+        body section div.prestation {
+          width: 31.2%;
+          margin-left: 1.6%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%; } }
+      @media only screen and (min-width: 1201px) {
+        body section div.prestation {
+          width: 23%;
+          margin-left: 1.6%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%; } }
+      body section div.prestation:hover {
+        background-color: #E5E9F2; }
+      body section div.prestation img {
+        max-width: 50%;
+        height: auto;
+        margin: 0 auto;
+        display: block; }
+      body section div.prestation h3 {
+        margin: auto 2%;
+        font-weight: bold; }
+      body section div.prestation p {
+        margin: auto 2%; }
+        body section div.prestation p:after {
+          content: " €"; }
+      body section div.prestation form button {
+        background-color: #77D353;
+        width: 100%;
+        height: 50px;
+        border: transparent none 0; }
+        body section div.prestation form button:hover {
+          background-color: #63AD46;
+          cursor: pointer; }
+    body section div.login {
+      background-color: rgba(17, 162, 255, 0.24);
+      border-radius: 5px;
+      height: 300px;
+      position: relative;
+      top: 100px; }
+      @media only screen and (max-width: 600px) {
+        body section div.login {
+          width: 31.2%;
+          margin-left: 34.4%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%; } }
+      @media only screen and (min-width: 601px) and (max-width: 1200px) {
+        body section div.login {
+          width: 31.2%;
+          margin-left: 34.4%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%; } }
+      @media only screen and (min-width: 1201px) {
+        body section div.login {
+          width: 23%;
+          margin-left: 1.6%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%; } }
+      body section div.login img {
+        width: 150px;
+        min-height: 150px;
+        border-radius: 100%;
+        position: relative;
+        bottom: 50px;
+        margin: 0 auto; }
+      body section div.login form {
         display: flex;
-        flex-direction: column;
-        clear: both;
-        box-sizing: border-box;
-        margin-bottom: 2%; } }
-    @media only screen and (min-width: 601px) and (max-width: 1200px) {
-      section div.prestation {
-        width: 31.2%;
-        margin-left: 1.6%;
-        display: flex;
-        flex-direction: column;
-        clear: both;
-        box-sizing: border-box;
-        margin-bottom: 2%; } }
-    @media only screen and (min-width: 1201px) {
-      section div.prestation {
-        width: 23%;
-        margin-left: 1.6%;
-        display: flex;
-        flex-direction: column;
-        clear: both;
-        box-sizing: border-box;
-        margin-bottom: 2%; } }
-    section div.prestation:hover {
-      background-color: #E5E9F2; }
-    section div.prestation img {
-      max-width: 50%;
-      height: auto;
-      margin: 0 auto;
-      display: block; }
-    section div.prestation h3 {
-      margin: auto 2%;
-      font-weight: bold; }
-    section div.prestation p {
-      margin: auto 2%; }
-      section div.prestation p:after {
-        content: " €"; }
-    section div.prestation form button {
-      background-color: #77D353;
-      width: 100%;
-      height: 50px;
-      border: transparent none 0; }
-      section div.prestation form button:hover {
-        background-color: #63AD46;
-        cursor: pointer; }
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 1% 2%; }
+        body section div.login form div {
+          width: 100%;
+          margin-left: 0%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%; }
+          body section div.login form div input {
+            width: 60%;
+            margin-left: 20%;
+            display: flex;
+            flex-direction: column;
+            clear: both;
+            box-sizing: border-box;
+            margin-bottom: 2%;
+            border-radius: 5px;
+            height: 30px;
+            border: transparent none 0;
+            padding: .5%; }
+        body section div.login form button {
+          width: 33.33333%;
+          margin-left: 33.33333%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%;
+          background-color: rgba(0, 255, 116, 0.7);
+          border: transparent none 0;
+          border-radius: 5px;
+          cursor: pointer;
+          height: 35px;
+          align-content: center; }
+        body section div.login form a {
+          width: 50%;
+          margin-left: 0%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%;
+          font-size: 12px;
+          color: #FFFFFF;
+          text-decoration: none; }
+          body section div.login form a:nth-of-type(2) {
+            text-align: right; }
+  body footer {
+    display: none; }
 
 /*# sourceMappingURL=style.css.map */
