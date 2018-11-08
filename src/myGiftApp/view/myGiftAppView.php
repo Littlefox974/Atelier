@@ -187,6 +187,9 @@ class myGiftAppView extends AbstractView
             case "cart":
                 $main = $this->renderCart();
                 break;
+            case "profile":
+                $main = $this->renderProfile();
+                break;
 
             default:
                 $main = $this->renderHome();
@@ -292,15 +295,37 @@ EOT;
 
             $html .= "<h1>$prest->nom</h1>
                        <div>
-                       <img src=\"$httpReq->root" . "html/img/$prest->img\">
+                       <img src=\"$httpReq->root"."html/img/$prest->img\">
                         <p> $prest->descr</p>
                         <p> $prest->prix</p>
-                       </div>
-                       
-                     ";
+                       </div>";
             $total += $prest->prix;
         }
         $html .= "<button>Payer $total</button>";
+
+        return $html;
+    }
+
+    private function renderProfile()
+    {
+        $router = new Router();
+        $routeProfile = $router->executeRoute("/$this->data->cart()->first()->id/");
+
+
+        $html= "<div><PRE>";
+        $html .= "User name :".$this->data->user()->first()->username;
+        $html.="Nom:".$this->data->user()->first()->nom;
+        $html.="Last name".$this->data->user()->first()->lastName;
+        $html.="email".$this->data->user()->first()->email;
+
+        foreach ($this->data as $profil)
+        {
+            $html .= "<a href=\"$routeProfile\">http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]$profil->cart()->first()->id</a>";
+
+        }
+
+
+        $html .= "</PRE></div>";
 
         return $html;
     }
