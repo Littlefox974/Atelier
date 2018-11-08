@@ -6,9 +6,7 @@
  * Time: 2:14 PM
  */
 
-namespace myGiftApp\myGiftApp\model;
-
-
+namespace myGiftApp\model;
 use Illuminate\Database\Eloquent\Model;
 
 class CartTemp extends Model {

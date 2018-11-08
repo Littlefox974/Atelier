@@ -13,7 +13,7 @@ use myGiftApp\model\Cart;
 use myGiftApp\model\Order;
 use myGiftApp\model\Prestation;
 use myGiftApp\model\User;
-use myGiftApp\myGiftApp\model\CartTemp;
+use myGiftApp\model\CartTemp;
 use myGiftApp\view\myGiftAppView;
 
 class GiftBoxController extends AbstractController{
@@ -37,17 +37,17 @@ class GiftBoxController extends AbstractController{
     }
 
     public function viewCart(){
-        $cart[] = array();
-        foreach ($_SESSION['item'] as $key => $item){
-            $cart[] = Prestation::query()->select(['*'])->where('id','=',$key)->get();
-            echo "SESSION: " . $_SESSION['item'] . "  KEY  " . $key . "  ITEM  " . $item . " // ";
-        }
+        $profileId = User::query()->select(['id'])->where('username','=',$_SESSION['user_login'])->get();
+        $id = $profileId[0]->id;
+
+        $cart = CartTemp::query()->select(['*'])->where('idUser','=',$id)->get();
+
         $view = new myGiftAppView($cart);
         $view->render('cart');
     }
 
     public function viewProfile(){
-        $profile = User::query()->select(['*'])->where('id','=',$_SESSION['user_login'])->get();
+        $profile = User::query()->select(['*'])->where('username','=',$_SESSION['user_login'])->get();
 //        $cart = Cart::query()->select([''])
 
         $view = new myGiftAppView($profile);
@@ -57,9 +57,10 @@ class GiftBoxController extends AbstractController{
     public function addToCart(){
         $id = isset($_GET['id']) ? $_GET['id'] : "";
 
+        $profileId = User::query()->select(['id'])->where('username','=',$_SESSION['user_login'])->get();
         $cart = new CartTemp();
-        $cart->idUser = $_SESSION['user_login'];
-        $cart->item = $id;
+        $cart->idUser = $profileId[0]->id;
+        $cart->item = $id;  
         $cart->quantity = 1;
 
         $cart->save();
