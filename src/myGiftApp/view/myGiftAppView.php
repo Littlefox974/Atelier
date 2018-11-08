@@ -44,6 +44,15 @@ class myGiftAppView extends AbstractView
                 ";
     }
 
+    private function renderHeaderLogin()
+    {
+        $router = new Router();
+        $httpReq = new HttpRequest();
+        $routeCart = $router->urlFor('cart');
+        return "HEADER LOGIN
+                ";
+    }
+
     /* Méthode renderFooter
      *
      * Retourne le fragment HTML du bas de la page (unique pour toutes les vues)
@@ -174,10 +183,12 @@ class myGiftAppView extends AbstractView
 
             case "login":
                 $main = $this->renderLogin();
+                $header = $this->renderHeaderLogin();
                 break;
 
             case "signUp":
                 $main = $this->renderSignUp();
+                $header = $this->renderHeaderLogin();
                 break;
 
             case "item":
