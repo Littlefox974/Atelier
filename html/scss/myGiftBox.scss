@@ -1,71 +1,147 @@
 @import "style";
 
-$color_prix: #808080;
-$vert: #77D353;
-$fond_prestation: #F9FAFC;
+$fond_boutton: #77D353;
 $hover_boutton: #63AD46;
+$fond_prestation: #F9FAFC;
+$hover_prestation: #E5E9F2;
 
-section {
-  margin: auto;
+$fond_input: #E5E9F2;
+$font-fam-prestation: "Trebuchet MS", Helvetica, sans-serif;
+
+header {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   padding: 1% 1%;
-  background-color: beige;
+  font-family: $font-fam-prestation;
+
+  h3 {
+    margin: auto;
+    @media only screen and (max-width: 600px) {
+      @include grill(12, 1.6%, 0, 10);
+    }
+    @media only screen and (min-width: 601px) and (max-width: 1200px) {
+      @include grill(12, 1.6%, 0, 10);
+    }
+    @media only screen and (min-width: 1201px) {
+      @include grill(12, 1.6%, 0, 10);
+    }
+
+  }
+
+  a {
+    @media only screen and (max-width: 600px) {
+      @include grill(12, 1.6%, 0, 1);
+    }
+    @media only screen and (min-width: 601px) and (max-width: 1200px) {
+      @include grill(12, 1.6%, 0, 1);
+    }
+    @media only screen and (min-width: 1201px) {
+      @include grill(12, 1.6%, 0, 1);
+    }
+
+  }
+
+  input {
+    height: 30px;
+    border-radius: 3px;
+    background-color: $fond_input;
+    border: transparent none 0;
+    padding: 1%;
+
+    @media only screen and (max-width: 600px) {
+      @include grill(12, 1.6%, 0, 11);
+    }
+    @media only screen and (min-width: 601px) and (max-width: 1200px) {
+      @include grill(12, 1.6%, 0, 11);
+    }
+    @media only screen and (min-width: 1201px) {
+      @include grill(12, 1.6%, 0, 11);
+    }
+
+  }
+  button {
+    height: 30px;
+    border-radius: 3px;
+    background-color: $fond_input;
+    border: transparent none 0;
+    cursor: pointer;
+
+    img{
+      max-width: 100%;
+      max-height: 100%;
+      margin: auto;
+    }
+
+    @media only screen and (max-width: 600px) {
+      @include grill(12, 1.6%, 0, 1);
+    }
+    @media only screen and (min-width: 601px) and (max-width: 1200px) {
+      @include grill(12, 1.6%, 0, 1);
+    }
+    @media only screen and (min-width: 1201px) {
+      @include grill(12, 1.6%, 0, 1);
+    }
+
+  }
+}
+
+section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 1% 1%;
+  font-family: $font-fam-prestation;
 
   div {
     &.prestation {
       height: 200px;
       background-color: $fond_prestation;
-      border-radius: 8px;
-      display: flex;
-      flex-direction: column;
-      clear: both;
-      box-sizing: border-box;
-      margin-bottom: 1%;
-      @include grill(12, 1.6%, 0, 12);
 
-      
-      @media screen and (min-width: 601px) and (max-width: 1200px) {
+      @media only screen and (max-width: 600px) {
+        @include grill(12, 1.6%, 0, 6);
+      }
+
+      @media only screen and (min-width: 601px) and (max-width: 1200px) {
         @include grill(12, 1.6%, 0, 4);
       }
-      @media screen and (min-width: 1201px) {
-        @include grill(12, 1.6%, 0, 2);
+
+      @media only screen and (min-width: 1201px) {
+        @include grill(12, 1.6%, 0, 3);
       }
 
-
-
-
-
-
-
       &:hover {
-        background-color: $vert;
+        background-color: $hover_prestation;
       }
 
       img {
-        display: block;
-        width: auto;
-        border-radius: 8px 8px 0 0;
+        max-width: 100%;
+        height: auto;
       }
 
       h3 {
-        margin: auto;
+        margin: auto 2%;
         font-weight: bold;
+
       }
 
       p {
-        color: $color_prix;
+        margin: auto 2%;
+        &:after {
+          content: " €";
+        }
       }
 
-      button {
-        background-color: $vert;
-        border-radius: 8px;
-        width: 100%;
-        height: 50px;
-        &:hover {
-          background-color: $hover_boutton;
-          cursor: pointer;
+      form {
+        button {
+          background-color: $fond_boutton;
+          width: 100%;
+          height: 50px;
+          border: transparent none 0;
+          &:hover {
+            background-color: $hover_boutton;
+            cursor: pointer;
+          }
         }
       }
     }

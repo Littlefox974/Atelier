@@ -85,7 +85,11 @@ img { //TODO remove this after grid
   $lcol: (100% - ($nbgut * $longGutGrill)) / $nbColGrill;
   width: $largCell * $lcol + ($largCell - 1) * $longGutGrill;
   margin-left: $offsetCell * $lcol + ($offsetCell + 1) * $longGutGrill;
-
+  display: flex;
+  flex-direction: column;
+  clear: both;
+  box-sizing: border-box;
+  margin-bottom: 2%;
   //$colwidth: ((100% / $nbColGrill) * $largCell);
   //width: calc(#{$colwidth} - #{$longGutGrill});
   //margin-left: ((100% / $nbColGrill) * $offsetCell);

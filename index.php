@@ -19,7 +19,7 @@ $config = parse_ini_file('conf/config.ini');
 $loader = new ClassLoader();
 $loader -> register();
 
-myGiftAppView::addStyleSheet("html/css/style.css");
+myGiftAppView::addStyleSheet("/html/css/style.css");
 
 $db = new Illuminate\Database\Capsule\Manager();
 
