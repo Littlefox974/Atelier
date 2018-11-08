@@ -55,15 +55,16 @@ class GiftBoxController extends AbstractController{
     }
 
     public function addToCart(){
-        $id = isset($_GET['id']) ? $_GET['id'] : "";
+        if (isset($_POST['id'])){
+            $id = $_POST['id'];
+            $profileId = User::query()->select(['id'])->where('username','=',$_SESSION['user_login'])->get();
+            $cart = new CartTemp();
+            $cart->idUser = $profileId[0]->id;
+            $cart->item = $id;
+            $cart->quantity = 1;
 
-        $profileId = User::query()->select(['id'])->where('username','=',$_SESSION['user_login'])->get();
-        $cart = new CartTemp();
-        $cart->idUser = $profileId[0]->id;
-        $cart->item = $id;  
-        $cart->quantity = 1;
-
-        $cart->save();
+            $cart->save();
+        }
 
         self::viewHome();
     }

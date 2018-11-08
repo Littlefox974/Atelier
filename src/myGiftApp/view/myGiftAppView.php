@@ -11,6 +11,7 @@ namespace myGiftApp\view;
 use mf\router\Router;
 use mf\utils\HttpRequest;
 use mf\view\AbstractView;
+use myGiftApp\model\Prestation;
 
 class myGiftAppView extends AbstractView
 {
@@ -86,17 +87,15 @@ class myGiftAppView extends AbstractView
 
         $html = "";
         foreach ($this->data as $prest) {
-            $addToCart = $router->urlFor('addToCart', [['id', $prest->id]]);
-
+            $addToCart = $router->urlFor('addToCart');
             $html .= "<div class='prestation'>
                         <img src=\"$httpReq->root" . "html/img/$prest->img\">
                         <h3>$prest->nom</h3>
                         <p> $prest->prix</p>
-                        <form action='$addToCart' method='get'>
-                            <button type='submit'>Ajouter</button>                       
+                        <form action='$addToCart' method='post'>
+                            <button type='submit' name='id' value=\"$prest->id\">Ajouter</button>                       
                         </form>
                       </div>";
-//            <p> $prest->descr</p>
         }
 
         return $html;
@@ -306,17 +305,18 @@ EOT;
         $total = 0;
         $httpReq = new HttpRequest();
 
-        foreach ($this->data as $prest) {
-
-            $html .= "<h1>$prest->nom</h1>
+        foreach ($this->data as $cart) {
+            $prest = Prestation::query()->select(['*'])->where('id','=',$cart->item)->get();
+            $p = $prest[0];
+            $html .= "<h1>$p->nom</h1>
                        <div>
-                       <img src=\"$httpReq->root" . "html/img/$prest->img\">
-                        <p> $prest->descr</p>
-                        <p> $prest->prix</p>
+                       <img src=\"$httpReq->root" . "html/img/$p->img\">
+                        <p> $p->descr</p>
+                        <p> $p->prix</p>
                        </div>
                        
                      ";
-            $total += $prest->prix;
+            $total += $p->prix;
         }
         $html .= "<button>Payer $total</button>";
 

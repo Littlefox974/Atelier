@@ -62,7 +62,6 @@ class Router extends AbstractRouter{
             foreach ($param_list as $value){
                 $arr = implode("=",$value);
             }
-
             if (count($param_list) > 1)
                 $urlComplete .= "?" . implode("&amp;",$arr);
             else
