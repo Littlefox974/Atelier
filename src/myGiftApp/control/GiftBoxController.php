@@ -89,7 +89,31 @@ class GiftBoxController extends AbstractController{
         return $bytesString;
     }
 
+    public function increaseQty(){
+        if (isset($_POST['idAdd'])){
+            $id = $_POST['idAdd'];
+            $cart = CartTemp::query()->select(['quantity'])->where('item','=',$id)->get();
 
+            echo "ID: " . $id . " QUANTITY: " . $cart[0]->quantity;
+            CartTemp::query()->where('item','=',$id)->update(['quantity' => $cart[0]->quantity + 1]);
+        }
+//        $this->viewCart();
+//        self::viewCart();
+
+    }
+
+    public function decreaseQty(){
+        if (isset($_POST['idRemove'])){
+            $id = $_POST['idRemove'];
+            $cart = CartTemp::query()->select(['quantity'])->where('item','=',$id)->get();
+            if (($cart->quantity - 1) <= 0)
+                CartTemp::query()->where('item','=',$id)->delete();
+            else
+                CartTemp::query()->where('item','=',$id)->update(['quantity' => $cart[0]->quantity - 1]);
+        }
+//        $this->viewCart();
+//        self::viewCart();
+    }
 //    public function viewUserTweets(){
 //
 //        $id = $_GET['id'];
