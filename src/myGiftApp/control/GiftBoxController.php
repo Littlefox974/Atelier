@@ -54,7 +54,13 @@ class GiftBoxController extends AbstractController{
         $profileId = User::query()->select(['id'])->where('username','=',$_SESSION['user_login'])->get();
         $id = $profileId[0]->id;
 
-        $orders = Order::query()->select(['*'])->where('idUser','=',$id)->get();
+        $orders = Order::query()->
+        join('MGB_cart', 'MGB_order.idCart', '=', 'MGB_cart.id')->
+        join('MGB_body', 'MGB_cart.id', '=', 'MGB_body.idCart')->
+        join('MGB_prestation', 'MGB_body.idPrestation', '=', 'MGB_prestation.id')->
+        select(['MGB_order.id as orderId','MGB_prestation.img as presImg','MGB_prestation.nom as presName','MGB_prestation.descr as presDescr','MGB_order.state as orderState'])->
+        where('idUser','=',$id)->
+        get();
         $view = new myGiftAppView($orders);
         $view->render('profile');
     }

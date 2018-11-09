@@ -275,8 +275,33 @@ class myGiftAppView extends AbstractView
         $html .= "User name :". $_SESSION['user_login'];
 
         foreach ($this->data as $orders) {
-            $url = "http://$_SERVER[HTTP_HOST]/www/fierrolo1u/index.php/viewGift/?giftId=" . $orders->id;
-            $html .= "<input style='width:100%' value=\"$url\">";
+            $url = "http://$_SERVER[HTTP_HOST]/www/fierrolo1u/index.php/viewGift/?giftId=" . $orders->orderId;
+            $state = '';
+            switch ($orders->orderState) {
+                case '0':
+                    $state = 'Validé';
+                    break;
+
+                case '1':
+                    $state = 'Payé';
+                    break;
+
+                case '2':
+                    $state = 'Partagé';
+                    break;
+
+                case '3':
+                    $state = 'Ouvert';
+                    break;
+            }
+
+            $html .= "
+<img src='/www/fierrolo1u/html/img/$orders->presImg'>
+<h1>$orders->presName</h1>
+<p>$orders->presDescr</p>
+<p>$state</p>
+<input style='width:100%' value=\"$url\">";
+
             $html .= "<button id=\"copy\">Copier</button>";
         }
 
@@ -289,6 +314,7 @@ class myGiftAppView extends AbstractView
         }
         document.querySelector('#copy').addEventListener('click', copy);
         </script>
+        
         ";
 
         return $html;
