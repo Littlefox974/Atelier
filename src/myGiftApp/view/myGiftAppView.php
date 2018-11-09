@@ -290,9 +290,18 @@ class myGiftAppView extends AbstractView
         $html = "
 <div>
     <img>
-    <input type='text' value='asdas' disabled='true'>
-    <button>Copier URL</button>       
+    <input id=\"input\" type='text' value='asdas' disabled='true'>
+    <button id=\"copy\" >Copier URL</button>       
 </div>
+<script>
+function copy() {
+  var copyText = document.querySelector(\"#input\");
+  copyText.select();
+  document.execCommand(\"copy\");
+}
+
+document.querySelector(\"#copy\").addEventListener(\"click\", copy);
+</script>
         ";
     }
     protected function renderBody($selector = null)
