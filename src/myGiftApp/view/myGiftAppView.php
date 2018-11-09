@@ -89,8 +89,14 @@ class myGiftAppView extends AbstractView
 
         $httpReq = new HttpRequest();
         $router = new Router();
+        $routeHome = $router->urlFor('home');
 
-        $html = "";
+        $html = "<form action='$routeHome' method='post'>
+                    <button value='1' name='idCat' type='submit'>Attention</button>
+                    <button value='2' name='idCat' type='submit'>Activité</button>
+                    <button value='3' name='idCat' type='submit'>Restauration</button>
+                    <button value='4' name='idCat' type='submit'>Hébergement</button>
+                </form>";
         foreach ($this->data as $prest) {
             $addToCart = $router->urlFor('addToCart');
             $html .= "<div class='prestation'>

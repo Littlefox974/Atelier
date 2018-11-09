@@ -31,8 +31,11 @@ class GiftBoxController extends AbstractController{
      *
      */
     public function viewHome(){
-
-        $prestations = Prestation::all();
+        if (isset($_POST['idCat'])){
+            $prestations = Prestation::all()->where('cat_id','=',$_POST['idCat']);
+        }else{
+            $prestations = Prestation::all();
+        }
         $view = new myGiftAppView($prestations);
         $view->render('home');
     }
