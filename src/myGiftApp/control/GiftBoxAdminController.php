@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jalil
- * Date: 11/6/18
- * Time: 9:10 AM
- */
+
 namespace myGiftApp\control;
 
 use mf\control\AbstractController;

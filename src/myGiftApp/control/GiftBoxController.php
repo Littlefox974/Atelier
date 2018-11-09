@@ -9,7 +9,7 @@
 namespace myGiftApp\control;
 
 use mf\control\AbstractController;
-use mf\router\Router;
+use myGiftApp\model\Body;
 use myGiftApp\model\Cart;
 use myGiftApp\model\CartTemp;
 use myGiftApp\model\Order;
@@ -99,7 +99,21 @@ class GiftBoxController extends AbstractController{
             $profileId = User::query()->select(['id'])->where('username', '=', $_SESSION['user_login'])->get();
             $cartTemp = CartTemp::all()->where('idUser', '=', $profileId[0]->id);
             $cart = new Cart();
+        if (isset($_SESSION['dateDisponible'])) {
+            $cart->dateDisponible = $_SESSION['dateDisponible'];
+        } else {
+            $cart->dateDisponible = 'getDate()';
+        }
             $cart->dateCreation = 'getDate()';
+            $cart->total = $_SESSION['total'];
+        $cart->save();
+        $lastCartId = $cart->id;
+            foreach ($cartTemp as $items){
+                $body = new Body();
+                $body->idPrestation = $items->item;
+                $body->idCart = $lastCartId;
+                $body->quantity = $items->quantity;
+                $body->save();
             $cart->dateDisponible = '';
 
             foreach ($cartTemp as $item){
@@ -107,15 +121,22 @@ class GiftBoxController extends AbstractController{
                 $price = $prestation[0]->prix;
                 $_SESSION['total'] = $price * $item->quantity;
             }
-
-
             $cart->total = $_SESSION['total'];
-
-
+        $this->createUrl($profileId, $lastCartId);
+            $this->viewUrl();
     }
 
     public function viewUrl()
     {
+        $view = new myGiftAppView($this);
+        $view->render('viewUrl');
+    }
+
+    public function openGift()
+    {
+        if (isset($_GET['giftUrl'])) {
+            $orderUrl = Order::all()->where('id', '=', $_GET['giftUrl']);
+        }
 
     }
 
@@ -125,7 +146,7 @@ class GiftBoxController extends AbstractController{
 
         $order = new Order();
         $order->id = $bytesString;
-        $order->User = $idUser;
+        $order->idUser = $idUser;
         $order->idCart = $idCart;
         $order->save();
 

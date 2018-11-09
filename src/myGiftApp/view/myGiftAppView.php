@@ -286,6 +286,16 @@ class myGiftAppView extends AbstractView
         return $html;
     }
 
+    private function renderUrl()
+    {
+        $html = "
+<div>
+    <img>
+    <input type='text' value='asdas' disabled='true'>
+    <button>Copier URL</button>       
+</div>
+        ";
+    }
     protected function renderBody($selector = null)
     {
         $header = $this->renderHeader();
@@ -320,6 +330,10 @@ class myGiftAppView extends AbstractView
 
             case "pay":
                 $main = $this->renderPay();
+                break;
+
+            case "viewUrl";
+                $main = $this->renderUrl();
                 break;
 
             default:

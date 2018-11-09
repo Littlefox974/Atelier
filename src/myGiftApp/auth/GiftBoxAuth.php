@@ -3,13 +3,6 @@ namespace myGiftApp\auth;
 use mf\auth\Authentification;
 use myGiftApp\model\User;
 
-/**
- * Created by PhpStorm.
- * User: jalil
- * Date: 11/6/18
- * Time: 9:11 AM
- */
-
 class GiftBoxAuth extends Authentification {
     const ACCESS_LEVEL_USER  = 0;
     const ACCESS_LEVEL_ADMIN = 1;
