@@ -205,7 +205,6 @@ class myGiftAppView extends AbstractView
     {
 
         $html = "";
-        $total = 0;
         $httpReq = new HttpRequest();
         $router = new Router();
         $routeAdd = $router->urlFor('increaseQty');
@@ -230,8 +229,6 @@ class myGiftAppView extends AbstractView
                             </form>
                        </div>
                      ";
-            $total += $p->prix;
-            $_SESSION['total'] = $total;
         }
 
         $html .= "<form action='$routePay' method='post'>
@@ -256,7 +253,7 @@ class myGiftAppView extends AbstractView
     <input type=\"text\" placeholder=\"Cryptogramme visuel\" name=\"cryptVis\" >-->
     <label>Date</label>
     <input id=\"dateDisponible\" type=\"date\" name=\"dateDisponible\">
-    <button type='submit'>Payer " . $_SESSION['total'] ."</button>
+    <button type='submit'>Payer $this->data</button>
     </form>        
 </div>
         ";

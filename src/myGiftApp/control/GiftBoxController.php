@@ -91,7 +91,17 @@ class GiftBoxController extends AbstractController{
     }
 
     public function viewPay(){
-        $view = new myGiftAppView($this);
+        $profileId = User::query()->select(['id'])->where('username', '=', $_SESSION['user_login'])->get();
+        $cartTemp = CartTemp::all()->where('idUser', '=', $profileId[0]->id);
+
+        unset($_SESSION['total']);
+        foreach ($cartTemp as $item){
+            $prestation = Prestation::query()->select(['*'])->where('id', '=', $item->item)->get();
+            $price = $prestation[0]->prix;
+            $_SESSION['total'] += $price * $item->quantity;
+        }
+
+        $view = new myGiftAppView($_SESSION['total']);
         $view->render('pay');
     }
     public function payOrder()
@@ -115,9 +125,6 @@ class GiftBoxController extends AbstractController{
                 $body->idCart = $lastCartId;
                 $body->quantity = $items->quantity;
                 $body->save();
-                $prestation = Prestation::query()->select(['*'])->where('id', '=', $item->item)->get();
-                $price = $prestation[0]->prix;
-                $_SESSION['total'] = $price * $item->quantity;
             }
 
         $cart->total = $_SESSION['total'];
@@ -162,6 +169,7 @@ class GiftBoxController extends AbstractController{
             $item = CartTemp::query()->select(['*'])->where('item', '=', $id)
                 ->where('idUser','=',$profileId[0]->id)->get();
 
+            $item[0]->quantity += 1;
             $item[0]->save();
         }
 
@@ -184,7 +192,7 @@ class GiftBoxController extends AbstractController{
                 CartTemp::query()->where('item','=',$id)->delete();
             }
             else{
-                $item[0]->quantity = $item[0]->quantity - 1;
+                $item[0]->quantity -= 1;
                 $item[0]->save();
             }
         }
