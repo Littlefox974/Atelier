@@ -71,7 +71,7 @@ class myGiftAppView extends AbstractView
         return '';
     }
 
-    
+
 
     /* Méthode renderHome
      *
@@ -265,45 +265,35 @@ class myGiftAppView extends AbstractView
     private function renderProfile()
     {
         $router = new Router();
-        $routeProfile = $router->executeRoute("$this->data->cart()->first()->id");
+        $routeProfile = $router->executeRoute("");
 
-
-        $html= "<div><PRE>";
-        $html .= "User name :".$this->data->user()->first()->username;
-        $html.="Nom:".$this->data->user()->first()->nom;
-        $html.="Last name".$this->data->user()->first()->lastName;
-        $html.="email".$this->data->user()->first()->email;
-
-        foreach ($this->data as $profil) {
-            $html .= "<a href=\"$routeProfile\">http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]$profil->cart()->first()->id</a>";
-
+        $html= "<div>";
+        $html .= "User name :". $_SESSION['user_login'];
+        //http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]
+        foreach ($this->data as $orders) {
+            $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]?id=" . $_SESSION['newUrl'];
+            $html .= "<input value=\"$url\">";
+            $html .= "<button id=\"copy\">Copier</button>";
         }
 
-
-        $html .= "</PRE></div>";
+        $html .= "</div>
+        <script>
+        function copy() {
+          var copyText = document.querySelector(\"#input\");
+          copyText.select();
+          document.execCommand(\"copy\");
+        }
+        document.querySelector(\"#copy\").addEventListener(\"click\", copy);
+        </script>
+        ";
 
         return $html;
     }
 
-    private function renderUrl()
-    {
-        $html = "
-<div>
-    <img>
-    <input id=\"input\" type='text' value='asdas' disabled='true'>
-    <button id=\"copy\" >Copier URL</button>       
-</div>
-<script>
-function copy() {
-  var copyText = document.querySelector(\"#input\");
-  copyText.select();
-  document.execCommand(\"copy\");
-}
+    public function renderUrl(){
 
-document.querySelector(\"#copy\").addEventListener(\"click\", copy);
-</script>
-        ";
     }
+
     protected function renderBody($selector = null)
     {
         $header = $this->renderHeader();

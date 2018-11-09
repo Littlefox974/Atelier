@@ -46,9 +46,12 @@ class GiftBoxController extends AbstractController{
     }
 
     public function viewProfile(){
-        $profile = User::query()->select(['*'])->where('username','=',$_SESSION['user_login'])->get();
+        $profileId = User::query()->select(['id'])->where('username','=',$_SESSION['user_login'])->get();
+        $id = $profileId[0]->id;
 
-        $view = new myGiftAppView($profile);
+        $orders = Order::query()->select(['*'])->where('idUser','=',$id)->get();
+
+        $view = new myGiftAppView($orders);
         $view->render('profile');
     }
 
@@ -89,6 +92,8 @@ class GiftBoxController extends AbstractController{
         $view = new myGiftAppView($prestation);
         $view->render('item');
     }
+
+
 
     public function viewPay(){
         $profileId = User::query()->select(['id'])->where('username', '=', $_SESSION['user_login'])->get();
