@@ -39,7 +39,7 @@ class GiftBoxAdminController extends AbstractController{
         $giftBoxAuth = new GiftBoxAuth();
         if ($giftBoxAuth->loginUser($username,$password)){
             $router = new Router();
-            $router->executeRoute('/home/');
+            $router->urlFor('home');
         }else{
             $this->viewLogin();
         }
@@ -49,7 +49,7 @@ class GiftBoxAdminController extends AbstractController{
         $giftBoxAuth = new GiftBoxAuth();
         $giftBoxAuth->logout();
         $router = new Router();
-        $router->executeRoute('/login/');
+        $router->urlFor('login');
     }
 
     public function viewSignUp(){

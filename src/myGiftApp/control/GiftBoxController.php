@@ -62,10 +62,9 @@ class GiftBoxController extends AbstractController{
             $item = CartTemp::query()->select(['*'])->where('item', '=', $id)
                 ->where('idUser','=',$profileId[0]->id)->get();
             $quantity = $item[0]->quantity;
-            echo "Before if: quantity: " . $quantity;
+//            echo "Before if: quantity: " . $quantity;
             if ($quantity >= 1){
-                var_dump($item[0]->quantity);
-//                CartTemp::query()->where('item','=',$id)->update(['quantity' => $quantity + 1]);
+//                var_dump($item[0]->quantity);
                 $item[0]->quantity = $item[0]->quantity + 1;
                 $item[0]->save();
                 unset($_SESSION['id']);
@@ -92,18 +91,19 @@ class GiftBoxController extends AbstractController{
     }
 
     public function viewPay(){
-        $view = new myGiftAppView();
-        $view->render('payScreen');
+        $view = new myGiftAppView($this);
+        $view->render('pay');
     }
     public function payOrder()
     {
             $profileId = User::query()->select(['id'])->where('username', '=', $_SESSION['user_login'])->get();
             $cartTemp = CartTemp::all()->where('idUser', '=', $profileId[0]->id);
+            $cart = new Cart();
+            $cart->dateCreation = 'getDate()';
+            $cart->dateDisponible = '';
+            $cart->total = $_SESSION['total'];
             foreach ($cartTemp as $items){
-                $cart = new Cart();
-                $cart->dateCreation = 'getDate()';
-                $cart->dateDisponible = '';
-                $cart->total = $_SESSION['total'];
+
             }
 
     }
@@ -150,6 +150,7 @@ class GiftBoxController extends AbstractController{
             $item = CartTemp::query()->select(['*'])->where('item', '=', $id)
                 ->where('idUser','=',$profileId[0]->id)->get();
             $quantity = $item[0]->quantity;
+            
 
             if (($quantity - 1) <= 0)
                 CartTemp::query()->where('item','=',$id)->delete();

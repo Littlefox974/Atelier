@@ -43,10 +43,13 @@ class Router extends AbstractRouter{
         $controller->$methodName();
     }
 
-    public function executeRoute($route){
-        $curRoute = new self::$routes[$route][0];
+    public function executeRoute($alias){
+        $route = self::$aliases[$alias];
+        $control = self::$routes[$route][0];
         $method = self::$routes[$route][1];
-        $curRoute->$method();
+
+        $exec = new $control();
+        $exec->$method();
     }
 
     public function urlFor($route_name, $param_list = []){

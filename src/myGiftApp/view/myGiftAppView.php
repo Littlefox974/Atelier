@@ -35,20 +35,18 @@ class myGiftAppView extends AbstractView
         $httpReq = new HttpRequest();
         $routeCart = $router->urlFor('cart');
         $routeProfile = $router->urlFor('profile');
-        $routeLogOut = $router->urlFor('logout');
+        $routeHome = $router->urlFor('home');
 
 
         return "<div class='headercatalogue'>
                     <h3>Prestations</h3>
-                    <a href='$routeLogOut'> <img src=\"$httpReq->root"."/html/img/remove.svg\"> </a>
+                    <a href='$routeHome'> <img src=\"$httpReq->root"."/html/img/home.svg\"> </a>
                     <a href='$routeProfile'> <img src=\"$httpReq->root"."/html/img/profile.svg\"> </a>
-                    <a href='$routeCart'>
-                        <img src=\"$httpReq->root" . "/html/img/cart.svg\">
-                    </a>
-                    <input>
+                    <a href='$routeCart'><img src=\"$httpReq->root"."/html/img/cart.svg\"></a>
+                    <!--<input>
                     <button>
                         <img src=\"$httpReq->root" . "/html/img/blob.png\">
-                    </button>
+                    </button>-->
                 </div>
                 ";
     }
@@ -177,24 +175,7 @@ class myGiftAppView extends AbstractView
                     <div>
                         <input type=\"password\" placeholder=\"Retype Password\" name=\"password2\" required>
                     </div>
-                    
-                    
-                    
-                    
-                   
-                
-                   
-                   
-                    
-                   
-                    
-                
-                    
-                   
-                    
-                    
-                    
-                
+
                     <button type=\"submit\">Creer</button>
                 </form>
             </div>
@@ -218,6 +199,8 @@ class myGiftAppView extends AbstractView
         ";
     }
 
+    
+
     private function renderCart()
     {
 
@@ -227,6 +210,7 @@ class myGiftAppView extends AbstractView
         $router = new Router();
         $routeAdd = $router->urlFor('increaseQty');
         $routeRemove = $router->urlFor('decreaseQty');
+        $routePay = $router->urlFor('pay');
 
         foreach ($this->data as $cart) {
             $prest = Prestation::query()->select(['*'])->where('id','=',$cart->item)->get();
@@ -234,22 +218,27 @@ class myGiftAppView extends AbstractView
             $html .= "
                        <div class='item-cart'>
                             <h1>$p->nom</h1>
-                            <img src=\"$httpReq->root" . "html/img/$p->img\">
+                            <img src=\"$httpReq->root" . "/html/img/$p->img\">
                             <p>$p->descr</p>
                             <p>$p->prix</p>
                             <p>$cart->quantity</p>
                             <form action='$routeAdd' method='post'>
-                                <button type='submit' name='idAdd' value=\"$cart->item\"><img src=\"$httpReq->root"."html/img/add.svg\"></button>                       
+                                <button type='submit' name='idAdd' value=\"$cart->item\"><img src=\"$httpReq->root"."/html/img/add.svg\"></button>                       
                             </form>
                             <form action='$routeRemove' method='post'>
-                                <button type='submit' name='idRemove' value=\"$cart->item\"><img src=\"$httpReq->root"."html/img/remove.svg\"></button>                       
+                                <button type='submit' name='idRemove' value=\"$cart->item\"><img src=\"$httpReq->root"."/html/img/remove.svg\"></button>                       
                             </form>
                        </div>
                      ";
             $total += $p->prix;
             $_SESSION['total'] = $total;
         }
-        $html .= "<button>Payer $total</button>";
+
+        $html .= "<form action='$routePay' method='post'>
+                                <button >
+                                    Payer
+                                </button>                       
+                            </form>";
 
         return $html;
     }
@@ -260,23 +249,24 @@ class myGiftAppView extends AbstractView
         $html="
 <div>
 <form action=\"$payOrder\" method=\"post\">
-    <input type=\"text\" placeholder=\"Nom du titulaire de la carte\" name=\"titulaire\" required>
-    <input type=\"text\" placeholder=\"Numéro de la carte\" name=\"numeroCarte\" required>
-    <input type=\"text\" placeholder=\"Jour d'expiration\" name=\"jourExp\" required>
-    <input type=\"text\" placeholder=\"Mois d'expiration\" name=\"moisExp\" required>
-    <input type=\"text\" placeholder=\"Cryptogramme visuel\" name=\"cryptVis\" required>
+    <input type=\"text\" placeholder=\"Nom du titulaire de la carte\" name=\"titulaire\">
+    <input type=\"text\" placeholder=\"Numéro de la carte\" name=\"numeroCarte\" >
+    <input type=\"text\" placeholder=\"Jour d'expiration\" name=\"jourExp\" >
+    <input type=\"text\" placeholder=\"Mois d'expiration\" name=\"moisExp\" >
+    <input type=\"text\" placeholder=\"Cryptogramme visuel\" name=\"cryptVis\" >
     <label>Date</label>
-    <input id=\"dateDisponible\" type=\"date\" name=\"dateDisponible\">
+    <input id=\"dateDisponible\" type=\"date\" name=\"dateDisponible\" required>
     <button type='submit'>Payer</button>
     </form>        
 </div>
         ";
+        return $html;
     }
 
     private function renderProfile()
     {
         $router = new Router();
-        $routeProfile = $router->executeRoute("/$this->data->cart()->first()->id/");
+        $routeProfile = $router->executeRoute("$this->data->cart()->first()->id");
 
 
         $html= "<div><PRE>";
@@ -325,8 +315,13 @@ class myGiftAppView extends AbstractView
                 $main = $this->renderCart();
                 break;
 
+            case "profile":
+                $main = $this->renderProfile();
+                break;
+
             case "pay":
                 $main = $this->renderPay();
+                break;
 
             default:
                 $main = $this->renderHome();
@@ -349,6 +344,8 @@ EOT;
 
         return $html;
     }
+
+
 
 
 }
