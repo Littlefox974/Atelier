@@ -236,7 +236,7 @@ class myGiftAppView extends AbstractView
 
         $html .= "<form action='$routePay' method='post'>
                                 <button >
-                                    Payer
+                                    Payer 
                                 </button>                       
                             </form>";
 
@@ -249,14 +249,14 @@ class myGiftAppView extends AbstractView
         $html="
 <div>
 <form action=\"$payOrder\" method=\"post\">
-   <!-- <input type=\"text\" placeholder=\"Nom du titulaire de la carte\" name=\"titulaire\" required>
-    <input type=\"text\" placeholder=\"Numéro de la carte\" name=\"numeroCarte\" required>
-    <input type=\"text\" placeholder=\"Jour d'expiration\" name=\"jourExp\" required>
-    <input type=\"text\" placeholder=\"Mois d'expiration\" name=\"moisExp\" required>
-    <input type=\"text\" placeholder=\"Cryptogramme visuel\" name=\"cryptVis\" required>-->
+    <!--<input type=\"text\" placeholder=\"Nom du titulaire de la carte\" name=\"titulaire\">
+    <input type=\"text\" placeholder=\"Numéro de la carte\" name=\"numeroCarte\" >
+    <input type=\"text\" placeholder=\"Jour d'expiration\" name=\"jourExp\" >
+    <input type=\"text\" placeholder=\"Mois d'expiration\" name=\"moisExp\" >
+    <input type=\"text\" placeholder=\"Cryptogramme visuel\" name=\"cryptVis\" >-->
     <label>Date</label>
-    <input id=\"dateDisponible\" type=\"date\" name=\"dateDisponible\" required>
-    <button type='submit'>Payer</button>
+    <input id=\"dateDisponible\" type=\"date\" name=\"dateDisponible\">
+    <button type='submit'>Payer " . $_SESSION['total'] ."</button>
     </form>        
 </div>
         ";
@@ -275,8 +275,7 @@ class myGiftAppView extends AbstractView
         $html.="Last name".$this->data->user()->first()->lastName;
         $html.="email".$this->data->user()->first()->email;
 
-        foreach ($this->data as $profil)
-        {
+        foreach ($this->data as $profil) {
             $html .= "<a href=\"$routeProfile\">http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]$profil->cart()->first()->id</a>";
 
         }

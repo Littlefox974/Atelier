@@ -101,10 +101,16 @@ class GiftBoxController extends AbstractController{
             $cart = new Cart();
             $cart->dateCreation = 'getDate()';
             $cart->dateDisponible = '';
-            $cart->total = $_SESSION['total'];
-            foreach ($cartTemp as $items){
 
+            foreach ($cartTemp as $item){
+                $prestation = Prestation::query()->select(['*'])->where('id', '=', $item->item)->get();
+                $price = $prestation[0]->prix;
+                $_SESSION['total'] = $price * $item->quantity;
             }
+
+
+            $cart->total = $_SESSION['total'];
+
 
     }
 
@@ -134,7 +140,6 @@ class GiftBoxController extends AbstractController{
             $item = CartTemp::query()->select(['*'])->where('item', '=', $id)
                 ->where('idUser','=',$profileId[0]->id)->get();
 
-            $item[0]->quantity = $item[0]->quantity + 1;
             $item[0]->save();
         }
 
@@ -150,10 +155,12 @@ class GiftBoxController extends AbstractController{
             $item = CartTemp::query()->select(['*'])->where('item', '=', $id)
                 ->where('idUser','=',$profileId[0]->id)->get();
             $quantity = $item[0]->quantity;
-            
 
-            if (($quantity - 1) <= 0)
+
+
+            if (($quantity - 1) <= 0){
                 CartTemp::query()->where('item','=',$id)->delete();
+            }
             else{
                 $item[0]->quantity = $item[0]->quantity - 1;
                 $item[0]->save();
