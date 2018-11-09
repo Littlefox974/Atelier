@@ -7,7 +7,6 @@
  */
 session_start();
 
-use Composer\Autoload\ClassLoader;
 use mf\router\Router;
 use myGiftApp\auth\GiftBoxAuth;
 use myGiftApp\view\myGiftAppView;
