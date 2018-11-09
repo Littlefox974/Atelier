@@ -292,7 +292,7 @@ class myGiftAppView extends AbstractView
 
     private function renderUrl()
     {
-        $url = $_SESSION['newUrl'];
+        $url = "http://$_SERVER[HTTP_HOST]/www/condemag1u/index.php/openGift/?giftId=" . $_SESSION['newUrl'];
         $html = "
 <div>
     <img>
@@ -302,6 +302,16 @@ class myGiftAppView extends AbstractView
         ";
 
         return $html;
+    }
+
+    private function renderOpenGift()
+    {
+        $html="";
+    }
+
+    private function renderViewGift()
+    {
+        $html="";
     }
 
     protected function renderBody($selector = null)
@@ -342,6 +352,14 @@ class myGiftAppView extends AbstractView
 
             case "viewUrl";
                 $main = $this->renderUrl();
+                break;
+
+            case "openGift";
+                $main = $this->renderOpenGift();
+                break;
+
+            case "viewGift";
+                $main = $this->renderViewGift();
                 break;
 
             default:
