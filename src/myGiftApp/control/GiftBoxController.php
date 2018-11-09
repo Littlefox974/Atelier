@@ -109,9 +109,25 @@ class GiftBoxController extends AbstractController{
             $price = $prestation[0]->prix;
             $_SESSION['total'] += $price * $item->quantity;
         }
+        //validation
+        $noItem = 0;
+        $cat[] = array();
+        foreach ($cartTemp as $item){
+            $prestation = Prestation::query()->select(['*'])->where('id','=',$item->item)->get();
+            $cat[] = $prestation[0]->cat_id;
+            $noItem++;
+        }
+        $uniqueCat = array_count_values($cat);
+        $noCat = count($uniqueCat);
+        if ($noItem >= 2 && $noCat >= 2){
+            $view = new myGiftAppView($_SESSION['total']);
+            $view->render('pay');
+        }else{
+            echo "Vous avez besoin d'ajouter 2 prestations de 2 categories differentes au moins";
+            $this->viewCart();
+        }
 
-        $view = new myGiftAppView($_SESSION['total']);
-        $view->render('pay');
+
     }
 
     public function payOrder()
@@ -120,32 +136,36 @@ class GiftBoxController extends AbstractController{
         $cartTemp = CartTemp::all()->where('idUser', '=', $profileId[0]->id);
         $cart = new Cart();
 
-        if (isset($_POST['dateDisponible'])) {
-            $date = Carbon::parse($_POST['dateDisponible']);
-            $cart->dateDisponible = $date->format('Y-m-d');
-        } else
-            $cart->dateDisponible = date("Y-m-d");
 
-        $cart->dateCreation = date("Y-m-d");;
-        $cart->save();
 
-        $lastCartId = $cart->id;
+            if (isset($_POST['dateDisponible'])) {
+                $date = Carbon::parse($_POST['dateDisponible']);
+                $cart->dateDisponible = $date->format('Y-m-d');
+            } else
+                $cart->dateDisponible = date("Y-m-d");
 
-        foreach ($cartTemp as $items) {
-            $body = new Body();
-            $body->idPrestation = $items->item;
-            $body->idCart = $lastCartId;
-            $body->quantity = $items->quantity;
-            $body->save();
-        }
+            $cart->dateCreation = date("Y-m-d");;
+            $cart->save();
 
-        $cart->total = $_SESSION['total'];
-        $cart->save();
+            $lastCartId = $cart->id;
 
-        $_SESSION['newUrl'] = $this->createUrl($profileId[0]->id, $lastCartId);
-        $this->viewUrl();
+            foreach ($cartTemp as $items) {
+                $body = new Body();
+                $body->idPrestation = $items->item;
+                $body->idCart = $lastCartId;
+                $body->quantity = $items->quantity;
+                $body->save();
+            }
 
-        CartTemp::where('idUser','=', $profileId[0]->id)->delete();
+            $cart->total = $_SESSION['total'];
+            $cart->save();
+
+            $_SESSION['newUrl'] = $this->createUrl($profileId[0]->id, $lastCartId);
+            $this->viewUrl();
+
+            CartTemp::where('idUser','=', $profileId[0]->id)->delete();
+
+
     }
 
     public function viewUrl()
