@@ -51,6 +51,23 @@ class myGiftAppView extends AbstractView
                 ";
     }
 
+    private function renderHeaderProfile(){
+        $router = new Router();
+        $httpReq = new HttpRequest();
+        $routeCart = $router->urlFor('cart');
+        $routeLogOut = $router->urlFor('logout');
+        $routeHome = $router->urlFor('home');
+
+
+        return "<div class='headercatalogue'>
+                    <h3>Prestations</h3>
+                    <a href='$routeHome'> <img src=\"$httpReq->root"."/html/img/home.svg\"> </a>
+                    <a href='$routeLogOut'> <img src=\"$httpReq->root"."/html/img/remove.svg\"> </a>
+                    <a href='$routeCart'><img src=\"$httpReq->root"."/html/img/cart.svg\"></a>
+                </div>
+                ";
+    }
+
     private function renderHeaderLogin()
     {
         $router = new Router();
@@ -272,8 +289,7 @@ class myGiftAppView extends AbstractView
         return $html;
     }
 
-    private function renderProfile()
-    {
+    private function renderProfile(){
 
         $html= "<div>";
         $html .= "User name :". $_SESSION['user_login'];
@@ -310,6 +326,7 @@ class myGiftAppView extends AbstractView
         }
 
         $html .= "</div>
+
         <script>
         function copy() {
           var copyText = document.getElementById('inputCopy');
@@ -398,6 +415,7 @@ class myGiftAppView extends AbstractView
                 break;
 
             case "profile":
+                $header = $this->renderHeaderProfile();
                 $main = $this->renderProfile();
                 break;
 
