@@ -264,26 +264,24 @@ class myGiftAppView extends AbstractView
 
     private function renderProfile()
     {
-        $router = new Router();
-        $routeProfile = $router->executeRoute("");
 
         $html= "<div>";
         $html .= "User name :". $_SESSION['user_login'];
 
         foreach ($this->data as $orders) {
             $url = "http://$_SERVER[HTTP_HOST]/www/fierrolo1u/index.php/openGift/?giftId=" . $orders->id;
-            $html .= "<input value=\"$url\">";
-            $html .= "<button id=\"copy\">Copier</button>";
+            $html .= "<input id='inputCopy' value=\"$url\">";
+//            $html .= "<button id=\"copy\">Copier</button>";
         }
 
         $html .= "</div>
         <script>
         function copy() {
-          var copyText = document.querySelector(\"#input\");
+          var copyText = document.getElementById('inputCopy');
           copyText.select();
-          document.execCommand(\"copy\");
+          document.execCommand('copy');
         }
-        document.querySelector(\"#copy\").addEventListener(\"click\", copy);
+        document.querySelector('#copy').addEventListener('click', copy);
         </script>
         ";
 
@@ -306,12 +304,17 @@ class myGiftAppView extends AbstractView
 
     private function renderOpenGift(){
         $router = new Router();
-        $routeViewGift = $router->urlFor('viewGift',['id','URLGENERE']);
+        $httpReq = new HttpRequest();
+        $routeViewGift = $router->urlFor('viewGift',['id','giftId2']);
 
         $html="
-            <img alt='giftBox'>
-            <button>Ouvrir</button>
+            <img src=\"$httpReq->root"."/html/img/".$this->data->img."\">
+            <form action='$routeViewGift' method='post'>
+                <button type='submit'>Ouvrir</button>
+            </form>
+            
         ";
+        return $html;
     }
 
     private function renderViewGift(){

@@ -15,6 +15,8 @@ class Order extends Model
     protected $table = 'MGB_order';
     protected $primaryKey = 'id';
     public $timestamps = false;
+    public $incrementing = false;
+
 
 
     public function user(){

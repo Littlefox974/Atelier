@@ -51,7 +51,6 @@ class GiftBoxController extends AbstractController{
         $id = $profileId[0]->id;
 
         $orders = Order::query()->select(['*'])->where('idUser','=',$id)->get();
-
         $view = new myGiftAppView($orders);
         $view->render('profile');
     }
@@ -167,15 +166,23 @@ class GiftBoxController extends AbstractController{
     }
 
     public function viewGift(){
-        $order = Order::query()->
-        join('MGB_cart','MGB_order.idCart','=','MGB_cart.id')->
-        join('MGB_body','MGB_cart.id','=','MGB_body.idCart')->
-        join('MGB_prestation','MGB_body.idPrestation','=','MGB_prestation.id')->
-        select(['MGB_prestation.img','MGB_prestation.nom','MGB_prestation.descr','MGB_prestation.cat_id','MGB_prestation.id'])->
-        where('id','=',$giftId)->get();
+        if (isset($_GET['giftId2'])) {
+            $giftId = $_GET['giftId2'];
+            $order = Order::query()->
+            join('MGB_cart', 'MGB_order.idCart', '=', 'MGB_cart.id')->
+            join('MGB_body', 'MGB_cart.id', '=', 'MGB_body.idCart')->
+            join('MGB_prestation', 'MGB_body.idPrestation', '=', 'MGB_prestation.id')->
+            select(['MGB_prestation.img', 'MGB_prestation.nom', 'MGB_prestation.descr', 'MGB_prestation.cat_id', 'MGB_prestation.id'])->
+            where('id', '=', $giftId)->get();
 
-        $view = new myGiftAppView($order);
-        $view->render('viewGift');
+            $orderState = new Order();
+            $orderState->id = $giftId;
+            $orderState->state = 1;
+            $orderState->save();
+
+            $view = new myGiftAppView($order);
+            $view->render('viewGift');
+        }
     }
 
     public function createUrl($idUser, $idCart){
