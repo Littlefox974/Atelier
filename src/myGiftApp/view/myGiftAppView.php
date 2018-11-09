@@ -290,8 +290,18 @@ class myGiftAppView extends AbstractView
         return $html;
     }
 
-    public function renderUrl(){
+    private function renderUrl()
+    {
+        $url = $_SESSION['newUrl'];
+        $html = "
+<div>
+    <img>
+    <input type='text' value=\"$url\" disabled='true'>
+    <button>Copier URL</button>       
+</div>
+        ";
 
+        return $html;
     }
 
     protected function renderBody($selector = null)

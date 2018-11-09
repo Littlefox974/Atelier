@@ -8,6 +8,7 @@
 
 namespace myGiftApp\control;
 
+use Carbon\Carbon;
 use mf\control\AbstractController;
 use myGiftApp\model\Body;
 use myGiftApp\model\Cart;
@@ -109,34 +110,36 @@ class GiftBoxController extends AbstractController{
         $view = new myGiftAppView($_SESSION['total']);
         $view->render('pay');
     }
+
     public function payOrder()
     {
         $profileId = User::query()->select(['id'])->where('username', '=', $_SESSION['user_login'])->get();
         $cartTemp = CartTemp::all()->where('idUser', '=', $profileId[0]->id);
         $cart = new Cart();
 
-        if (isset($_SESSION['dateDisponible']))
-            $cart->dateDisponible = $_SESSION['dateDisponible'];
-        else
-            $cart->dateDisponible = 'getDate()';
+        if (isset($_POST['dateDisponible'])) {
+            $date = Carbon::parse($_POST['dateDisponible']);
+            $cart->dateDisponible = $date->format('Y-m-d');
+        } else
+            $cart->dateDisponible = date("Y-m-d");
 
-        $cart->dateCreation = 'getDate()';
+        $cart->dateCreation = date("Y-m-d");;
         $cart->save();
 
         $lastCartId = $cart->id;
 
         foreach ($cartTemp as $items) {
-                $body = new Body();
-                $body->idPrestation = $items->item;
-                $body->idCart = $lastCartId;
-                $body->quantity = $items->quantity;
-                $body->save();
-            }
+            $body = new Body();
+            $body->idPrestation = $items->item;
+            $body->idCart = $lastCartId;
+            $body->quantity = $items->quantity;
+            $body->save();
+        }
 
         $cart->total = $_SESSION['total'];
         $cart->save();
-        
-        $this->createUrl($profileId[0]->id, $lastCartId);
+
+        $_SESSION['newUrl'] = $this->createUrl($profileId[0]->id, $lastCartId);
         $this->viewUrl();
 
         CartTemp::where('idUser','=', $profileId[0]->id)->delete();
@@ -195,11 +198,9 @@ class GiftBoxController extends AbstractController{
             $quantity = $item[0]->quantity;
 
 
-
             if (($quantity - 1) <= 0){
                 CartTemp::query()->where('item','=',$id)->delete();
-            }
-            else{
+            } else {
                 $item[0]->quantity -= 1;
                 $item[0]->save();
             }
