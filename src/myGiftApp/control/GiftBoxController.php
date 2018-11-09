@@ -9,6 +9,7 @@
 namespace myGiftApp\control;
 
 use mf\control\AbstractController;
+use mf\router\Router;
 use myGiftApp\model\Cart;
 use myGiftApp\model\Order;
 use myGiftApp\model\Prestation;
@@ -22,13 +23,11 @@ class GiftBoxController extends AbstractController{
         parent::__construct();
     }
 
-
     /* MÃ©thode viewHome :
      *
      * RÃ©alise la fonctionnalitÃ© : afficher la liste de Tweet
      *
      */
-
     public function viewHome(){
 
         $prestations = Prestation::all();
@@ -64,8 +63,9 @@ class GiftBoxController extends AbstractController{
 
             $cart->save();
         }
-
-        self::viewHome();
+//        $router = new Router();
+//        $router->executeRoute('/home/');
+        $this->viewHome();
     }
 
 
@@ -97,8 +97,8 @@ class GiftBoxController extends AbstractController{
             echo "ID: " . $id . " QUANTITY: " . $cart[0]->quantity;
             CartTemp::query()->where('item','=',$id)->update(['quantity' => $cart[0]->quantity + 1]);
         }
-//        $this->viewCart();
-//        self::viewCart();
+
+        $this->viewCart();
 
     }
 
@@ -111,16 +111,8 @@ class GiftBoxController extends AbstractController{
             else
                 CartTemp::query()->where('item','=',$id)->update(['quantity' => $cart[0]->quantity - 1]);
         }
-//        $this->viewCart();
-//        self::viewCart();
+        $this->viewCart();
+
     }
-//    public function viewUserTweets(){
-//
-//        $id = $_GET['id'];
-//        $tweets = Tweet::all()->where('author',"=",$id);
-//        $view = new TweeterView($tweets);
-//        $view->render('userTweets');
-//
-//    }
 
 }

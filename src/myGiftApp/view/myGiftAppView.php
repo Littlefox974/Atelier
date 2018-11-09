@@ -40,15 +40,14 @@ class myGiftAppView extends AbstractView
 
         return "<div class='headercatalogue'>
                     <h3>Prestations</h3>
-                    <a href='$routeLogOut'> <img src=\"$httpReq->root"."html/img/remove.svg\"> </a>
-                    <a href='$routeProfile'> <img src=\"$httpReq->root"."html/img/profile.svg\"> </a>
-                    <a href='$routeLogout'> <img src=\"$httpReq->root" . "html/img/remove.svg\"> </a>
+                    <a href='$routeLogOut'> <img src=\"$httpReq->root"."/html/img/remove.svg\"> </a>
+                    <a href='$routeProfile'> <img src=\"$httpReq->root"."/html/img/profile.svg\"> </a>
                     <a href='$routeCart'>
-                        <img src=\"$httpReq->root" . "html/img/cart.svg\">
+                        <img src=\"$httpReq->root" . "/html/img/cart.svg\">
                     </a>
                     <input>
                     <button>
-                        <img src=\"$httpReq->root" . "html/img/blob.png\">
+                        <img src=\"$httpReq->root" . "/html/img/blob.png\">
                     </button>
                 </div>
                 ";
@@ -95,7 +94,7 @@ class myGiftAppView extends AbstractView
         foreach ($this->data as $prest) {
             $addToCart = $router->urlFor('addToCart');
             $html .= "<div class='prestation'>
-                        <img src=\"$httpReq->root" . "html/img/$prest->img\">
+                        <img src=\"$httpReq->root" . "/html/img/$prest->img\">
                         <h3>$prest->nom</h3>
                         <p> $prest->prix</p>
                         <form action='$addToCart' method='post'>
@@ -174,7 +173,7 @@ EOT;
         $httpReq = new HttpRequest();
         return "
             <div class='login'>
-                <img src=\"$httpReq->root" . "html/img/user.png\">
+                <img src=\"$httpReq->root" . "/html/img/user.png\">
                 <form action=\"$routeVerify\" method=\"post\">
                     <div>
                         <input type=\"text\" placeholder=\"Username\" name=\"userName\" required>
@@ -199,7 +198,7 @@ EOT;
         $httpReq = new HttpRequest();
         return "
             <div class='signUp'>
-                 <img src=\"$httpReq->root" . "html/img/user.png\">
+                 <img src=\"$httpReq->root" . "/html/img/user.png\">
                 <form action=\"$routeVerify\" method=\"post\">
                     <div>
                         <label for=\"nom\"><b>Nom</b></label>
@@ -269,7 +268,7 @@ EOT;
             <div>
                 <h1>$this->data->nom</h1>
                 <div>
-                       <img src=\"$httpReq->root" . "html/img/$this->data->img\" alt=\"$this->data->img\">
+                       <img src=\"$httpReq->root" . "/html/img/$this->data->img\" alt=\"$this->data->img\">
                         <p> $this->data->descr</p>
                         <p> $this->data->prix</p>
                 </div>
@@ -293,15 +292,15 @@ EOT;
             $p = $prest[0];
             $html .= "<h1>$p->nom</h1>
                        <div>
-                       <img src=\"$httpReq->root" . "html/img/$p->img\">
+                       <img src=\"$httpReq->root" . "/html/img/$p->img\">
                         <p>$p->descr</p>
                         <p>$p->prix</p>
                         <p>$cart->quantity</p>
                         <form action='$routeAdd' method='post'>
-                            <button type='submit' name='idAdd' value=\"$cart->item\"><img src=\"$httpReq->root"."html/img/add.svg\"></button>                       
+                            <button type='submit' name='idAdd' value=\"$cart->item\"><img src=\"$httpReq->root"."/html/img/add.svg\"></button>                       
                         </form>
                         <form action='$routeRemove' method='post'>
-                            <button type='submit' name='idRemove' value=\"$cart->item\"><img src=\"$httpReq->root"."html/img/remove.svg\"></button>                       
+                            <button type='submit' name='idRemove' value=\"$cart->item\"><img src=\"$httpReq->root"."/html/img/remove.svg\"></button>                       
                         </form>
                        </div>
                        

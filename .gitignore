@@ -67,3 +67,9 @@ fabric.properties
 \.idea/
 
 html/\.sass-cache/
+
+vendor/
+
+composer\.json
+
+composer\.lock
