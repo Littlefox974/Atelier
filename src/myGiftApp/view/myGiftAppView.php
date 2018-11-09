@@ -273,6 +273,30 @@ class myGiftAppView extends AbstractView
         ";
     }
 
+    private function renderProfile()
+    {
+        $router = new Router();
+        $routeProfile = $router->executeRoute("/$this->data->cart()->first()->id/");
+
+
+        $html= "<div><PRE>";
+        $html .= "User name :".$this->data->user()->first()->username;
+        $html.="Nom:".$this->data->user()->first()->nom;
+        $html.="Last name".$this->data->user()->first()->lastName;
+        $html.="email".$this->data->user()->first()->email;
+
+        foreach ($this->data as $profil)
+        {
+            $html .= "<a href=\"$routeProfile\">http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]$profil->cart()->first()->id</a>";
+
+        }
+
+
+        $html .= "</PRE></div>";
+
+        return $html;
+    }
+
     protected function renderBody($selector = null)
     {
         $header = $this->renderHeader();
