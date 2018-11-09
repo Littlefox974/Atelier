@@ -11,10 +11,10 @@ namespace myGiftApp\control;
 use mf\control\AbstractController;
 use mf\router\Router;
 use myGiftApp\model\Cart;
+use myGiftApp\model\CartTemp;
 use myGiftApp\model\Order;
 use myGiftApp\model\Prestation;
 use myGiftApp\model\User;
-use myGiftApp\model\CartTemp;
 use myGiftApp\view\myGiftAppView;
 
 class GiftBoxController extends AbstractController{
@@ -74,6 +74,28 @@ class GiftBoxController extends AbstractController{
         $prestation = Prestation::query()->select(['*'])->where('id','=',$id)->get();
         $view = new myGiftAppView($prestation);
         $view->render('item');
+    }
+
+    public function viewPay(){
+        $view = new myGiftAppView();
+        $view->render('payScreen');
+    }
+    public function payOrder()
+    {
+            $profileId = User::query()->select(['id'])->where('username', '=', $_SESSION['user_login'])->get();
+            $cartTemp = CartTemp::all()->where('idUser', '=', $profileId[0]->id);
+            foreach ($cartTemp as $items){
+                $cart = new Cart();
+                $cart->dateCreation = 'getDate()';
+                $cart->dateDisponible = '';
+                $cart->total = $_SESSION['total'];
+            }
+
+    }
+
+    public function viewUrl()
+    {
+
     }
 
     public function createUrl($idUser, $idCart){

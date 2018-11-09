@@ -107,65 +107,6 @@ class myGiftAppView extends AbstractView
     }
 
 
-    protected function renderBody($selector = null)
-    {
-
-        /*
-         * voire la classe AbstractView
-         *
-         */
-
-
-        $header = $this->renderHeader();
-        $footer = $this->renderFooter();
-
-        switch ($selector) {
-            case "home":
-                $main = $this->renderHome();
-                break;
-
-            case "login":
-                $main = $this->renderLogin();
-                $header = $this->renderHeaderLogin();
-                break;
-
-            case "signUp":
-                $main = $this->renderSignUp();
-                $header = $this->renderHeaderLogin();
-                break;
-
-            case "item":
-                $main = $this->renderItem();
-                break;
-
-            case "cart":
-                $main = $this->renderCart();
-                break;
-
-            default:
-                $main = $this->renderHome();
-                break;
-
-        }
-
-
-        $html = <<<EOT
-<header>
-${header}
-</header>
-<section>
-${main}
-</section>
-<fotter>
-${footer}
-</fotter>
-EOT;
-
-        return $html;
-
-
-    }
-
     private function renderLogin(){
         $router = new Router();
         $routeVerify = $router->urlFor('loginVerify');
@@ -303,12 +244,86 @@ EOT;
                             <button type='submit' name='idRemove' value=\"$cart->item\"><img src=\"$httpReq->root"."/html/img/remove.svg\"></button>                       
                         </form>
                        </div>
-                       
                      ";
             $total += $p->prix;
+            $_SESSION['total'] = $total;
         }
         $html .= "<button>Payer $total</button>";
 
         return $html;
     }
+
+    private function renderPay(){
+        $router = new Router();
+        $payOrder = $router->urlFor('payOrder');
+        $html="
+<div>
+<form action=\"$payOrder\" method=\"post\">
+    <input type=\"text\" placeholder=\"Nom du titulaire de la carte\" name=\"titulaire\" required>
+    <input type=\"text\" placeholder=\"Numéro de la carte\" name=\"numeroCarte\" required>
+    <input type=\"text\" placeholder=\"Jour d'expiration\" name=\"jourExp\" required>
+    <input type=\"text\" placeholder=\"Mois d'expiration\" name=\"moisExp\" required>
+    <input type=\"text\" placeholder=\"Cryptogramme visuel\" name=\"cryptVis\" required>
+    <label>Date</label>
+    <input id=\"dateDisponible\" type=\"date\" name=\"dateDisponible\">
+    <button type='submit'>Payer</button>
+    </form>        
+</div>
+        ";
+    }
+
+    protected function renderBody($selector = null)
+    {
+        $header = $this->renderHeader();
+        $footer = $this->renderFooter();
+
+        switch ($selector) {
+            case "home":
+                $main = $this->renderHome();
+                break;
+
+            case "login":
+                $main = $this->renderLogin();
+                $header = $this->renderHeaderLogin();
+                break;
+
+            case "signUp":
+                $main = $this->renderSignUp();
+                $header = $this->renderHeaderLogin();
+                break;
+
+            case "item":
+                $main = $this->renderItem();
+                break;
+
+            case "cart":
+                $main = $this->renderCart();
+                break;
+
+            case "pay":
+                $main = $this->renderPay();
+
+            default:
+                $main = $this->renderHome();
+                break;
+
+        }
+
+
+        $html = <<<EOT
+<header>
+${header}
+</header>
+<section>
+${main}
+</section>
+<fotter>
+${footer}
+</fotter>
+EOT;
+
+        return $html;
+    }
+
+
 }
