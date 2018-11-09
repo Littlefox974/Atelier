@@ -231,18 +231,19 @@ class myGiftAppView extends AbstractView
         foreach ($this->data as $cart) {
             $prest = Prestation::query()->select(['*'])->where('id','=',$cart->item)->get();
             $p = $prest[0];
-            $html .= "<h1>$p->nom</h1>
-                       <div>
-                       <img src=\"$httpReq->root" . "/html/img/$p->img\">
-                        <p>$p->descr</p>
-                        <p>$p->prix</p>
-                        <p>$cart->quantity</p>
-                        <form action='$routeAdd' method='post'>
-                            <button type='submit' name='idAdd' value=\"$cart->item\"><img src=\"$httpReq->root"."/html/img/add.svg\"></button>                       
-                        </form>
-                        <form action='$routeRemove' method='post'>
-                            <button type='submit' name='idRemove' value=\"$cart->item\"><img src=\"$httpReq->root"."/html/img/remove.svg\"></button>                       
-                        </form>
+            $html .= "
+                       <div class='item-cart'>
+                            <h1>$p->nom</h1>
+                            <img src=\"$httpReq->root" . "html/img/$p->img\">
+                            <p>$p->descr</p>
+                            <p>$p->prix</p>
+                            <p>$cart->quantity</p>
+                            <form action='$routeAdd' method='post'>
+                                <button type='submit' name='idAdd' value=\"$cart->item\"><img src=\"$httpReq->root"."html/img/add.svg\"></button>                       
+                            </form>
+                            <form action='$routeRemove' method='post'>
+                                <button type='submit' name='idRemove' value=\"$cart->item\"><img src=\"$httpReq->root"."html/img/remove.svg\"></button>                       
+                            </form>
                        </div>
                      ";
             $total += $p->prix;
