@@ -43,6 +43,32 @@ class myGiftAppView extends AbstractView
                 ";
     }
 
+    private function renderHeaderHome(){
+        $router = new Router();
+        $httpReq = new HttpRequest();
+        $routeCart = $router->urlFor('cart');
+        $routeProfile = $router->urlFor('profile');
+        $routeHome = $router->urlFor('home');
+
+
+        return "<div class='headercatalogue'>
+                    <h3>Prestations</h3>
+                    <form action='$routeHome' method='post'>
+                    <button value='1' name='idCat' type='submit'>Attention</button>
+                    <button value='2' name='idCat' type='submit'>Activité</button>
+                    <button value='3' name='idCat' type='submit'>Restauration</button>
+                    <button value='4' name='idCat' type='submit'>Hébergement</button>
+                    <button value='5' name='idCat' type='submit'>Toutes</button>
+                    <button value='6' name='idCat' type='submit'>Prix Croissant</button>
+                    <button value='7' name='idCat' type='submit'>Prix décroissant</button>
+                </form>;
+                    <a href='$routeHome'> <img src=\"$httpReq->root"."/html/img/home.svg\"> </a>
+                    <a href='$routeProfile'> <img src=\"$httpReq->root"."/html/img/profile.svg\"> </a>
+                    <a href='$routeCart'><img src=\"$httpReq->root"."/html/img/cart.svg\"></a>
+                </div>
+                ";
+    }
+
     private function renderHeaderProfile(){
         $router = new Router();
         $httpReq = new HttpRequest();
@@ -76,6 +102,22 @@ class myGiftAppView extends AbstractView
         return '';
     }
 
+    private function renderFooterCart(){
+        $router = new Router();
+        $routePay = $router->urlFor('pay');
+        $html = "<form action='$routePay' method='post'>
+                                <button >
+                                    Payer 
+                                </button>                       
+                            </form>";
+        return $html;
+    }
+
+    /* Méthode renderHome
+     *
+     * Vue de la fonctionalité afficher tous les users.
+     *
+     */
     private function renderHome()
     {
         /*
@@ -87,17 +129,8 @@ class myGiftAppView extends AbstractView
 
         $httpReq = new HttpRequest();
         $router = new Router();
-        $routeHome = $router->urlFor('home');
 
-        $html = "<form action='$routeHome' method='post'>
-                    <button value='1' name='idCat' type='submit'>Attention</button>
-                    <button value='2' name='idCat' type='submit'>Activité</button>
-                    <button value='3' name='idCat' type='submit'>Restauration</button>
-                    <button value='4' name='idCat' type='submit'>Hébergement</button>
-                    <button value='5' name='idCat' type='submit'>Toutes</button>
-                    <button value='6' name='idCat' type='submit'>Prix Croissant</button>
-                    <button value='7' name='idCat' type='submit'>Prix décroissant</button>
-                </form>";
+        $html = "";
         foreach ($this->data as $prest) {
             $addToCart = $router->urlFor('addToCart');
             $routeItem = $router->urlFor('viewItem',[['idItem',$prest->id]]);
@@ -216,7 +249,6 @@ class myGiftAppView extends AbstractView
         $router = new Router();
         $routeAdd = $router->urlFor('increaseQty');
         $routeRemove = $router->urlFor('decreaseQty');
-        $routePay = $router->urlFor('pay');
 
         foreach ($this->data as $cart) {
             $prest = Prestation::query()->select(['*'])->where('id','=',$cart->item)->get();
@@ -237,13 +269,6 @@ class myGiftAppView extends AbstractView
                        </div>
                      ";
         }
-
-        $html .= "<form action='$routePay' method='post'>
-                                <button >
-                                    Payer 
-                                </button>                       
-                            </form>";
-
         return $html;
     }
 
@@ -379,6 +404,7 @@ asohdaosdaspdk{apsd
 
         switch ($selector) {
             case "home":
+                $header = $this->renderHeaderHome();
                 $main = $this->renderHome();
                 break;
 
@@ -398,6 +424,7 @@ asohdaosdaspdk{apsd
 
             case "cart":
                 $main = $this->renderCart();
+                $footer = $this->renderFooterCart();
                 break;
 
             case "profile":
