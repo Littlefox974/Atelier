@@ -61,6 +61,15 @@ $router->addRoute('decreaseQty','/decreaseQty/','\myGiftApp\control\GiftBoxContr
 $router->addRoute('profile','/profile/','\myGiftApp\control\GiftBoxController',
     'viewProfile',GiftBoxAuth::ACCESS_LEVEL_USER);
 
+$router->addRoute('payScreen','/pay/','\myGiftApp\control\GiftBoxController',
+    'viewPay',GiftBoxAuth::ACCESS_LEVEL_USER);
+
+$router->addRoute('payOrder','/payOrder/','\myGiftApp\control\GiftBoxController',
+    'payOrder',GiftBoxAuth::ACCESS_LEVEL_USER);
+
+$router->addRoute('viewUrl','/viewUrl/','\myGiftApp\control\GiftBoxController',
+    'viewUrl',GiftBoxAuth::ACCESS_LEVEL_USER);
+
 $router->setDefaultRoute('/login/');
 
 $router->run();
