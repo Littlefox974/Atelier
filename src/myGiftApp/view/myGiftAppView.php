@@ -38,11 +38,11 @@ class myGiftAppView extends AbstractView
         $routeLogOut = $router->urlFor('logout');
 
 
-
         return "<div class='headercatalogue'>
                     <h3>Prestations</h3>
                     <a href='$routeLogOut'> <img src=\"$httpReq->root"."html/img/remove.svg\"> </a>
                     <a href='$routeProfile'> <img src=\"$httpReq->root"."html/img/profile.svg\"> </a>
+                    <a href='$routeLogout'> <img src=\"$httpReq->root" . "html/img/remove.svg\"> </a>
                     <a href='$routeCart'>
                         <img src=\"$httpReq->root" . "html/img/cart.svg\">
                     </a>
