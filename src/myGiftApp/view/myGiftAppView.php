@@ -269,7 +269,7 @@ class myGiftAppView extends AbstractView
         $html .= "User name :". $_SESSION['user_login'];
 
         foreach ($this->data as $orders) {
-            $url = "http://$_SERVER[HTTP_HOST]/www/fierrolo1u/index.php/openGift/?giftId=" . $orders->id;
+            $url = "http://$_SERVER[HTTP_HOST]/www/fierrolo1u/index.php/viewGift/?giftId=" . $orders->id;
             $html .= "<input style='width:100%' value=\"$url\">";
             $html .= "<button id=\"copy\">Copier</button>";
         }
@@ -290,7 +290,7 @@ class myGiftAppView extends AbstractView
 
     private function renderUrl()
     {
-        $url = "http://$_SERVER[HTTP_HOST]/www/condemag1u/index.php/openGift/?giftId=" . $_SESSION['newUrl'];
+        $url = "http://$_SERVER[HTTP_HOST]/www/fierrolo1u/index.php/viewGift/?giftId=" . $_SESSION['newUrl'];
         $html = "
 <div>
     <img>
@@ -305,12 +305,12 @@ class myGiftAppView extends AbstractView
     private function renderOpenGift(){
         $router = new Router();
         $httpReq = new HttpRequest();
-        $routeViewGift = $router->urlFor('viewGift',[['giftId2',$this->data->id]]);
-
+        $data = $this->data;
+        $routeViewGift = $router->urlFor('openGift',[['giftId',$data->id]]);
         $html="
             <img src=\"$httpReq->root"."/html/img/giftbox.png\">
-            <form action='$routeViewGift' method='post'>
-                <button type='submit'>Ouvrir</button>
+            <form action='$routeViewGift' method='get'>
+                <button name='' type='submit' value='' >Ouvrir</button>
             </form>
             
         ";

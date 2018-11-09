@@ -10,6 +10,7 @@ namespace myGiftApp\control;
 
 use Carbon\Carbon;
 use mf\control\AbstractController;
+use mf\router\Router;
 use myGiftApp\model\Body;
 use myGiftApp\model\Cart;
 use myGiftApp\model\CartTemp;
@@ -102,6 +103,7 @@ class GiftBoxController extends AbstractController{
         $cartTemp = CartTemp::all()->where('idUser', '=', $profileId[0]->id);
 
         unset($_SESSION['total']);
+        $_SESSION['total'] = 0;
         foreach ($cartTemp as $item){
             $prestation = Prestation::query()->select(['*'])->where('id', '=', $item->item)->get();
             $price = $prestation[0]->prix;
@@ -152,40 +154,49 @@ class GiftBoxController extends AbstractController{
         $view->render('viewUrl');
     }
 
-    public function openGift()
-    {
+    public function viewGift(){
+
         if (isset($_GET['giftId'])) {
-
             $orderUrl = Order::query()->select(['*'])->where('id', '=', $_GET['giftId'])->get();
+            echo "justo antes de creacion $orderUrl";
+            echo ($orderUrl[0]->state) ? "Opened" : "Not opened";
 
-            if ($orderUrl[0]->state == 0) {
+            if ($orderUrl[0]->state == 0) { //not open
                 $view = new myGiftAppView($orderUrl[0]);
                 $view->render('openGift');
-            } else {
-                $this->viewGift();
+            } else { //if opened
+
+                $order = Order::query()->
+                join('MGB_cart', 'MGB_order.idCart', '=', 'MGB_cart.id')->
+                join('MGB_body', 'MGB_cart.id', '=', 'MGB_body.idCart')->
+                join('MGB_prestation', 'MGB_body.idPrestation', '=', 'MGB_prestation.id')->
+                select(['MGB_prestation.img', 'MGB_prestation.nom', 'MGB_prestation.descr', 'MGB_prestation.cat_id', 'MGB_prestation.id'])->
+                where('MGB_order.id', '=', $_GET['giftId'])->get();
+
+                $view = new myGiftAppView($order);
+                $view->render('viewGift');
             }
         }
     }
 
-    public function viewGift(){
-        if (isset($_GET['giftId2'])) {
-            $giftId = $_GET['giftId2'];
-            $order = Order::query()->
-            join('MGB_cart', 'MGB_order.idCart', '=', 'MGB_cart.id')->
-            join('MGB_body', 'MGB_cart.id', '=', 'MGB_body.idCart')->
-            join('MGB_prestation', 'MGB_body.idPrestation', '=', 'MGB_prestation.id')->
-            select(['MGB_prestation.img', 'MGB_prestation.nom', 'MGB_prestation.descr', 'MGB_prestation.cat_id', 'MGB_prestation.id'])->
-            where('id', '=', $giftId)->get();
-
-            $orderState = new Order();
-            $orderState->id = $giftId;
-            $orderState->state = 1;
-            $orderState->save();
-
-            $view = new myGiftAppView($order);
-            $view->render('viewGift');
+    public function openGift(){
+        if (isset($_GET['giftId'])){
+            $orderState = Order::query()->select(['*'])->where('id','=',$_GET['giftId'])->get();
+            $orderState[0]->id = $_GET['giftId'];
+            echo "ya me abri ";
+            $orderState[0]->state = 1;
+            $orderState[0]->save();
+            echo "viewGift";
+            $this->viewGift();
+            echo "despues";
+            unset($_GET['giftId']);
+        }
+        else{
+            $this->viewGift();
         }
     }
+
+
 
     public function createUrl($idUser, $idCart){
         $bytes = random_bytes(32);
