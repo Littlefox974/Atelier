@@ -96,6 +96,9 @@ class myGiftAppView extends AbstractView
                     <button value='2' name='idCat' type='submit'>Activité</button>
                     <button value='3' name='idCat' type='submit'>Restauration</button>
                     <button value='4' name='idCat' type='submit'>Hébergement</button>
+                    <button value='5' name='idCat' type='submit'>Toutes</button>
+                    <button value='6' name='idCat' type='submit'>Prix Croissant</button>
+                    <button value='7' name='idCat' type='submit'>Prix décroissant</button>
                 </form>";
         foreach ($this->data as $prest) {
             $addToCart = $router->urlFor('addToCart');
