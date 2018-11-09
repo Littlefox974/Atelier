@@ -53,18 +53,33 @@ class GiftBoxController extends AbstractController{
     }
 
     public function addToCart(){
+        $profileId = User::query()->select(['id'])->where('username','=',$_SESSION['user_login'])->get();
+
         if (isset($_POST['id'])){
             $id = $_POST['id'];
-            $profileId = User::query()->select(['id'])->where('username','=',$_SESSION['user_login'])->get();
-            $cart = new CartTemp();
-            $cart->idUser = $profileId[0]->id;
-            $cart->item = $id;
-            $cart->quantity = 1;
 
-            $cart->save();
+            //$item Item de l'user
+            $item = CartTemp::query()->select(['*'])->where('item', '=', $id)
+                ->where('idUser','=',$profileId[0]->id)->get();
+            $quantity = $item[0]->quantity;
+            echo "Before if: quantity: " . $quantity;
+            if ($quantity >= 1){
+                var_dump($item[0]->quantity);
+//                CartTemp::query()->where('item','=',$id)->update(['quantity' => $quantity + 1]);
+                $item[0]->quantity = $item[0]->quantity + 1;
+                $item[0]->save();
+                unset($_SESSION['id']);
+            }else{
+                $cart = new CartTemp();
+                $cart->idUser = $profileId[0]->id;
+                $cart->item = $id;
+                $cart->quantity = 1;
+
+                $cart->save();
+                unset($_SESSION['id']);
+            }
         }
-//        $router = new Router();
-//        $router->executeRoute('/home/');
+        unset($_SESSION['id']);
         $this->viewHome();
     }
 
@@ -112,12 +127,15 @@ class GiftBoxController extends AbstractController{
     }
 
     public function increaseQty(){
+        $profileId = User::query()->select(['id'])->where('username','=',$_SESSION['user_login'])->get();
+
         if (isset($_POST['idAdd'])){
             $id = $_POST['idAdd'];
-            $cart = CartTemp::query()->select(['quantity'])->where('item','=',$id)->get();
+            $item = CartTemp::query()->select(['*'])->where('item', '=', $id)
+                ->where('idUser','=',$profileId[0]->id)->get();
 
-            echo "ID: " . $id . " QUANTITY: " . $cart[0]->quantity;
-            CartTemp::query()->where('item','=',$id)->update(['quantity' => $cart[0]->quantity + 1]);
+            $item[0]->quantity = $item[0]->quantity + 1;
+            $item[0]->save();
         }
 
         $this->viewCart();
@@ -125,13 +143,20 @@ class GiftBoxController extends AbstractController{
     }
 
     public function decreaseQty(){
+        $profileId = User::query()->select(['id'])->where('username','=',$_SESSION['user_login'])->get();
+
         if (isset($_POST['idRemove'])){
             $id = $_POST['idRemove'];
-            $cart = CartTemp::query()->select(['quantity'])->where('item','=',$id)->get();
-            if (($cart->quantity - 1) <= 0)
+            $item = CartTemp::query()->select(['*'])->where('item', '=', $id)
+                ->where('idUser','=',$profileId[0]->id)->get();
+            $quantity = $item[0]->quantity;
+
+            if (($quantity - 1) <= 0)
                 CartTemp::query()->where('item','=',$id)->delete();
-            else
-                CartTemp::query()->where('item','=',$id)->update(['quantity' => $cart[0]->quantity - 1]);
+            else{
+                $item[0]->quantity = $item[0]->quantity - 1;
+                $item[0]->save();
+            }
         }
         $this->viewCart();
 
