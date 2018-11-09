@@ -14,7 +14,6 @@ class Router extends AbstractRouter{
     protected static $routes = [];
     protected static $aliases;
     protected $http_req;
-    protected static $level = [];
 
     public function __construct(){
         parent::__construct();
@@ -28,7 +27,7 @@ class Router extends AbstractRouter{
         $auth = new Authentification();
 
         if (array_key_exists($reqUrl,self::$routes)
-            && $auth->checkAccessRight($_SESSION['access_level']))
+            && $auth->checkAccessRight(self::$routes[$reqUrl][2]))
         {
             $controllerName = self::$routes[$reqUrl][0];
             $methodName = self::$routes[$reqUrl][1];
@@ -77,9 +76,8 @@ class Router extends AbstractRouter{
     }
 
     public function addRoute($name, $url, $ctrl, $mth, $accLvl){
-        self::$routes[$url] = [$ctrl,$mth];
+        self::$routes[$url] = [$ctrl,$mth, $accLvl];
         self::$aliases[$name] = $url;
-        self::$level[$ctrl] = $accLvl;
     }
 
     public function printRoutes(){
