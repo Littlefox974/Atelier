@@ -56,11 +56,7 @@ class GiftBoxController extends AbstractController{
         $view->render('profile');
     }
 
-    public function viewGift($giftId){
-        $order = Order::query()->select(['*'])->where('id','=',$giftId)->
-            join('MGB_cart','');
 
-    }
 
     public function addToCart(){
         $profileId = User::query()->select(['id'])->where('username','=',$_SESSION['user_login'])->get();
@@ -170,9 +166,16 @@ class GiftBoxController extends AbstractController{
         }
     }
 
-    public function viewGift()
-    {
+    public function viewGift(){
+        $order = Order::query()->
+        join('MGB_cart','MGB_order.idCart','=','MGB_cart.id')->
+        join('MGB_body','MGB_cart.id','=','MGB_body.idCart')->
+        join('MGB_prestation','MGB_body.idPrestation','=','MGB_prestation.id')->
+        select(['MGB_prestation.img','MGB_prestation.nom','MGB_prestation.descr','MGB_prestation.cat_id','MGB_prestation.id'])->
+        where('id','=',$giftId)->get();
 
+        $view = new myGiftAppView($order);
+        $view->render('viewGift');
     }
 
     public function createUrl($idUser, $idCart){

@@ -304,14 +304,29 @@ class myGiftAppView extends AbstractView
         return $html;
     }
 
-    private function renderOpenGift()
-    {
-        $html="";
+    private function renderOpenGift(){
+        $router = new Router();
+        $routeViewGift = $router->urlFor('viewGift',['id','URLGENERE']);
+
+        $html="
+            <img alt='giftBox'>
+            <button>Ouvrir</button>
+        ";
     }
 
-    private function renderViewGift()
-    {
+    private function renderViewGift(){
+        $httpReq = new HttpRequest();
         $html="";
+        foreach ($this->data as $item) {
+            $html .= "
+                <div>
+                <h1>$item->nom</h1>
+                <img src=\"$httpReq->root"."/html/img/$item->img\">
+                <p>$item->descr</p>
+                </div>
+            ";
+        }
+        return $html;
     }
 
     protected function renderBody($selector = null)
