@@ -305,10 +305,10 @@ class myGiftAppView extends AbstractView
     private function renderOpenGift(){
         $router = new Router();
         $httpReq = new HttpRequest();
-        $routeViewGift = $router->urlFor('viewGift',['id','giftId2']);
+        $routeViewGift = $router->urlFor('viewGift',[['giftId2',$this->data->id]]);
 
         $html="
-            <img src=\"$httpReq->root"."/html/img/".$this->data->img."\">
+            <img src=\"$httpReq->root"."/html/img/giftbox.png\">
             <form action='$routeViewGift' method='post'>
                 <button type='submit'>Ouvrir</button>
             </form>

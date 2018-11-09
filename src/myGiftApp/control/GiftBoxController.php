@@ -155,9 +155,11 @@ class GiftBoxController extends AbstractController{
     public function openGift()
     {
         if (isset($_GET['giftId'])) {
-            $orderUrl = Order::all()->where('id', '=', $_GET['giftId']);
+
+            $orderUrl = Order::query()->select(['*'])->where('id', '=', $_GET['giftId'])->get();
+
             if ($orderUrl[0]->state == 0) {
-                $view = new myGiftAppView($orderUrl);
+                $view = new myGiftAppView($orderUrl[0]);
                 $view->render('openGift');
             } else {
                 $this->viewGift();
