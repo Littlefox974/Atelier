@@ -71,6 +71,8 @@ class myGiftAppView extends AbstractView
         return '';
     }
 
+    
+
     /* Méthode renderHome
      *
      * Vue de la fonctionalité afficher tous les users.

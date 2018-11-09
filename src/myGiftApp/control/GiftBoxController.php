@@ -116,8 +116,9 @@ class GiftBoxController extends AbstractController{
             $cart->dateDisponible = 'getDate()';
 
         $cart->dateCreation = 'getDate()';
-        $lastCartId = $cart->id;
         $cart->save();
+
+        $lastCartId = $cart->id;
 
         foreach ($cartTemp as $items) {
                 $body = new Body();
@@ -130,8 +131,10 @@ class GiftBoxController extends AbstractController{
         $cart->total = $_SESSION['total'];
         $cart->save();
         
-        $this->createUrl($profileId, $lastCartId);
-            $this->viewUrl();
+        $this->createUrl($profileId[0]->id, $lastCartId);
+        $this->viewUrl();
+
+        CartTemp::where('idUser','=', $profileId[0]->id)->delete();
     }
 
     public function viewUrl()
