@@ -257,11 +257,11 @@ class myGiftAppView extends AbstractView
         $html="
 <div>
 <form action=\"$payOrder\" method=\"post\">
-    <!--<input type=\"text\" placeholder=\"Nom du titulaire de la carte\" name=\"titulaire\">
+    <input type=\"text\" placeholder=\"Nom du titulaire de la carte\" name=\"titulaire\">
     <input type=\"text\" placeholder=\"Numéro de la carte\" name=\"numeroCarte\" >
     <input type=\"text\" placeholder=\"Jour d'expiration\" name=\"jourExp\" >
     <input type=\"text\" placeholder=\"Mois d'expiration\" name=\"moisExp\" >
-    <input type=\"text\" placeholder=\"Cryptogramme visuel\" name=\"cryptVis\" >-->
+    <input type=\"text\" placeholder=\"Cryptogramme visuel\" name=\"cryptVis\" >
     <label>Date</label>
     <input id=\"dateDisponible\" type=\"date\" name=\"dateDisponible\">
     <button type='submit'>Payer $this->data</button>
