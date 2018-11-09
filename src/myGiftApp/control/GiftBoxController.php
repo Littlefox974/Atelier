@@ -76,7 +76,6 @@ class GiftBoxController extends AbstractController
         $view->render('profile');
     }
 
-
     public function addToCart()
     {
         $profileId = User::query()->select(['id'])->where('username', '=', $_SESSION['user_login'])->get();
@@ -108,15 +107,12 @@ class GiftBoxController extends AbstractController
         $this->viewHome();
     }
 
-
-    public function viewItem()
-    {
-        $id = isset($_GET['id']) ? $_GET['id'] : "";
+    public function viewItem(){
+        $id = isset($_GET['idItem']) ? $_GET['idItem'] : "";
         $prestation = Prestation::query()->select(['*'])->where('id', '=', $id)->get();
-        $view = new myGiftAppView($prestation);
+        $view = new myGiftAppView($prestation[0]);
         $view->render('item');
     }
-
 
     public function viewPay()
     {
@@ -194,13 +190,10 @@ class GiftBoxController extends AbstractController
         $view->render('viewUrl');
     }
 
-    public function viewGift()
-    {
+    public function viewGift(){
 
         if (isset($_GET['giftId'])) {
             $orderUrl = Order::query()->select(['*'])->where('id', '=', $_GET['giftId'])->get();
-            echo "justo antes de creacion $orderUrl";
-            echo ($orderUrl[0]->state) ? "Opened" : "Not opened";
 
             if ($orderUrl[0]->state == 0) { //not open
                 $view = new myGiftAppView($orderUrl[0]);
@@ -225,18 +218,14 @@ class GiftBoxController extends AbstractController
         if (isset($_GET['giftId'])) {
             $orderState = Order::query()->select(['*'])->where('id', '=', $_GET['giftId'])->get();
             $orderState[0]->id = $_GET['giftId'];
-            echo "ya me abri ";
             $orderState[0]->state = 1;
             $orderState[0]->save();
-            echo "viewGift";
             $this->viewGift();
-            echo "despues";
-            unset($_GET['giftId']);
+//            unset($_GET['giftId']);
         } else {
             $this->viewGift();
         }
     }
-
 
     public function createUrl($idUser, $idCart)
     {

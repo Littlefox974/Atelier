@@ -102,9 +102,10 @@ class myGiftAppView extends AbstractView
                 </form>";
         foreach ($this->data as $prest) {
             $addToCart = $router->urlFor('addToCart');
+            $routeItem = $router->urlFor('viewItem',[['idItem',$prest->id]]);
             $html .= "<div class='prestation'>
                         <img src=\"$httpReq->root" . "/html/img/$prest->img\">
-                        <h3>$prest->nom</h3>
+                        <a href='$routeItem'><h3>$prest->nom</h3></a>
                         <p> $prest->prix</p>
                         <form action='$addToCart' method='post'>
                             <button type='submit' name='id' value=\"$prest->id\">Ajouter</button>                       
@@ -194,16 +195,16 @@ class myGiftAppView extends AbstractView
 
     }
 
-    private function renderItem()
-    {
+    private function renderItem(){
         $httpReq = new HttpRequest();
+        $item = $this->data;
         return "
             <div>
-                <h1>$this->data->nom</h1>
+                <h1>$item->nom</h1>
                 <div>
-                       <img src=\"$httpReq->root" . "/html/img/$this->data->img\" alt=\"$this->data->img\">
-                        <p> $this->data->descr</p>
-                        <p> $this->data->prix</p>
+                       <img src=\"$httpReq->root" . "/html/img/$item->img"."\" alt=\"$item->img\">
+                        <p> $item->descr</p>
+                        <p> $item->prix</p>
                 </div>
             </div>
         
@@ -345,11 +346,12 @@ class myGiftAppView extends AbstractView
         $router = new Router();
         $httpReq = new HttpRequest();
         $data = $this->data;
+        echo $data->id;
         $routeViewGift = $router->urlFor('openGift',[['giftId',$data->id]]);
         $html="
             <img src=\"$httpReq->root"."/html/img/giftbox.png\">
             <form action='$routeViewGift' method='get'>
-                <button name='' type='submit' value='' >Ouvrir</button>
+                <button name='giftId' type='submit' value='$data->id' >Ouvrir</button>
             </form>
             
         ";
@@ -407,15 +409,15 @@ class myGiftAppView extends AbstractView
                 $main = $this->renderPay();
                 break;
 
-            case "viewUrl";
+            case "viewUrl":
                 $main = $this->renderUrl();
                 break;
 
-            case "openGift";
+            case "openGift":
                 $main = $this->renderOpenGift();
                 break;
 
-            case "viewGift";
+            case "viewGift":
                 $main = $this->renderViewGift();
                 break;
 

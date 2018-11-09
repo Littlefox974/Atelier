@@ -69,6 +69,9 @@ $router->addRoute('payOrder','/payOrder/','\myGiftApp\control\GiftBoxController'
 $router->addRoute('viewUrl','/viewUrl/','\myGiftApp\control\GiftBoxController',
     'viewUrl',GiftBoxAuth::ACCESS_LEVEL_USER);
 
+$router->addRoute('viewItem','/viewItem/','\myGiftApp\control\GiftBoxController',
+    'viewItem',GiftBoxAuth::ACCESS_LEVEL_USER);
+
 $router->addRoute('viewGift','/viewGift/','\myGiftApp\control\GiftBoxController',
     'viewGift',GiftBoxAuth::ACCESS_LEVEL_NONE);
 
