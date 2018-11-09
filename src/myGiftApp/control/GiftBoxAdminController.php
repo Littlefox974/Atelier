@@ -4,7 +4,6 @@ namespace myGiftApp\control;
 
 use mf\control\AbstractController;
 use mf\router\Router;
-use mf\utils\HttpRequest;
 use myGiftApp\auth\GiftBoxAuth;
 use myGiftApp\model\Prestation;
 use myGiftApp\model\User;
@@ -27,6 +26,7 @@ class GiftBoxAdminController extends AbstractController{
         }
 
     }
+
     public function checkLogin(){
         $username = $_POST['userName'];
         $password = $_POST['password'];
@@ -51,6 +51,7 @@ class GiftBoxAdminController extends AbstractController{
         $view = new myGiftAppView($this);
         $view->render('signUp');
     }
+
     public function checkSignUp(){
 
         $name = $_POST['name'];
@@ -73,5 +74,21 @@ class GiftBoxAdminController extends AbstractController{
         }
     }
 
-
+    public function gestionPrestation()
+    {
+        $userId = User::query()->select(['typeUser'])->where('id', '=', $_SESSION['user_login']);
+        if (isset($_SESSION['user_login'])) {
+            if ($userId[0]->typeUser == 1) {
+                $prestations = Prestation::orderBy('nom', 'ASC')->get();
+                $view = new myGiftAppView($prestations);
+                $view->render('viewGestionPrestation');
+            } else {
+                $controller = new GiftBoxController();
+                $controller->viewHome();
+            }
+        } else {
+            $view = new myGiftAppView($this);
+            $view->render('login');
+        }
+    }
 }

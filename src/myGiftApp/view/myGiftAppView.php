@@ -16,19 +16,11 @@ use myGiftApp\model\Prestation;
 class myGiftAppView extends AbstractView
 {
 
-    /* Constructeur
-        *
-        * Appelle le constructeur de la classe parent
-        */
     public function __construct($data)
     {
         parent::__construct($data);
     }
 
-    /* Méthode renderHeader
-     *
-     *  Retourne le fragment HTML de l'entête (unique pour toutes les vues)
-     */
     private function renderHeader()
     {
         $router = new Router();
@@ -79,22 +71,11 @@ class myGiftAppView extends AbstractView
                 ";
     }
 
-    /* Méthode renderFooter
-     *
-     * Retourne le fragment HTML du bas de la page (unique pour toutes les vues)
-     */
     private function renderFooter()
     {
         return '';
     }
 
-
-
-    /* Méthode renderHome
-     *
-     * Vue de la fonctionalité afficher tous les users.
-     *
-     */
     private function renderHome()
     {
         /*
@@ -132,7 +113,6 @@ class myGiftAppView extends AbstractView
 
         return $html;
     }
-
 
     private function renderLogin(){
         $router = new Router();
@@ -227,8 +207,6 @@ class myGiftAppView extends AbstractView
         
         ";
     }
-
-    
 
     private function renderCart()
     {
@@ -386,6 +364,14 @@ class myGiftAppView extends AbstractView
         return $html;
     }
 
+    private function renderGestionPrestation(){
+        $html = '
+<div>
+asohdaosdaspdk{apsd
+</div>';
+
+    }
+
     protected function renderBody($selector = null)
     {
         $header = $this->renderHeader();
@@ -435,6 +421,10 @@ class myGiftAppView extends AbstractView
                 $main = $this->renderViewGift();
                 break;
 
+            case "viewGestionPrestation":
+                $main = $this->renderGestionPrestation();
+                break;
+
             default:
                 $main = $this->renderHome();
                 break;
@@ -456,8 +446,5 @@ EOT;
 
         return $html;
     }
-
-
-
 
 }
