@@ -315,7 +315,11 @@ class myGiftAppView extends AbstractView
           copyText.select();
           document.execCommand('copy');
         }
+<<<<<<< Updated upstream
         document.querySelector('#copy').addEventListener('click', copy);
+=======
+        document.getElementById(\"copy\").addEventListener(\"click\", copy);
+>>>>>>> Stashed changes
         </script>
         
         ";
