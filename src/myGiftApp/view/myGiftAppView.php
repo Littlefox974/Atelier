@@ -269,9 +269,9 @@ class myGiftAppView extends AbstractView
 
         $html= "<div>";
         $html .= "User name :". $_SESSION['user_login'];
-        //http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]
+
         foreach ($this->data as $orders) {
-            $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]?id=" . $_SESSION['newUrl'];
+            $url = "http://$_SERVER[HTTP_HOST]/www/fierrolo1u/index.php/openGift/?giftId=" . $orders->id;
             $html .= "<input value=\"$url\">";
             $html .= "<button id=\"copy\">Copier</button>";
         }

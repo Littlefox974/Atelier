@@ -71,10 +71,10 @@ $router->addRoute('viewUrl','/viewUrl/','\myGiftApp\control\GiftBoxController',
     'viewUrl',GiftBoxAuth::ACCESS_LEVEL_USER);
 
 $router->addRoute('openGift','/openGift/','\myGiftApp\control\GiftBoxController',
-    'openGift',GiftBoxAuth::ACCESS_LEVEL_USER);
+    'openGift',GiftBoxAuth::ACCESS_LEVEL_NONE);
 
 $router->addRoute('viewGift','/viewGift/','\myGiftApp\control\GiftBoxController',
-    'viewGift',GiftBoxAuth::ACCESS_LEVEL_USER);
+    'viewGift',GiftBoxAuth::ACCESS_LEVEL_NONE);
 
 $router->setDefaultRoute('/login/');
 

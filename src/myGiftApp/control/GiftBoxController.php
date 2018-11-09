@@ -56,6 +56,12 @@ class GiftBoxController extends AbstractController{
         $view->render('profile');
     }
 
+    public function viewGift($giftId){
+        $order = Order::query()->select(['*'])->where('id','=',$giftId)->
+            join('MGB_cart','');
+
+    }
+
     public function addToCart(){
         $profileId = User::query()->select(['id'])->where('username','=',$_SESSION['user_login'])->get();
 
