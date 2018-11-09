@@ -12,12 +12,12 @@ use mf\router\Router;
 use myGiftApp\auth\GiftBoxAuth;
 use myGiftApp\view\myGiftAppView;
 
-require_once __DIR__ . '/vendor/autoload.php';
+require_once 'vendor/autoload.php';
 
 $config = parse_ini_file('conf/config.ini');
 
-$loader = new ClassLoader();
-$loader -> register();
+//$loader = new ClassLoader();
+//$loader -> register();
 
 myGiftAppView::addStyleSheet("html/css/style.css");
 
