@@ -35,8 +35,13 @@ class myGiftAppView extends AbstractView
         $httpReq = new HttpRequest();
         $routeCart = $router->urlFor('cart');
         $routeProfile = $router->urlFor('profile');
+        $routeLogOut = $router->urlFor('logout');
+
+
+
         return "<div class='headercatalogue'>
                     <h3>Prestations</h3>
+                    <a href='$routeLogOut'> <img src=\"$httpReq->root"."html/img/remove.svg\"> </a>
                     <a href='$routeProfile'> <img src=\"$httpReq->root"."html/img/profile.svg\"> </a>
                     <a href='$routeCart'>
                         <img src=\"$httpReq->root" . "html/img/cart.svg\">
@@ -292,8 +297,12 @@ EOT;
                         <p>$p->descr</p>
                         <p>$p->prix</p>
                         <p>$cart->quantity</p>
-                        <a href='$routeAdd'> <img src=\"$httpReq->root"."html/img/add.svg\"> </a>
-                        <a href='$routeRemove'> <img src=\"$httpReq->root"."html/img/remove.svg\"> </a>
+                        <form action='$routeAdd' method='post'>
+                            <button type='submit' name='idAdd' value=\"$cart->item\"><img src=\"$httpReq->root"."html/img/add.svg\"></button>                       
+                        </form>
+                        <form action='$routeRemove' method='post'>
+                            <button type='submit' name='idRemove' value=\"$cart->item\"><img src=\"$httpReq->root"."html/img/remove.svg\"></button>                       
+                        </form>
                        </div>
                        
                      ";
