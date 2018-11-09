@@ -270,8 +270,8 @@ class myGiftAppView extends AbstractView
 
         foreach ($this->data as $orders) {
             $url = "http://$_SERVER[HTTP_HOST]/www/fierrolo1u/index.php/openGift/?giftId=" . $orders->id;
-            $html .= "<input id='inputCopy' value=\"$url\">";
-//            $html .= "<button id=\"copy\">Copier</button>";
+            $html .= "<input style='width:100%' value=\"$url\">";
+            $html .= "<button id=\"copy\">Copier</button>";
         }
 
         $html .= "</div>
