@@ -81,8 +81,9 @@ class GiftBoxController extends AbstractController
             //$item Item de l'user
             $item = CartTemp::query()->select(['*'])->where('item', '=', $id)
                 ->where('idUser', '=', $profileId[0]->id)->get();
-            $item = $item[0];
-            $quantity = $item[0]->quantity;
+
+                $quantity = $item[0]->quantity;
+
 //            echo "Before if: quantity: " . $quantity;
             if ($quantity >= 1) {
 //                var_dump($item[0]->quantity);
