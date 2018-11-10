@@ -226,7 +226,7 @@ class myGiftAppView extends AbstractView
         $httpReq = new HttpRequest();
         $item = $this->data;
         return "
-            <div>
+            <div class='itemDetail'>
                 <h1>$item->nom</h1>
                 <div>
                        <img src=\"$httpReq->root" . "/html/img/$item->img"."\" alt=\"$item->img\">
@@ -303,7 +303,8 @@ class myGiftAppView extends AbstractView
         $html .= "<h1>User name :". $_SESSION['user_login']."</h1>";
 
         foreach ($this->data as $orders) {
-            $url = "http://$_SERVER[HTTP_HOST]/www/fierrolo1u/index.php/viewGift/?giftId=" . $orders->orderId;
+
+            $url = "http://$_SERVER[HTTP_HOST]/~fierrolo1u/index.php/viewGift/?giftId=" . $orders->orderId;
             $state = '';
             switch ($orders->orderState) {
                 case '0':
@@ -324,12 +325,13 @@ class myGiftAppView extends AbstractView
             }
 
             $html .= "
+            <div>
+            <p>Status: $state</p>
+            <input style='width:100%' disabled value=\"$url\">";
 
-<p>$state</p>
-<input style='width:100%' value=\"$url\">";
-
-            $html .= "<button id=\"copy\">Copier</button>";
-        }
+            $html .= "<button id=\"copy\">Copier</button>
+            </div>";
+        }//end foreach
 
         $html .= "</div> ";
 
@@ -338,11 +340,11 @@ class myGiftAppView extends AbstractView
 
     private function renderUrl()
     {
-        $url = "http://$_SERVER[HTTP_HOST]/www/fierrolo1u/index.php/viewGift/?giftId=" . $_SESSION['newUrl'];
+        $url = "http://$_SERVER[HTTP_HOST]/~fierrolo1u/index.php/viewGift/?giftId=" . $_SESSION['newUrl'];
         $html = "
 <div>
     <img>
-    <input type='text' value=\"$url\" disabled='true'>
+    <input type='text' value=\"$url\" disabled>
     <button>Copier URL</button>       
 </div>";
 
@@ -353,7 +355,6 @@ class myGiftAppView extends AbstractView
         $router = new Router();
         $httpReq = new HttpRequest();
         $data = $this->data;
-        echo $data->id;
         $routeViewGift = $router->urlFor('openGift',[['giftId',$data->id]]);
         $html="
             <img src=\"$httpReq->root"."/html/img/giftbox.png\">
@@ -383,7 +384,6 @@ class myGiftAppView extends AbstractView
     private function renderGestionPrestation(){
         $html = '
 <div>
-asohdaosdaspdk{apsd
 </div>';
 
     }

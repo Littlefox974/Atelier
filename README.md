@@ -1,6 +1,9 @@
 <h1>Links</h1>
 <a href="https://webetu.iutnc.univ-lorraine.fr/~fierrolo1u/index.php">Application WebEtu</a>
-<a href="https://webetu.iutnc.univ-lorraine.fr/~fierrolo1u/index.php">Application WebEtu</a>
+<br>
+<a href="https://app.gitkraken.com/glo/board/W_ACvB-DuAAPfNme">Tableau Collaboratif</a>
+<br>
+<a href="https://gitlab.com/omarjalilfierro/atelier">Git Repo</a>
 
 <h1>Users</h1>
 <b>User</b> jalilo
@@ -86,5 +89,20 @@
      <td>/viewUrl/</td>
      <td>viewUrl</td>
   </tr>
+  <tr>
+       <td>viewGift</td>
+       <td>/viewGift/</td>
+       <td>viewGift</td>
+    </tr>
+    <tr>
+         <td>openGift</td>
+         <td>/openGift/</td>
+         <td>openGift</td>
+      </tr>
+      <tr>
+           <td>viewGestionPrestation</td>
+           <td>/viewGestionPrestation/</td>
+           <td>viewGestionPrestation</td>
+        </tr>
   
 </table>
