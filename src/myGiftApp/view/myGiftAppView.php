@@ -104,11 +104,6 @@ class myGiftAppView extends AbstractView
         return $html;
     }
 
-    /* Méthode renderHome
-     *
-     * Vue de la fonctionalité afficher tous les users.
-     *
-     */
     private function renderHome()
     {
         /*
@@ -256,19 +251,27 @@ class myGiftAppView extends AbstractView
             $prest = Prestation::query()->select(['*'])->where('id','=',$cart->item)->get();
             $p = $prest[0];
             $html .= "
-                       <div class='item-cart'>
-                            <h1>$p->nom</h1>
-                            <img src=\"$httpReq->root" . "/html/img/$p->img\">
-                            <p>$p->descr</p>
-                            <p>$p->prix</p>
-                            <p>$cart->quantity</p>
-                            <form action='$routeAdd' method='post'>
-                                <button type='submit' name='idAdd' value=\"$cart->item\"><img src=\"$httpReq->root"."/html/img/add.svg\"></button>                       
-                            </form>
-                            <form action='$routeRemove' method='post'>
-                                <button type='submit' name='idRemove' value=\"$cart->item\"><img src=\"$httpReq->root"."/html/img/remove.svg\"></button>                       
-                            </form>
-                       </div>
+<div class='item-cart'>
+    <picture>
+        <img src=\"$httpReq->root" . "/html/img/$p->img\">
+    </picture>
+    <div>
+        <h2>$p->nom</h2>
+        <p>$p->descr</p>
+    </div>
+    <div>
+        <p>$cart->quantity</p>
+        <p>$p->prix</p>
+    </div>
+    <div>
+        <form action='$routeAdd' method='post'>
+            <button type='submit' name='idAdd' value=\"$cart->item\"><img src=\"$httpReq->root"."/html/img/add.svg\"></button>                       
+        </form>
+        <form action='$routeRemove' method='post'>
+            <button type='submit' name='idRemove' value=\"$cart->item\"><img src=\"$httpReq->root"."/html/img/remove.svg\"></button>                       
+        </form>
+    </div>
+ </div>
                      ";
         }
         return $html;

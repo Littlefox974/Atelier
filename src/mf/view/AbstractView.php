@@ -2,6 +2,8 @@
 
 namespace mf\view;
 
+use mf\utils\HttpRequest;
+
 abstract class AbstractView {
 
     static protected $style_sheets = []; /* un tableau de fichiers style */
@@ -97,13 +99,15 @@ abstract class AbstractView {
      */
 
     public function render($selector){
+        $httpReq = new HttpRequest();
+        $icon = $httpReq->root . "/html/img/giftbox.png";
         /* le titre du document */
         $title = self::$app_title;
 
         /* les feuilles de style */
         $app_root = (new \mf\utils\HttpRequest())->root;
         $styles = '';
-        foreach ( self::$style_sheets as $file )
+        foreach (self::$style_sheets as $file )
             $styles .= '<link rel="stylesheet" href="'.$app_root.'/'.$file.'"> ';
 
 
@@ -122,6 +126,7 @@ abstract class AbstractView {
 <html lang="fr">
     <head>
         <meta charset="utf-8">
+        <link rel="icon" href=$icon>
         <meta name="viewport" content="initial-scale=1.0, user-scalable=yes" />
         <title>${title}</title>
 	    ${styles}

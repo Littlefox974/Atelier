@@ -115,9 +115,11 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     padding: 1% 1%;
+    height: 100%;
+
     div {
-      &.categories{
-        height: 150%;
+      &.categories {
+        height: 5%;
         background-color: rgba(17, 162, 255, 100%);
         @media only screen and (max-width: 600px) {
           @include grill(12, 1%, 0, 12);
@@ -130,42 +132,41 @@ body {
         @media only screen and (min-width: 1201px) {
           @include grill(12, 1%, 0, 12);
         }
-      form{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        padding: 0;
+        form {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          height: 100%;
 
-        button{
-          padding: 0 2%;
-          border: transparent none 0;
-          background: $fong_login;
-          cursor: pointer;
-          @media only screen and (max-width: 600px) {
-            @include grill(12, 0, 0, 6);
-            font-size: 1.3em;
+          button {
+            border: transparent none 0;
+            background: $fong_login;
+            cursor: pointer;
+            height: auto;
             margin-bottom: 0;
-          }
 
-          @media only screen and (min-width: 601px) and (max-width: 1200px) {
-            @include grill(12, 0, 0, 4);
-            font-size: 1.3em;
-            margin-bottom: 0;
-          }
+            @media only screen and (max-width: 600px) {
+              @include grill(12, 0, 0, 6);
+              font-size: 1.3em;
+            }
 
-          @media only screen and (min-width: 1201px) {
-            @include grill(7, 0, 0, 1);
-            font-size: 1em;
-            margin-bottom: 0;
-            height: 30px;
-          }
+            @media only screen and (min-width: 601px) and (max-width: 1200px) {
+              @include grill(12, 0, 0, 4);
+              font-size: 1.3em;
+            }
 
-          &:hover{
-            color: white;
-            background-color: midnightblue;
+            @media only screen and (min-width: 1201px) {
+              @include grill(7, 0, 0, 1);
+              font-size: 1em;
+              margin-bottom: 0;
+            }
+
+            &:hover {
+              color: white;
+              background-color: midnightblue;
+            }
           }
         }
-      }
       }
 
       &.prestation {
@@ -329,59 +330,113 @@ body {
       }
 
       &.item-cart {
-        height: 200px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
         background-color: $fond_prestation;
-        text-align: center;
+        height: 23%;
 
         @media only screen and (max-width: 600px) {
-          @include grill(12, 1.6%, 0, 4);
+          @include grill(12, 1.6%, 0, 12);
         }
 
         @media only screen and (min-width: 601px) and (max-width: 1200px) {
-          @include grill(12, 1.6%, 0, 3);
+          @include grill(12, 1.6%, 0, 12);
         }
 
         @media only screen and (min-width: 1201px) {
-          @include grill(12, 1.6%, 0, 3);
+          @include grill(12, 1.6%, 0, 12);
         }
 
         &:hover {
           background-color: $hover_prestation;
         }
 
-        img {
-          max-width: 50%;
+        picture {
+          display: inline-block;
+          @include grill(12, 0, 0, 2);
           height: auto;
-          margin: 0 auto;
-          display: block;
+          margin-bottom: 0;
+
+          img {
+            max-width: 80%;
+            min-height: auto;
+            display: block;
+          }
         }
 
-        h3 {
-          margin: auto 2%;
-          font-weight: bold;
+        div {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          margin-bottom: 0px;
+          padding: 1%;
 
-        }
-
-        p {
-          margin: auto 2%;
-          &:nth-of-type(2) {
-            &:after {
-              content: " €";
-            }
+          @media only screen and (max-width: 600px) {
+            @include grill(12, 1.6%, 0, 8);
           }
 
-        }
+          @media only screen and (min-width: 601px) and (max-width: 1200px) {
+            @include grill(12, 1.6%, 0, 8);
+          }
 
-        form {
-          button {
-            background-color: $fond_boutton;
-            width: 100%;
-            height: 50px;
-            border: transparent none 0;
-            &:hover {
-              background-color: $hover_boutton;
-              cursor: pointer;
+          @media only screen and (min-width: 1201px) {
+            @include grill(12, 1.6%, 0, 4);
+          }
+
+          h2 {
+            font-weight: bold;
+            @include grill(12, 0, 0, 4);
+            margin: 0
+          }
+
+          p {
+            @include grill(12, 0, 0, 4);
+            font-size: .7em;
+            margin: 0;
+          }
+
+          &:nth-of-type(2) {
+            @media only screen and (max-width: 600px) {
+              @include grill(12, 1.6%, 0, 2);
             }
+
+            @media only screen and (min-width: 601px) and (max-width: 1200px) {
+              @include grill(12, 1.6%, 0, 2);
+            }
+
+            @media only screen and (min-width: 1201px) {
+              @include grill(12, 1.6%, 0, 2);
+            }
+
+            margin: 0;
+
+            p {
+              &:nth-of-type(1) {
+                @include grill(12, 0, 0, 12);
+                margin: auto;
+                &:before {
+                  content: "Cantité: "
+                }
+              }
+              &:nth-of-type(2) {
+                @include grill(12, 0, 0, 12);
+                margin: auto;
+                &:after {
+                  content: " €";
+                }
+              }
+            }
+          }
+          &:nth-of-type(3) {
+            @include grill(12, 0, 0, 2);
+            margin: 0;
+            form {
+              margin: auto;
+              button {
+                margin: auto;
+              }
+
           }
         }
       }
@@ -478,6 +533,7 @@ body {
             text-decoration: none;
             &:nth-of-type(2) {
               text-align: right;
+            }
             }
           }
         }

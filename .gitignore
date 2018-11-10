@@ -73,3 +73,5 @@ vendor/
 composer\.json
 
 composer\.lock
+
+html/css/style\.css\.map
