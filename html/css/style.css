@@ -401,7 +401,7 @@ body {
       margin: auto; }
       @media only screen and (max-width: 600px) {
         body header div.headercatalogue h3 {
-          width: 72.2%;
+          width: 14.8%;
           margin-left: 1.6%;
           display: flex;
           flex-direction: column;
@@ -410,7 +410,7 @@ body {
           margin-bottom: 2%; } }
       @media only screen and (min-width: 601px) and (max-width: 1200px) {
         body header div.headercatalogue h3 {
-          width: 72.2%;
+          width: 14.8%;
           margin-left: 1.6%;
           display: flex;
           flex-direction: column;
@@ -419,7 +419,7 @@ body {
           margin-bottom: 2%; } }
       @media only screen and (min-width: 1201px) {
         body header div.headercatalogue h3 {
-          width: 72.2%;
+          width: 14.8%;
           margin-left: 1.6%;
           display: flex;
           flex-direction: column;
@@ -531,8 +531,85 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     padding: 1% 1%; }
+    body section div.categories {
+      height: 150%;
+      background-color: #11a2ff; }
+      @media only screen and (max-width: 600px) {
+        body section div.categories {
+          width: 98%;
+          margin-left: 1%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%; } }
+      @media only screen and (min-width: 601px) and (max-width: 1200px) {
+        body section div.categories {
+          width: 98%;
+          margin-left: 1%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%; } }
+      @media only screen and (min-width: 1201px) {
+        body section div.categories {
+          width: 98%;
+          margin-left: 1%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%; } }
+      body section div.categories form {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0; }
+        body section div.categories form button {
+          padding: 0 2%;
+          border: transparent none 0;
+          background: rgba(17, 162, 255, 0.24);
+          cursor: pointer; }
+          @media only screen and (max-width: 600px) {
+            body section div.categories form button {
+              width: 50%;
+              margin-left: 0%;
+              display: flex;
+              flex-direction: column;
+              clear: both;
+              box-sizing: border-box;
+              margin-bottom: 2%;
+              font-size: 1.3em;
+              margin-bottom: 0; } }
+          @media only screen and (min-width: 601px) and (max-width: 1200px) {
+            body section div.categories form button {
+              width: 33.33333%;
+              margin-left: 0%;
+              display: flex;
+              flex-direction: column;
+              clear: both;
+              box-sizing: border-box;
+              margin-bottom: 2%;
+              font-size: 1.3em;
+              margin-bottom: 0; } }
+          @media only screen and (min-width: 1201px) {
+            body section div.categories form button {
+              width: 14.28571%;
+              margin-left: 0%;
+              display: flex;
+              flex-direction: column;
+              clear: both;
+              box-sizing: border-box;
+              margin-bottom: 2%;
+              font-size: 1em;
+              margin-bottom: 0;
+              height: 30px; } }
+          body section div.categories form button:hover {
+            color: white;
+            background-color: midnightblue; }
     body section div.prestation {
-      height: 200px;
+      min-height: 15%;
       background-color: #F9FAFC;
       text-align: center; }
       @media only screen and (max-width: 600px) {
@@ -569,9 +646,11 @@ body {
         height: auto;
         margin: 0 auto;
         display: block; }
-      body section div.prestation h3 {
+      body section div.prestation a {
         margin: auto 2%;
-        font-weight: bold; }
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer; }
       body section div.prestation p {
         margin: auto 2%; }
         body section div.prestation p:after {

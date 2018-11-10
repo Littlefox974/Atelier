@@ -30,17 +30,18 @@ body {
       flex-direction: row;
       flex-wrap: wrap;
       padding: 1% 1%;
+
       &.headercatalogue {
         h3 {
           margin: auto;
           @media only screen and (max-width: 600px) {
-            @include grill(12, 1.6%, 0, 9);
+            @include grill(12, 1.6%, 0, 2);
           }
           @media only screen and (min-width: 601px) and (max-width: 1200px) {
-            @include grill(12, 1.6%, 0, 9);
+            @include grill(12, 1.6%, 0, 2);
           }
           @media only screen and (min-width: 1201px) {
-            @include grill(12, 1.6%, 0, 9);
+            @include grill(12, 1.6%, 0, 2);
           }
         }
 
@@ -115,8 +116,60 @@ body {
     flex-wrap: wrap;
     padding: 1% 1%;
     div {
+      &.categories{
+        height: 150%;
+        background-color: rgba(17, 162, 255, 100%);
+        @media only screen and (max-width: 600px) {
+          @include grill(1, 1%, 0, 1);
+        }
+
+        @media only screen and (min-width: 601px) and (max-width: 1200px) {
+          @include grill(1, 1%, 0, 1);
+        }
+
+        @media only screen and (min-width: 1201px) {
+          @include grill(1, 1%, 0, 1);
+        }
+      form{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0;
+
+        button{
+          padding: 0 2%;
+          border: transparent none 0;
+          background: $fong_login;
+          cursor: pointer;
+          @media only screen and (max-width: 600px) {
+            @include grill(12, 0, 0, 6);
+            font-size: 1.3em;
+            margin-bottom: 0;
+          }
+
+          @media only screen and (min-width: 601px) and (max-width: 1200px) {
+            @include grill(12, 0, 0, 4);
+            font-size: 1.3em;
+            margin-bottom: 0;
+          }
+
+          @media only screen and (min-width: 1201px) {
+            @include grill(7, 0, 0, 1);
+            font-size: 1em;
+            margin-bottom: 0;
+            height: 30px;
+          }
+
+          &:hover{
+            color: white;
+            background-color: midnightblue;
+          }
+        }
+      }
+      }
+
       &.prestation {
-        height: 200px;
+        min-height: 15%;
         background-color: $fond_prestation;
         text-align: center;
 
@@ -143,10 +196,11 @@ body {
           display: block;
         }
 
-        h3 {
+        a {
           margin: auto 2%;
           font-weight: bold;
-
+          text-decoration: none;
+          cursor: pointer;
         }
 
         p {

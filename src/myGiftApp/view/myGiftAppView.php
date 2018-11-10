@@ -16,19 +16,11 @@ use myGiftApp\model\Prestation;
 class myGiftAppView extends AbstractView
 {
 
-    /* Constructeur
-        *
-        * Appelle le constructeur de la classe parent
-        */
     public function __construct($data)
     {
         parent::__construct($data);
     }
 
-    /* Méthode renderHeader
-     *
-     *  Retourne le fragment HTML de l'entête (unique pour toutes les vues)
-     */
     private function renderHeader()
     {
         $router = new Router();
@@ -51,6 +43,40 @@ class myGiftAppView extends AbstractView
                 ";
     }
 
+    private function renderHeaderHome(){
+        $router = new Router();
+        $httpReq = new HttpRequest();
+        $routeCart = $router->urlFor('cart');
+        $routeProfile = $router->urlFor('profile');
+        $routeHome = $router->urlFor('home');
+
+
+        return "<div class='headercatalogue'>
+                    <h3>Prestations</h3>
+                    <a href='$routeHome'> <img src=\"$httpReq->root"."/html/img/home.svg\"> </a>
+                    <a href='$routeProfile'> <img src=\"$httpReq->root"."/html/img/profile.svg\"> </a>
+                    <a href='$routeCart'><img src=\"$httpReq->root"."/html/img/cart.svg\"></a>
+                </div>
+                ";
+    }
+
+    private function renderHeaderProfile(){
+        $router = new Router();
+        $httpReq = new HttpRequest();
+        $routeCart = $router->urlFor('cart');
+        $routeLogOut = $router->urlFor('logout');
+        $routeHome = $router->urlFor('home');
+
+
+        return "<div class='headercatalogue'>
+                    <h3>Prestations</h3>
+                    <a href='$routeHome'> <img src=\"$httpReq->root"."/html/img/home.svg\"> </a>
+                    <a href='$routeLogOut'> <img src=\"$httpReq->root"."/html/img/remove.svg\"> </a>
+                    <a href='$routeCart'><img src=\"$httpReq->root"."/html/img/cart.svg\"></a>
+                </div>
+                ";
+    }
+
     private function renderHeaderLogin()
     {
         $router = new Router();
@@ -62,16 +88,21 @@ class myGiftAppView extends AbstractView
                 ";
     }
 
-    /* Méthode renderFooter
-     *
-     * Retourne le fragment HTML du bas de la page (unique pour toutes les vues)
-     */
     private function renderFooter()
     {
         return '';
     }
 
-
+    private function renderFooterCart(){
+        $router = new Router();
+        $routePay = $router->urlFor('pay');
+        $html = "<form action='$routePay' method='post'>
+                                <button >
+                                    Payer 
+                                </button>                       
+                            </form>";
+        return $html;
+    }
 
     /* Méthode renderHome
      *
@@ -91,15 +122,17 @@ class myGiftAppView extends AbstractView
         $router = new Router();
         $routeHome = $router->urlFor('home');
 
-        $html = "<form action='$routeHome' method='post'>
+        $html = "<div class='categories'>
+                    <form action='$routeHome' method='post'>
                     <button value='1' name='idCat' type='submit'>Attention</button>
                     <button value='2' name='idCat' type='submit'>Activité</button>
                     <button value='3' name='idCat' type='submit'>Restauration</button>
                     <button value='4' name='idCat' type='submit'>Hébergement</button>
-                    <button value='5' name='idCat' type='submit'>Toutes</button>
                     <button value='6' name='idCat' type='submit'>Prix Croissant</button>
                     <button value='7' name='idCat' type='submit'>Prix décroissant</button>
-                </form>";
+                    <button value='5' name='idCat' type='submit'>Toutes</button>
+                </form>
+</div>";
         foreach ($this->data as $prest) {
             $addToCart = $router->urlFor('addToCart');
             $routeItem = $router->urlFor('viewItem',[['idItem',$prest->id]]);
@@ -115,7 +148,6 @@ class myGiftAppView extends AbstractView
 
         return $html;
     }
-
 
     private function renderLogin(){
         $router = new Router();
@@ -211,8 +243,6 @@ class myGiftAppView extends AbstractView
         ";
     }
 
-    
-
     private function renderCart()
     {
 
@@ -221,7 +251,6 @@ class myGiftAppView extends AbstractView
         $router = new Router();
         $routeAdd = $router->urlFor('increaseQty');
         $routeRemove = $router->urlFor('decreaseQty');
-        $routePay = $router->urlFor('pay');
 
         foreach ($this->data as $cart) {
             $prest = Prestation::query()->select(['*'])->where('id','=',$cart->item)->get();
@@ -242,13 +271,6 @@ class myGiftAppView extends AbstractView
                        </div>
                      ";
         }
-
-        $html .= "<form action='$routePay' method='post'>
-                                <button >
-                                    Payer 
-                                </button>                       
-                            </form>";
-
         return $html;
     }
 
@@ -272,8 +294,7 @@ class myGiftAppView extends AbstractView
         return $html;
     }
 
-    private function renderProfile()
-    {
+    private function renderProfile(){
 
         $html= "<div>";
         $html .= "User name :". $_SESSION['user_login'];
@@ -310,6 +331,7 @@ class myGiftAppView extends AbstractView
         }
 
         $html .= "</div>
+
         <script>
         function copy() {
           var copyText = document.getElementById('inputCopy');
@@ -373,6 +395,14 @@ class myGiftAppView extends AbstractView
         return $html;
     }
 
+    private function renderGestionPrestation(){
+        $html = '
+<div>
+asohdaosdaspdk{apsd
+</div>';
+
+    }
+
     protected function renderBody($selector = null)
     {
         $header = $this->renderHeader();
@@ -380,6 +410,7 @@ class myGiftAppView extends AbstractView
 
         switch ($selector) {
             case "home":
+                $header = $this->renderHeaderHome();
                 $main = $this->renderHome();
                 break;
 
@@ -399,9 +430,11 @@ class myGiftAppView extends AbstractView
 
             case "cart":
                 $main = $this->renderCart();
+                $footer = $this->renderFooterCart();
                 break;
 
             case "profile":
+                $header = $this->renderHeaderProfile();
                 $main = $this->renderProfile();
                 break;
 
@@ -419,6 +452,10 @@ class myGiftAppView extends AbstractView
 
             case "viewGift":
                 $main = $this->renderViewGift();
+                break;
+
+            case "viewGestionPrestation":
+                $main = $this->renderGestionPrestation();
                 break;
 
             default:
@@ -442,8 +479,5 @@ EOT;
 
         return $html;
     }
-
-
-
 
 }

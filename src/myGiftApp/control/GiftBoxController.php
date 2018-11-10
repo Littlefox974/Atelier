@@ -27,11 +27,6 @@ class GiftBoxController extends AbstractController
         parent::__construct();
     }
 
-    /* MÃ©thode viewHome :
-     *
-     * RÃ©alise la fonctionnalitÃ© : afficher la liste de Tweet
-     *
-     */
     public function viewHome(){
         if (isset($_POST['idCat'])) {
             if ($_POST['idCat'] == 5)

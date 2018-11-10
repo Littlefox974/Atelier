@@ -78,6 +78,9 @@ $router->addRoute('viewGift','/viewGift/','\myGiftApp\control\GiftBoxController'
 $router->addRoute('openGift','/openGift/','\myGiftApp\control\GiftBoxController',
     'openGift',GiftBoxAuth::ACCESS_LEVEL_NONE);
 
+$router->addRoute('viewGestionPrestation','/viewGestionPrestation/','\myGiftApp\control\GiftBoxAdminController',
+    'viewGestionPrestation',GiftBoxAuth::ACCESS_LEVEL_ADMIN);
+
 $router->setDefaultRoute('/login/');
 
 $router->run();
