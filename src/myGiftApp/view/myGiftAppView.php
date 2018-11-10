@@ -296,8 +296,8 @@ class myGiftAppView extends AbstractView
 
     private function renderProfile(){
 
-        $html= "<div>";
-        $html .= "User name :". $_SESSION['user_login'];
+        $html= "<div class='profile'>";
+        $html .= "<h1>User name :". $_SESSION['user_login']."</h1>";
 
         foreach ($this->data as $orders) {
             $url = "http://$_SERVER[HTTP_HOST]/www/fierrolo1u/index.php/viewGift/?giftId=" . $orders->orderId;
@@ -321,8 +321,9 @@ class myGiftAppView extends AbstractView
             }
 
             $html .= "
-<img src='/www/fierrolo1u/html/img/$orders->presImg'>
 <h1>$orders->presName</h1>
+<img src='/www/fierrolo1u/html/img/$orders->presImg'>
+
 <p>$orders->presDescr</p>
 <p>$state</p>
 <input style='width:100%' value=\"$url\">";
@@ -330,22 +331,7 @@ class myGiftAppView extends AbstractView
             $html .= "<button id=\"copy\">Copier</button>";
         }
 
-        $html .= "</div>
-
-        <script>
-        function copy() {
-          var copyText = document.getElementById('inputCopy');
-          copyText.select();
-          document.execCommand('copy');
-        }
-<<<<<<< Updated upstream
-        document.querySelector('#copy').addEventListener('click', copy);
-=======
-        document.getElementById(\"copy\").addEventListener(\"click\", copy);
->>>>>>> Stashed changes
-        </script>
-        
-        ";
+        $html .= "</div> ";
 
         return $html;
     }
@@ -358,8 +344,7 @@ class myGiftAppView extends AbstractView
     <img>
     <input type='text' value=\"$url\" disabled='true'>
     <button>Copier URL</button>       
-</div>
-        ";
+</div>";
 
         return $html;
     }

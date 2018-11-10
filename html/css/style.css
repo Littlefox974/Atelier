@@ -663,6 +663,41 @@ body {
         body section div.prestation form button:hover {
           background-color: #63AD46;
           cursor: pointer; }
+    body section div.profile {
+      min-height: 15%;
+      background-color: #F9FAFC;
+      text-align: center; }
+      @media only screen and (max-width: 600px) {
+        body section div.profile {
+          width: 31.2%;
+          margin-left: 1.6%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%; } }
+      @media only screen and (min-width: 601px) and (max-width: 1200px) {
+        body section div.profile {
+          width: 23%;
+          margin-left: 1.6%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%; } }
+      @media only screen and (min-width: 1201px) {
+        body section div.profile {
+          width: 14.8%;
+          margin-left: 1.6%;
+          display: flex;
+          flex-direction: column;
+          clear: both;
+          box-sizing: border-box;
+          margin-bottom: 2%; } }
+      body section div.profile:hover {
+        background-color: #E5E9F2; }
+      body section div.profile h1 {
+        text-align: center; }
     body section div.login {
       background-color: rgba(17, 162, 255, 0.24);
       border-radius: 5px;

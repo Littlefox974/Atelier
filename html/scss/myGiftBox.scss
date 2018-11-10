@@ -120,15 +120,15 @@ body {
         height: 150%;
         background-color: rgba(17, 162, 255, 100%);
         @media only screen and (max-width: 600px) {
-          @include grill(1, 1%, 0, 1);
+          @include grill(12, 1%, 0, 12);
         }
 
         @media only screen and (min-width: 601px) and (max-width: 1200px) {
-          @include grill(1, 1%, 0, 1);
+          @include grill(12, 1%, 0, 12);
         }
 
         @media only screen and (min-width: 1201px) {
-          @include grill(1, 1%, 0, 1);
+          @include grill(12, 1%, 0, 12);
         }
       form{
         display: flex;
@@ -169,6 +169,62 @@ body {
       }
 
       &.prestation {
+          min-height: 15%;
+          background-color: $fond_prestation;
+          text-align: center;
+
+          @media only screen and (max-width: 600px) {
+            @include grill(12, 1.6%, 0, 4);
+          }
+
+          @media only screen and (min-width: 601px) and (max-width: 1200px) {
+            @include grill(12, 1.6%, 0, 3);
+          }
+
+          @media only screen and (min-width: 1201px) {
+            @include grill(12, 1.6%, 0, 2);
+          }
+
+          &:hover {
+            background-color: $hover_prestation;
+          }
+
+          img {
+            max-width: 50%;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+          }
+
+          a {
+            margin: auto 2%;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+          }
+
+          p {
+            margin: auto 2%;
+            &:after {
+              content: " €";
+            }
+          }
+
+          form {
+            button {
+              background-color: $fond_boutton;
+              width: 100%;
+              height: 50px;
+              border: transparent none 0;
+              &:hover {
+                background-color: $hover_boutton;
+                cursor: pointer;
+              }
+            }
+          }
+        }
+
+      &.profile {
         min-height: 15%;
         background-color: $fond_prestation;
         text-align: center;
@@ -188,39 +244,9 @@ body {
         &:hover {
           background-color: $hover_prestation;
         }
+        h1{
+          text-align:center;
 
-        img {
-          max-width: 50%;
-          height: auto;
-          margin: 0 auto;
-          display: block;
-        }
-
-        a {
-          margin: auto 2%;
-          font-weight: bold;
-          text-decoration: none;
-          cursor: pointer;
-        }
-
-        p {
-          margin: auto 2%;
-          &:after {
-            content: " €";
-          }
-        }
-
-        form {
-          button {
-            background-color: $fond_boutton;
-            width: 100%;
-            height: 50px;
-            border: transparent none 0;
-            &:hover {
-              background-color: $hover_boutton;
-              cursor: pointer;
-            }
-          }
         }
       }
 
