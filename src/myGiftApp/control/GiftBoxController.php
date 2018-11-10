@@ -81,6 +81,7 @@ class GiftBoxController extends AbstractController
             //$item Item de l'user
             $item = CartTemp::query()->select(['*'])->where('item', '=', $id)
                 ->where('idUser', '=', $profileId[0]->id)->get();
+            $item = $item[0];
             $quantity = $item[0]->quantity;
 //            echo "Before if: quantity: " . $quantity;
             if ($quantity >= 1) {
@@ -129,7 +130,8 @@ class GiftBoxController extends AbstractController
             $cat[] = $prestation[0]->cat_id;
             $noItem++;
         }
-        $uniqueCat = array_count_values($cat);
+        $ar = array_replace($cat,array_fill_keys(array_keys($cat, null),''));
+        $uniqueCat = array_count_values($ar);
         $noCat = count($uniqueCat);
         if ($noItem >= 2 && $noCat >= 2) {
             $view = new myGiftAppView($_SESSION['total']);
