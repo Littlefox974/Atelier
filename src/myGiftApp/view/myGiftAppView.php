@@ -95,12 +95,7 @@ class myGiftAppView extends AbstractView
 
     private function renderFooterCart(){
         $router = new Router();
-        $routePay = $router->urlFor('pay');
-        $html = "<form action='$routePay' method='post'>
-                                <button >
-                                    Payer 
-                                </button>                       
-                            </form>";
+        $html = "";
         return $html;
     }
 
@@ -246,6 +241,8 @@ class myGiftAppView extends AbstractView
         $router = new Router();
         $routeAdd = $router->urlFor('increaseQty');
         $routeRemove = $router->urlFor('decreaseQty');
+        $routePay = $router->urlFor('pay');
+
 
         foreach ($this->data as $cart) {
             $prest = Prestation::query()->select(['*'])->where('id','=',$cart->item)->get();
@@ -274,6 +271,13 @@ class myGiftAppView extends AbstractView
  </div>
                      ";
         }
+
+        $html .= "<div class='footcart'>
+        <form action='$routePay' method='post'>
+                                <button >
+                                    Payer 
+                                </button>                       
+                            </form></div>";
         return $html;
     }
 

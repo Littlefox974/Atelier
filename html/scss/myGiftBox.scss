@@ -469,19 +469,23 @@ body {
 
       &.footcart {
         @include grill(12, 0, 0, 12);
+        height: 5%;
         form {
           display: flex;
           flex-direction: row;
           flex-wrap: wrap;
           padding: 1% 1%;
           @include grill(12, 0, 0, 12);
-
           button {
             width: 100%;
+            border: transparent none 0;
+            background-color: $fond_boutton;
+            &:hover{
+              background-color: $hover_boutton;
+            }
           }
         }
       }
-
 
       &.loginMsg {
         position: relative;
