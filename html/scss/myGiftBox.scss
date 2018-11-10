@@ -440,19 +440,22 @@ body {
         }
 
         form {
+          @media only screen and (max-width: 600px) {
+            @include grill(1, 0, 0, 1);
+          }
+
           button {
+            width: 100%;
             background-color: transparent;
             margin: auto;
             border: transparent none 0;
+            cursor: pointer;
           }
 
           &:hover {
             background-color: $hover_boutton;
           }
           background-color: $fond_boutton;
-          @media only screen and (max-width: 600px) {
-            @include grill(1, 0, 0, 1);
-          }
         }
 
         @media only screen and (max-width: 600px) {
