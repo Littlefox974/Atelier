@@ -1,0 +1,472 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: monte
+ * Date: 06/11/2018
+ * Time: 09:05
+ */
+
+namespace myGiftApp\view;
+
+use mf\router\Router;
+use mf\utils\HttpRequest;
+use mf\view\AbstractView;
+use myGiftApp\model\Prestation;
+
+class myGiftAppView extends AbstractView
+{
+
+    public function __construct($data)
+    {
+        parent::__construct($data);
+    }
+
+    private function renderHeader()
+    {
+        $router = new Router();
+        $httpReq = new HttpRequest();
+        $routeCart = $router->urlFor('cart');
+        $routeProfile = $router->urlFor('profile');
+        $routeHome = $router->urlFor('home');
+
+
+        return "<div class='headercatalogue'>
+                    <h3>Prestations</h3>
+                    <a href='$routeHome'> <img src=\"$httpReq->root"."/html/img/home.svg\"> </a>
+                    <a href='$routeProfile'> <img src=\"$httpReq->root"."/html/img/profile.svg\"> </a>
+                    <a href='$routeCart'><img src=\"$httpReq->root"."/html/img/cart.svg\"></a>
+                    <!--<input>
+                    <button>
+                        <img src=\"$httpReq->root" . "/html/img/blob.png\">
+                    </button>-->
+                </div>
+                ";
+    }
+
+    private function renderHeaderHome(){
+        $router = new Router();
+        $httpReq = new HttpRequest();
+        $routeCart = $router->urlFor('cart');
+        $routeProfile = $router->urlFor('profile');
+        $routeHome = $router->urlFor('home');
+
+
+        return "<div class='headercatalogue'>
+                    <h3>Prestations</h3>
+                    <a href='$routeHome'> <img src=\"$httpReq->root"."/html/img/home.svg\"> </a>
+                    <a href='$routeProfile'> <img src=\"$httpReq->root"."/html/img/profile.svg\"> </a>
+                    <a href='$routeCart'><img src=\"$httpReq->root"."/html/img/cart.svg\"></a>
+                </div>
+                ";
+    }
+
+    private function renderHeaderProfile(){
+        $router = new Router();
+        $httpReq = new HttpRequest();
+        $routeCart = $router->urlFor('cart');
+        $routeLogOut = $router->urlFor('logout');
+        $routeHome = $router->urlFor('home');
+
+
+        return "<div class='headercatalogue'>
+                    <h3>Prestations</h3>
+                    <a href='$routeHome'> <img src=\"$httpReq->root"."/html/img/home.svg\"> </a>
+                    <a href='$routeLogOut'> <img src=\"$httpReq->root"."/html/img/remove.svg\"> </a>
+                    <a href='$routeCart'><img src=\"$httpReq->root"."/html/img/cart.svg\"></a>
+                </div>
+                ";
+    }
+
+    private function renderHeaderLogin()
+    {
+        $router = new Router();
+        $httpReq = new HttpRequest();
+        $routeCart = $router->urlFor('cart');
+        return "<div class='headerlogin'>
+                    
+                </div>
+                ";
+    }
+
+    private function renderFooter()
+    {
+        return '';
+    }
+
+    private function renderFooterCart(){
+        $router = new Router();
+        $html = "";
+        return $html;
+    }
+
+    private function renderHome()
+    {
+        /*
+         * Retourne le fragment HTML qui affiche tous les prestations.
+         *
+         * L'attribut $this->data contient un tableau d'objets prestation.
+         *
+         */
+
+        $httpReq = new HttpRequest();
+        $router = new Router();
+        $routeHome = $router->urlFor('home');
+
+        $html = "<div class='categories'>
+                    <form action='$routeHome' method='post'>
+                    <button value='1' name='idCat' type='submit'>Attention</button>
+                    <button value='2' name='idCat' type='submit'>Activité</button>
+                    <button value='3' name='idCat' type='submit'>Restauration</button>
+                    <button value='4' name='idCat' type='submit'>Hébergement</button>
+                    <button value='6' name='idCat' type='submit'>Prix Croissant</button>
+                    <button value='7' name='idCat' type='submit'>Prix décroissant</button>
+                    <button value='5' name='idCat' type='submit'>Toutes</button>
+                </form>
+</div>";
+        foreach ($this->data as $prest) {
+            $addToCart = $router->urlFor('addToCart');
+            $routeItem = $router->urlFor('viewItem',[['idItem',$prest->id]]);
+            $html .= "<div class='prestation'>
+                        <img src=\"$httpReq->root" . "/html/img/$prest->img\">
+                        <a href='$routeItem'><h3>$prest->nom</h3></a>
+                        <p> $prest->prix</p>
+                        <form action='$addToCart' method='post'>
+                            <button type='submit' name='id' value=\"$prest->id\">Ajouter</button>                       
+                        </form>
+                      </div>";
+        }
+
+        return $html;
+    }
+
+    private function renderLogin(){
+        $router = new Router();
+        $routeVerify = $router->urlFor('loginVerify');
+        $routeSignUp = $router->urlFor('signUp');
+        $httpReq = new HttpRequest();
+        return "
+            <div class='login'>
+                <img src=\"$httpReq->root" . "/html/img/user.png\">
+                <form action=\"$routeVerify\" method=\"post\">
+                    <div>
+                        <input type=\"text\" placeholder=\"Username\" name=\"userName\" required>
+                    </div>  
+                    <div>
+                        <input type=\"password\" placeholder=\"Mot de passe\" name=\"password\" required>
+                    </div>
+                    <button type=\"submit\"> LogIn</button>
+                    <a href='#'>Forgot password?</a>
+                    <a href='$routeSignUp'>Sign Up</a>
+                </form>
+            </div>
+            <div class='loginMsg'>A BOX FULL OF SURPRISES!</div>
+        ";
+
+    }
+
+    private function renderSignUp()
+    {
+        $router = new Router();
+        $routeVerify = $router->urlFor('signUpVerify');
+        $httpReq = new HttpRequest();
+        return "
+            <div class='signUp'>
+                 <img src=\"$httpReq->root" . "/html/img/user.png\">
+                <form action=\"$routeVerify\" method=\"post\">
+                    <div>
+                        <label for=\"nom\"><b>Nom</b></label>
+                    </div>
+                    <div>
+                        <input type=\"text\" placeholder=\"Nom\" name=\"name\" required>
+                    </div>
+                    <div>
+                        <label for=\"prenom\"><b>Prenom</b></label>
+                    </div>
+                    <div>
+                         <input type=\"text\" placeholder=\"Prenom\" name=\"lastName\" required>
+                    </div>
+                    <div>
+                         <label for=\"username\"><b>Username</b></label>
+                    </div>
+                    <div>
+                         <input type=\"text\" placeholder=\"Enter Username\" name=\"username\" required>
+                    </div>
+                    <div>
+                         <label for=\"email\"><b>Email</b></label>
+                    </div>
+                    <div>
+                        <input type=\"email\" placeholder=\"Enter e-mail\" name=\"email\" required>
+                    </div>
+                    <div>
+                        <label for=\"psw\"><b>Mot de passe</b></label>
+                    </div>
+                    <div>
+                         <input type=\"password\" placeholder=\"Enter Password\" name=\"password\" required>
+                    </div>
+                    <div>
+                        <label for=\"psw2\"><b>Confirmer mot de passe</b></label>
+                    </div>
+                    <div>
+                        <input type=\"password\" placeholder=\"Retype Password\" name=\"password2\" required>
+                    </div>
+
+                    <button type=\"submit\">Creer</button>
+                </form>
+            </div>
+        ";
+
+    }
+
+    private function renderItem(){
+        $httpReq = new HttpRequest();
+        $item = $this->data;
+        return "
+            <div class='itemDetail'>
+                <h1>$item->nom</h1>
+                <div>
+                       <img src=\"$httpReq->root" . "/html/img/$item->img"."\" alt=\"$item->img\">
+                        <p> $item->descr</p>
+                        <p> $item->prix</p>
+                </div>
+            </div>
+        
+        ";
+    }
+
+    private function renderCart()
+    {
+
+        $html = "";
+        $httpReq = new HttpRequest();
+        $router = new Router();
+        $routeAdd = $router->urlFor('increaseQty');
+        $routeRemove = $router->urlFor('decreaseQty');
+        $routePay = $router->urlFor('pay');
+
+
+        foreach ($this->data as $cart) {
+            $prest = Prestation::query()->select(['*'])->where('id','=',$cart->item)->get();
+            $p = $prest[0];
+            $html .= "
+<div class='item-cart'>
+    <picture>
+        <img src=\"$httpReq->root" . "/html/img/$p->img\">
+    </picture>
+    <div>
+        <h2>$p->nom</h2>
+        <p>$p->descr</p>
+    </div>
+    <div>
+        <p>$cart->quantity</p>
+        <p>$p->prix</p>
+    </div>
+    <div>
+        <form action='$routeAdd' method='post'>
+            <button type='submit' name='idAdd' value=\"$cart->item\"><img src=\"$httpReq->root"."/html/img/add.svg\"></button>                       
+        </form>
+        <form action='$routeRemove' method='post'>
+            <button type='submit' name='idRemove' value=\"$cart->item\"><img src=\"$httpReq->root"."/html/img/remove.svg\"></button>                       
+        </form>
+    </div>
+ </div>
+                     ";
+        }
+
+        $html .= "<div class='footcart'>
+        <form action='$routePay' method='post'>
+                                <button >
+                                    Payer 
+                                </button>                       
+                            </form></div>";
+        return $html;
+    }
+
+    private function renderPay(){
+        $router = new Router();
+        $payOrder = $router->urlFor('payOrder');
+        $html="
+<div>
+<form action=\"$payOrder\" method=\"post\">
+    <input type=\"text\" placeholder=\"Nom du titulaire de la carte\" name=\"titulaire\">
+    <input type=\"text\" placeholder=\"Numéro de la carte\" name=\"numeroCarte\" >
+    <input type=\"text\" placeholder=\"Jour d'expiration\" name=\"jourExp\" >
+    <input type=\"text\" placeholder=\"Mois d'expiration\" name=\"moisExp\" >
+    <input type=\"text\" placeholder=\"Cryptogramme visuel\" name=\"cryptVis\" >
+    <label>Date</label>
+    <input id=\"dateDisponible\" type=\"date\" name=\"dateDisponible\">
+    <button type='submit'>Payer $this->data</button>
+    </form>        
+</div>
+        ";
+        return $html;
+    }
+
+    private function renderProfile(){
+
+        $html= "<div class='profile'>";
+        $html .= "<h1>User name :". $_SESSION['user_login']."</h1>";
+
+        foreach ($this->data as $orders) {
+
+            $url = "http://$_SERVER[HTTP_HOST]/~fierrolo1u/index.php/viewGift/?giftId=" . $orders->orderId;
+            $state = '';
+            switch ($orders->orderState) {
+                case '0':
+                    $state = 'Validé';
+                    break;
+
+                case '1':
+                    $state = 'Payé';
+                    break;
+
+                case '2':
+                    $state = 'Partagé';
+                    break;
+
+                case '3':
+                    $state = 'Ouvert';
+                    break;
+            }
+
+            $html .= "
+            <div>
+            <p>Status: $state</p>
+            <input style='width:100%' disabled value=\"$url\">";
+
+            $html .= "<button id=\"copy\">Copier</button>
+            </div>";
+        }//end foreach
+
+        $html .= "</div> ";
+
+        return $html;
+    }
+
+    private function renderUrl()
+    {
+        $url = "http://$_SERVER[HTTP_HOST]/~fierrolo1u/index.php/viewGift/?giftId=" . $_SESSION['newUrl'];
+        $html = "
+<div>
+    <img>
+    <input type='text' value=\"$url\" disabled>
+    <button>Copier URL</button>       
+</div>";
+
+        return $html;
+    }
+
+    private function renderOpenGift(){
+        $router = new Router();
+        $httpReq = new HttpRequest();
+        $data = $this->data;
+        $routeViewGift = $router->urlFor('openGift',[['giftId',$data->id]]);
+        $html="
+            <img src=\"$httpReq->root"."/html/img/giftbox.png\">
+            <form action='$routeViewGift' method='get'>
+                <button name='giftId' type='submit' value='$data->id' >Ouvrir</button>
+            </form>
+            
+        ";
+        return $html;
+    }
+
+    private function renderViewGift(){
+        $httpReq = new HttpRequest();
+        $html="";
+        foreach ($this->data as $item) {
+            $html .= "
+                <div>
+                <h1>$item->nom</h1>
+                <img src=\"$httpReq->root"."/html/img/$item->img\">
+                <p>$item->descr</p>
+                </div>
+            ";
+        }
+        return $html;
+    }
+
+    private function renderGestionPrestation(){
+        $html = '
+<div>
+</div>';
+
+    }
+
+    protected function renderBody($selector = null)
+    {
+        $header = $this->renderHeader();
+        $footer = $this->renderFooter();
+
+        switch ($selector) {
+            case "home":
+                $header = $this->renderHeaderHome();
+                $main = $this->renderHome();
+                break;
+
+            case "login":
+                $main = $this->renderLogin();
+                $header = $this->renderHeaderLogin();
+                break;
+
+            case "signUp":
+                $main = $this->renderSignUp();
+                $header = $this->renderHeaderLogin();
+                break;
+
+            case "item":
+                $main = $this->renderItem();
+                break;
+
+            case "cart":
+                $main = $this->renderCart();
+                $footer = $this->renderFooterCart();
+                break;
+
+            case "profile":
+                $header = $this->renderHeaderProfile();
+                $main = $this->renderProfile();
+                break;
+
+            case "pay":
+                $main = $this->renderPay();
+                break;
+
+            case "viewUrl":
+                $main = $this->renderUrl();
+                break;
+
+            case "openGift":
+                $main = $this->renderOpenGift();
+                break;
+
+            case "viewGift":
+                $main = $this->renderViewGift();
+                break;
+
+            case "viewGestionPrestation":
+                $main = $this->renderGestionPrestation();
+                break;
+
+            default:
+                $main = $this->renderHome();
+                break;
+
+        }
+
+
+        $html = <<<EOT
+<header>
+${header}
+</header>
+<section>
+${main}
+</section>
+<fotter>
+${footer}
+</fotter>
+EOT;
+
+        return $html;
+    }
+
+}

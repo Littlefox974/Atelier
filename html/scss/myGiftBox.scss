@@ -1,0 +1,602 @@
+@import "style";
+
+$fond_boutton: #77D353;
+$hover_boutton: #63AD46;
+$fond_prestation: #F9FAFC;
+$hover_prestation: #E5E9F2;
+$fond_input: #E5E9F2;
+$font-fam: "Trebuchet MS", Helvetica, sans-serif;
+$fong_login: rgba(17, 162, 255, 0.24);
+$boutton_login: rgba(0, 255, 116, 0.7);
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: $font-fam;
+  background: url('../img/boitelogin.jpg') no-repeat center;
+  background-size: cover;
+  background-attachment: fixed;
+
+  header {
+    div {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: 1% 1%;
+
+      &.headercatalogue {
+        h3 {
+          margin: auto;
+          @media only screen and (max-width: 600px) {
+            @include grill(12, 1.6%, 0, 2);
+          }
+          @media only screen and (min-width: 601px) and (max-width: 1200px) {
+            @include grill(12, 1.6%, 0, 2);
+          }
+          @media only screen and (min-width: 1201px) {
+            @include grill(12, 1.6%, 0, 2);
+          }
+        }
+
+        a {
+          @media only screen and (max-width: 600px) {
+            @include grill(12, 1.6%, 0, 1);
+          }
+          @media only screen and (min-width: 601px) and (max-width: 1200px) {
+            @include grill(12, 1.6%, 0, 1);
+          }
+          @media only screen and (min-width: 1201px) {
+            @include grill(12, 1.6%, 0, 1);
+          }
+
+        }
+
+        input {
+          height: 30px;
+          border-radius: 3px;
+          background-color: $fond_input;
+          border: transparent none 0;
+          padding: 1%;
+
+          @media only screen and (max-width: 600px) {
+            @include grill(12, 1.6%, 0, 11);
+          }
+          @media only screen and (min-width: 601px) and (max-width: 1200px) {
+            @include grill(12, 1.6%, 0, 11);
+          }
+          @media only screen and (min-width: 1201px) {
+            @include grill(12, 1.6%, 0, 11);
+          }
+
+        }
+
+        button {
+          height: 30px;
+          border-radius: 3px;
+          background-color: $fond_input;
+          border: transparent none 0;
+          cursor: pointer;
+
+          img {
+            max-width: 100%;
+            max-height: 100%;
+            margin: auto 0;
+          }
+
+          @media only screen and (max-width: 600px) {
+            @include grill(12, 1.6%, 0, 1);
+          }
+          @media only screen and (min-width: 601px) and (max-width: 1200px) {
+            @include grill(12, 1.6%, 0, 1);
+          }
+          @media only screen and (min-width: 1201px) {
+            @include grill(12, 1.6%, 0, 1);
+          }
+
+        }
+      }
+
+      &.headerlogin {
+        background-color: $fong_login;
+        height: 20px;
+      }
+    }
+  }
+
+  section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 1% 1%;
+    height: auto;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      padding: 1% 1%;
+
+      &.categories {
+        background-color: rgba(17, 162, 255, 100%);
+        @include grill(12, 0, 0, 12);
+        padding: 0;
+
+        form {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          margin: 0;
+          padding: 0;
+
+          button {
+            border: transparent none 0;
+            background: $fong_login;
+            cursor: pointer;
+            padding: 5px 3%;
+            text-align: center;
+            @media only screen and (max-width: 600px) {
+              @include grill(12, 0, 0, 6);
+              font-size: 1.3em;
+              margin-bottom: 0;
+            }
+            @media only screen and (min-width: 601px) and (max-width: 1200px) {
+              @include grill(12, 0, 0, 4);
+              font-size: 1.3em;
+              margin-bottom: 0;
+            }
+            @media only screen and (min-width: 1201px) {
+              @include grill(7, 0, 0, 1);
+              font-size: 1em;
+              margin-bottom: 0;
+            }
+            &:hover {
+              color: white;
+              background-color: midnightblue;
+            }
+          }
+        }
+      }
+
+      &.prestation {
+        min-height: 15%;
+        background-color: $fond_prestation;
+        text-align: center;
+
+        @media only screen and (max-width: 600px) {
+          @include grill(12, 1.6%, 0, 4);
+        }
+
+        @media only screen and (min-width: 601px) and (max-width: 1200px) {
+          @include grill(12, 1.6%, 0, 3);
+        }
+
+        @media only screen and (min-width: 1201px) {
+          @include grill(12, 1.6%, 0, 2);
+        }
+
+        &:hover {
+          background-color: $hover_prestation;
+        }
+
+        img {
+          max-width: 50%;
+          height: auto;
+          margin: 0 auto;
+          display: block;
+        }
+
+        a {
+          margin: auto;
+          font-weight: bold;
+          text-decoration: none;
+          cursor: pointer;
+          font-size: small;
+        }
+
+        p {
+          margin: auto 2%;
+          &:after {
+            content: " €";
+          }
+        }
+
+        form {
+          button {
+            background-color: $fond_boutton;
+            width: 100%;
+            height: 50px;
+            border: transparent none 0;
+            &:hover {
+              background-color: $hover_boutton;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      &.profile {
+        min-height: 15%;
+        background-color: $fond_prestation;
+        text-align: center;
+
+        @media only screen and (max-width: 600px) {
+          @include grill(12, 1.6%, 2, 8);
+        }
+
+        @media only screen and (min-width: 601px) and (max-width: 1200px) {
+          @include grill(12, 1.6%, 2, 8);
+        }
+
+        @media only screen and (min-width: 1201px) {
+          @include grill(12, 1.6%, 2, 8);
+        }
+
+        &:hover {
+          background-color: $hover_prestation;
+        }
+        h1{
+          text-align:center;
+
+        }
+      }
+
+      &.login {
+        background-color: $fong_login;
+        border-radius: 5px;
+        height: auto;
+        margin-top: 10%;
+
+        @media only screen and (max-width: 600px) {
+          @include grill(10, 1.6%, 2, 6);
+        }
+
+        @media only screen and (min-width: 601px) and (max-width: 1200px) {
+          @include grill(3, 1.6%, 1, 1);
+        }
+
+        @media only screen and (min-width: 1201px) {
+          @include grill(4, 1.6%, 0, 1);
+        }
+
+        img {
+          border-radius: 100%;
+          position: relative;
+          bottom: 20px;
+          margin: 0 auto;
+          @media only screen and (max-width: 600px) {
+            width: 40%;
+            min-height: auto;
+
+          }
+          @media only screen and (min-width: 1201px) {
+            width: 50%;
+            min-height: 150px;
+
+          }
+        }
+
+        form {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          padding: 2%;
+          div {
+            @include grill(1, 0, 0, 1);
+
+            input {
+              @include grill(10, 0, 1, 8);
+              border-radius: 5px;
+              height: 30px;
+              border: transparent none 0;
+              padding: .5% 1.5%;
+            }
+          }
+
+          button {
+            @include grill(3, 0, 1, 1);
+            background-color: $boutton_login;
+            border: transparent none 0;
+            border-radius: 5px;
+            cursor: pointer;
+            height: 35px;
+            padding: 10px;
+            text-align: center;
+            &:hover {
+              background-color: $hover_boutton;
+            }
+          }
+
+          a {
+            @include grill(2, 0, 0, 1);
+            font-size: 12px;
+            color: #FFFFFF;
+            text-decoration: none;
+            &:nth-of-type(2) {
+              text-align: right;
+            }
+          }
+        }
+      }
+
+      &.itemDetail{
+        text-align: center;
+        background: $fond_prestation;
+        height:auto;
+
+        @media only screen and (max-width: 600px) {
+          @include grill(12, 1.6%, 2, 8);
+        }
+
+        @media only screen and (min-width: 601px) and (max-width: 1200px) {
+          @include grill(12, 1.6%, 2, 8);
+        }
+
+        @media only screen and (min-width: 1201px) {
+          @include grill(12, 1.6%, 2, 8);
+        }
+
+        h1{
+          margin: auto 2%;
+          font-weight: bold;
+        }
+
+        div{
+
+          p{
+            margin: auto 2%;
+            &:nth-of-type(2) {
+              &:after {
+                content: " €";
+              }
+            }
+          }
+          img{
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+          }
+        }
+      }
+
+      &.item-cart {
+        background-color: $fond_prestation;
+
+        &:hover {
+          background-color: $hover_prestation;
+        }
+
+        picture {
+          img {
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+          }
+
+          @media only screen and (max-width: 600px) {
+            @include grill(12, 0, 0, 12);
+          }
+          @media only screen and (min-width: 601px) and (max-width: 1200px) {
+            @include grill(12, 0, 0, 2);
+          }
+          @media only screen and (min-width: 1201px) {
+            @include grill(12, 0, 0, 2);
+          }
+        }
+
+        div {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+
+          h2 {
+            font-weight: bold;
+            @media only screen and (max-width: 600px) {
+                @include grill(12, 0, 0, 12);
+            }
+          }
+          p {
+            @media only screen and (max-width: 600px) {
+                @include grill(12, 0, 0, 12);
+                margin: auto;
+              font-size: .7em;
+              }
+            }
+
+          @media only screen and (max-width: 600px) {
+            @include grill(12, 1.6%, 0, 12);
+          }
+          @media only screen and (min-width: 601px) and (max-width: 1200px) {
+            @include grill(12, 1.6%, 0, 8);
+          }
+          @media only screen and (min-width: 1201px) {
+            @include grill(12, 1.6%, 0, 4);
+          }
+
+        }
+
+        p {
+          &:nth-of-type(1) {
+            &:before {
+              content: 'Cantité';
+            }
+          }
+          &:nth-of-type(2) {
+            &:after {
+              content: '€';
+            }
+          }
+          @media only screen and (max-width: 600px) {
+            @include grill(2, 0, 0, 2);
+          }
+          margin: auto;
+          text-align: center;
+        }
+
+        form {
+          button {
+            background-color: transparent;
+            margin: auto;
+            border: transparent none 0;
+          }
+
+          &:hover {
+            background-color: $hover_boutton;
+          }
+          background-color: $fond_boutton;
+          @media only screen and (max-width: 600px) {
+            @include grill(1, 0, 0, 1);
+          }
+        }
+
+        @media only screen and (max-width: 600px) {
+          @include grill(12, 0, 2, 8);
+          height: auto;
+        }
+        @media only screen and (min-width: 601px) and (max-width: 1200px) {
+          @include grill(12, 0, 1, 9);
+        }
+        @media only screen and (min-width: 1201px) {
+          @include grill(12, 1.6%, 0, 12);
+        }
+      }
+
+      &.footcart {
+        @include grill(12, 0, 0, 12);
+        height: 5%;
+        form {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          padding: 1% 1%;
+          @include grill(12, 0, 0, 12);
+          button {
+            width: 100%;
+            border: transparent none 0;
+            background-color: $fond_boutton;
+            &:hover{
+              background-color: $hover_boutton;
+            }
+          }
+        }
+      }
+
+      &.loginMsg {
+        position: relative;
+        bottom: 300px;
+        font-size: 5em;
+        color: #FFFFFF;
+
+        @media only screen and (max-width: 600px) {
+          display: none;
+        }
+
+        @media only screen and (min-width: 601px) and (max-width: 1200px) {
+          display: none;
+        }
+
+        @media only screen and (min-width: 1201px) {
+          @include grill(3, 1.6%, 2, 1);
+        }
+      }
+
+      &.signUp {
+        background-color: $fong_login;
+        border-radius: 5px;
+        height: auto;
+        margin-top: 10%;
+
+        @media only screen and (max-width: 600px) {
+          @include grill(10, 1.6%, 2, 6);
+        }
+
+        @media only screen and (min-width: 601px) and (max-width: 1200px) {
+          @include grill(3, 1.6%, 1, 1);
+        }
+
+        @media only screen and (min-width: 1201px) {
+          @include grill(4, 1.6%, 0, 1);
+        }
+
+        img {
+          border-radius: 100%;
+          position: relative;
+          bottom: 20px;
+          margin: 0 auto;
+          @media only screen and (max-width: 600px) {
+            width: 40%;
+            min-height: auto;
+
+          }
+          @media only screen and (min-width: 1201px) {
+            width: 50%;
+            min-height: 150px;
+
+          }
+        }
+
+        form {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          padding: 2%;
+          div {
+            @include grill(1, 0, 0, 1);
+
+            input {
+              @include grill(10, 0, 1, 8);
+              border-radius: 5px;
+              height: 30px;
+              border: transparent none 0;
+              padding: .5% 1.5%;
+            }
+          }
+
+          button {
+            @include grill(3, 0, 1, 1);
+            background-color: $boutton_login;
+            border: transparent none 0;
+            border-radius: 5px;
+            cursor: pointer;
+            height: 35px;
+            padding: 10px;
+            text-align: center;
+            &:hover {
+              background-color: $hover_boutton;
+            }
+          }
+
+          a {
+            @include grill(2, 0, 0, 1);
+            font-size: 12px;
+            color: #FFFFFF;
+            text-decoration: none;
+            &:nth-of-type(2) {
+              text-align: right;
+            }
+            }
+          }
+        }
+    }
+  }
+
+  footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 1% 1%;
+    div {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: 1% 1%;
+
+    }
+  }
+}

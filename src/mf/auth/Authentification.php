@@ -32,11 +32,13 @@ class Authentification extends AbstractAuthentification {
     }
 
     public function logout() {
-        unset($_SESSION['user_login']);
-        unset($_SESSION['access_level']);
-        $this->user_login = null;
-        $this->access_level = AbstractAuthentification::ACCESS_LEVEL_NONE;
-        $this->logged_in = false;
+        if(isset($_SESSION['user_login']) and isset($_SESSION['access_level'])) {
+            unset($_SESSION['user_login']);
+            unset($_SESSION['access_level']);
+            $this->user_login = null;
+            $this->access_level = AbstractAuthentification::ACCESS_LEVEL_NONE;
+            $this->logged_in = false;
+        }
     }
 
     public function checkAccessRight($requested) {
@@ -46,7 +48,7 @@ class Authentification extends AbstractAuthentification {
             return true;
     }
 
-    protected function hashPAssword($password) {
+    protected function hashPassword($password) {
         return password_hash($password, PASSWORD_DEFAULT);
     }
 
