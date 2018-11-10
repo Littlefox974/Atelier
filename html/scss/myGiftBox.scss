@@ -24,7 +24,6 @@ body {
   background-attachment: fixed;
 
   header {
-
     div {
       display: flex;
       flex-direction: row;
@@ -115,94 +114,110 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     padding: 1% 1%;
-    height: 100%;
+    height: auto;
 
     div {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      padding: 1% 1%;
+
       &.categories {
-        height: 5%;
         background-color: rgba(17, 162, 255, 100%);
-        @media only screen and (max-width: 600px) {
-          @include grill(12, 1%, 0, 12);
-        }
+        @include grill(12, 0, 0, 12);
+        padding: 0;
 
-        @media only screen and (min-width: 601px) and (max-width: 1200px) {
-          @include grill(12, 1%, 0, 12);
-        }
-
-        @media only screen and (min-width: 1201px) {
-          @include grill(12, 1%, 0, 12);
-        }
         form {
           display: flex;
           flex-direction: row;
           flex-wrap: wrap;
-          height: 100%;
+          margin: 0;
+          padding: 0;
 
           button {
             border: transparent none 0;
             background: $fong_login;
             cursor: pointer;
-            height: auto;
-            margin-bottom: 0;
-          }
-
+            padding: 5px 3%;
+            text-align: center;
             @media only screen and (max-width: 600px) {
               @include grill(12, 0, 0, 6);
               font-size: 1.3em;
+              margin-bottom: 0;
             }
-
             @media only screen and (min-width: 601px) and (max-width: 1200px) {
               @include grill(12, 0, 0, 4);
               font-size: 1.3em;
+              margin-bottom: 0;
             }
-
             @media only screen and (min-width: 1201px) {
               @include grill(7, 0, 0, 1);
               font-size: 1em;
               margin-bottom: 0;
             }
-
             &:hover {
               color: white;
               background-color: midnightblue;
             }
           }
+        }
+      }
 
-          img {
-            max-width: 50%;
-            height: auto;
-            margin: 0 auto;
-            display: block;
+      &.prestation {
+        min-height: 15%;
+        background-color: $fond_prestation;
+        text-align: center;
+
+        @media only screen and (max-width: 600px) {
+          @include grill(12, 1.6%, 0, 4);
+        }
+
+        @media only screen and (min-width: 601px) and (max-width: 1200px) {
+          @include grill(12, 1.6%, 0, 3);
+        }
+
+        @media only screen and (min-width: 1201px) {
+          @include grill(12, 1.6%, 0, 2);
+        }
+
+        &:hover {
+          background-color: $hover_prestation;
+        }
+
+        img {
+          max-width: 50%;
+          height: auto;
+          margin: 0 auto;
+          display: block;
+        }
+
+        a {
+          margin: auto;
+          font-weight: bold;
+          text-decoration: none;
+          cursor: pointer;
+          font-size: small;
+        }
+
+        p {
+          margin: auto 2%;
+          &:after {
+            content: " €";
           }
+        }
 
-          a {
-            margin: auto 2%;
-            font-weight: bold;
-            text-decoration: none;
-            cursor: pointer;
-          }
-
-          p {
-            margin: auto 2%;
-            &:after {
-              content: " €";
-            }
-          }
-
-          form {
-            button {
-              background-color: $fond_boutton;
-              width: 100%;
-              height: 50px;
-              border: transparent none 0;
-              &:hover {
-                background-color: $hover_boutton;
-                cursor: pointer;
-              }
+        form {
+          button {
+            background-color: $fond_boutton;
+            width: 100%;
+            height: 50px;
+            border: transparent none 0;
+            &:hover {
+              background-color: $hover_boutton;
+              cursor: pointer;
             }
           }
         }
-      }
       }
 
       &.profile {
@@ -210,23 +225,16 @@ body {
         background-color: $fond_prestation;
         text-align: center;
 
-        div{
-          margin-bottom: 5%;
-          input{
-            @include grill(3, 0%, 0, 1);
-            text-align: center;
-          }
-        }
         @media only screen and (max-width: 600px) {
-          @include grill(12, 1.6%, 2, 8);
+          @include grill(12, 1.6%, 0, 4);
         }
 
         @media only screen and (min-width: 601px) and (max-width: 1200px) {
-          @include grill(12, 1.6%, 2, 8);
+          @include grill(12, 1.6%, 0, 3);
         }
 
         @media only screen and (min-width: 1201px) {
-          @include grill(12, 1.6%, 2, 8);
+          @include grill(12, 1.6%, 0, 2);
         }
 
         &:hover {
@@ -236,7 +244,6 @@ body {
           text-align:center;
 
         }
-
       }
 
       &.login {
@@ -317,80 +324,28 @@ body {
         }
       }
 
-      &.itemDetail{
-        text-align: center;
-        background: $fond_prestation;
-        height:auto;
-
-        @media only screen and (max-width: 600px) {
-          @include grill(12, 1.6%, 2, 8);
-        }
-
-        @media only screen and (min-width: 601px) and (max-width: 1200px) {
-          @include grill(12, 1.6%, 2, 8);
-        }
-
-        @media only screen and (min-width: 1201px) {
-          @include grill(12, 1.6%, 2, 8);
-        }
-
-        h1{
-          margin: auto 2%;
-          font-weight: bold;
-        }
-
-        div{
-
-          p{
-            margin: auto 2%;
-            &:nth-of-type(2) {
-              &:after {
-                content: " €";
-              }
-            }
-          }
-          img{
-            width: 100%;
-            height: auto;
-            margin: 0 auto;
-            display: block;
-          }
-        }
-      }
-
       &.item-cart {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
         background-color: $fond_prestation;
-        height: 23%;
-
-        @media only screen and (max-width: 600px) {
-          @include grill(12, 1.6%, 0, 12);
-        }
-
-        @media only screen and (min-width: 601px) and (max-width: 1200px) {
-          @include grill(12, 1.6%, 0, 12);
-        }
-
-        @media only screen and (min-width: 1201px) {
-          @include grill(12, 1.6%, 0, 12);
-        }
 
         &:hover {
           background-color: $hover_prestation;
         }
 
         picture {
-          display: inline-block;
-          @include grill(12, 0, 0, 2);
-          height: auto;
-          margin-bottom: 0;
-
           img {
-            max-width: 80%;
-            min-height: auto;
-            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+          }
+
+          @media only screen and (max-width: 600px) {
+            @include grill(12, 0, 0, 12);
+          }
+          @media only screen and (min-width: 601px) and (max-width: 1200px) {
+            @include grill(12, 0, 0, 2);
+          }
+          @media only screen and (min-width: 1201px) {
+            @include grill(12, 0, 0, 2);
           }
         }
 
@@ -398,77 +353,94 @@ body {
           display: flex;
           flex-direction: row;
           flex-wrap: wrap;
-          margin-bottom: 0px;
-          padding: 1%;
+
+          h2 {
+            font-weight: bold;
+            @media only screen and (max-width: 600px) {
+                @include grill(12, 0, 0, 12);
+            }
+          }
+          p {
+            @media only screen and (max-width: 600px) {
+                @include grill(12, 0, 0, 12);
+                margin: auto;
+              font-size: .7em;
+              }
+            }
 
           @media only screen and (max-width: 600px) {
-            @include grill(12, 1.6%, 0, 8);
+            @include grill(12, 1.6%, 0, 12);
           }
-
           @media only screen and (min-width: 601px) and (max-width: 1200px) {
             @include grill(12, 1.6%, 0, 8);
           }
-
           @media only screen and (min-width: 1201px) {
             @include grill(12, 1.6%, 0, 4);
           }
 
-          h2 {
-            font-weight: bold;
-            @include grill(12, 0, 0, 4);
-            margin: 0
-          }
+        }
 
-          p {
-            @include grill(12, 0, 0, 4);
-            font-size: .7em;
-            margin: 0;
+        p {
+          &:nth-of-type(1) {
+            &:before {
+              content: 'Cantité';
+            }
           }
-
           &:nth-of-type(2) {
-            @media only screen and (max-width: 600px) {
-              @include grill(12, 1.6%, 0, 2);
-            }
-
-            @media only screen and (min-width: 601px) and (max-width: 1200px) {
-              @include grill(12, 1.6%, 0, 2);
-            }
-
-            @media only screen and (min-width: 1201px) {
-              @include grill(12, 1.6%, 0, 2);
-            }
-
-            margin: 0;
-
-            p {
-              &:nth-of-type(1) {
-                @include grill(12, 0, 0, 12);
-                margin: auto;
-                &:before {
-                  content: "Cantité: "
-                }
-              }
-              &:nth-of-type(2) {
-                @include grill(12, 0, 0, 12);
-                margin: auto;
-                &:after {
-                  content: " €";
-                }
-              }
+            &:after {
+              content: '€';
             }
           }
-          &:nth-of-type(3) {
-            @include grill(12, 0, 0, 2);
-            margin: 0;
-            form {
-              margin: auto;
-              button {
-                margin: auto;
-              }
+          @media only screen and (max-width: 600px) {
+            @include grill(2, 0, 0, 2);
+          }
+          margin: auto;
+          text-align: center;
+        }
 
+        form {
+          button {
+            background-color: transparent;
+            margin: auto;
+            border: transparent none 0;
+          }
+
+          &:hover {
+            background-color: $hover_boutton;
+          }
+          background-color: $fond_boutton;
+          @media only screen and (max-width: 600px) {
+            @include grill(1, 0, 0, 1);
+          }
+        }
+
+        @media only screen and (max-width: 600px) {
+          @include grill(12, 0, 2, 8);
+          height: auto;
+        }
+        @media only screen and (min-width: 601px) and (max-width: 1200px) {
+          @include grill(12, 0, 1, 9);
+        }
+        @media only screen and (min-width: 1201px) {
+          @include grill(12, 1.6%, 0, 12);
+        }
+      }
+
+      &.footcart {
+        @include grill(12, 0, 0, 12);
+        form {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          padding: 1% 1%;
+          @include grill(12, 0, 0, 12);
+
+          button {
+            width: 100%;
           }
         }
       }
+
 
       &.loginMsg {
         position: relative;
@@ -566,9 +538,20 @@ body {
             }
           }
         }
-      }
+    }
+  }
+
+  footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 1% 1%;
+    div {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: 1% 1%;
+
     }
   }
 }
-
-

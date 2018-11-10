@@ -75,3 +75,5 @@ composer\.json
 composer\.lock
 
 html/css/style\.css\.map
+
+html/css/style\.css
