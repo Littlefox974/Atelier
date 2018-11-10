@@ -190,7 +190,7 @@ class GiftBoxController extends AbstractController
         if (isset($_GET['giftId'])) {
             $orderUrl = Order::query()->select(['*'])->where('id', '=', $_GET['giftId'])->get();
 
-            if ($orderUrl[0]->state == 0) { //not open
+            if ($orderUrl[0]->state != 3) { //not open
                 $view = new myGiftAppView($orderUrl[0]);
                 $view->render('openGift');
             } else { //if opened
@@ -213,7 +213,7 @@ class GiftBoxController extends AbstractController
         if (isset($_GET['giftId'])) {
             $orderState = Order::query()->select(['*'])->where('id', '=', $_GET['giftId'])->get();
             $orderState[0]->id = $_GET['giftId'];
-            $orderState[0]->state = 1;
+            $orderState[0]->state = 3;
             $orderState[0]->save();
             $this->viewGift();
 //            unset($_GET['giftId']);
@@ -231,6 +231,7 @@ class GiftBoxController extends AbstractController
         $order->id = $bytesString;
         $order->idUser = $idUser;
         $order->idCart = $idCart;
+        $order->state = 1;
         $order->save();
 
         return $bytesString;
