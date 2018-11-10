@@ -324,10 +324,7 @@ class myGiftAppView extends AbstractView
             }
 
             $html .= "
-<h1>$orders->presName</h1>
-<img src='/www/fierrolo1u/html/img/$orders->presImg'>
 
-<p>$orders->presDescr</p>
 <p>$state</p>
 <input style='width:100%' value=\"$url\">";
 
