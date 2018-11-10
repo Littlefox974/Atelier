@@ -228,6 +228,7 @@ body {
         min-height: 15%;
         background-color: $fond_prestation;
         text-align: center;
+        width: 80%;
 
         @media only screen and (max-width: 600px) {
           @include grill(12, 1.6%, 0, 4);
@@ -238,7 +239,7 @@ body {
         }
 
         @media only screen and (min-width: 1201px) {
-          @include grill(12, 1.6%, 0, 2);
+          @include grill(12, 10%, 0, 2);
         }
 
         &:hover {
@@ -247,6 +248,12 @@ body {
         h1{
           text-align:center;
 
+        }
+        img{
+          max-width: 50%;
+          height: auto;
+          margin: 0 auto;
+          display: block;
         }
       }
 
